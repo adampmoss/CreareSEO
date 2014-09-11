@@ -1,0 +1,9 @@
+<config>
+    <modules>
+        <Creare_CreareSeoSitemap>
+            <active>true</active>
+            <codePool>community</codePool>
+	     	<version>1.0.0</version>
+        </Creare_CreareSeoSitemap>
+    </modules>
+</config>

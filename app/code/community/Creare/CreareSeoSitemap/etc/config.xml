@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Creare_CreareSeoSitemap>
+      <version>1.0.0</version>
+    </Creare_CreareSeoSitemap>
+  </modules>
+  <frontend>
+    <routers>
+      <creareseositemap>
+        <use>standard</use>
+        <args>
+         <module>Creare_CreareSeoSitemap</module>
+         <frontName>sitemap</frontName>
+       </args>
+     </creareseositemap>
+   </routers>
+   <layout>
+    <updates>
+      <creareseositemap>
+        <file>creareseo_sitemap.xml</file>
+      </creareseositemap>
+    </updates>
+  </layout>
+</frontend>
+<global>
+    <blocks>
+      <creareseositemap>
+        <class>Creare_CreareSeoSitemap_Block</class>
+      </creareseositemap>
+    </blocks>
+  <helpers>
+      <creareseositemap>
+        <class>Creare_CreareSeoSitemap_Helper</class>
+      </creareseositemap>
+    </helpers>
+  </global>
+<default>
+  <creareseositemap>
+    <sitemap>
+      <showcms>1</showcms>
+      <showcategories>1</showcategories>
+      <showxml>0</showxml>
+      <showaccount>1</showaccount>
+      <showcontact>1</showcontact>
+      <fullwidth>0</fullwidth>
+    </sitemap>
+  </creareseositemap>
+ </default>
+</config> 

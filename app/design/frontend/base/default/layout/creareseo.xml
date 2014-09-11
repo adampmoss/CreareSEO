@@ -1,0 +1,31 @@
+<layout>
+    <default>
+        <reference name="breadcrumbs">
+            <action method="setTemplate">
+                <template>creareseo/page/html/breadcrumbs.phtml</template>
+            </action>
+        </reference>
+    </default>
+    
+    <catalog_category_view>
+        <reference name="head">
+            <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
+        </reference>
+    </catalog_category_view>
+
+    <catalog_category_layered>
+        <reference name="head">
+            <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalog_product_view>
+            <reference name="head">
+                <block type="catalog/product_view" name="creareseo.social">
+                    <action method="setTemplate" ifconfig="creareseocore/social/enabled">
+                        <template>creareseo/social/social.phtml</template>
+                    </action>
+                </block>			
+            </reference>
+    </catalog_product_view>
+</layout>

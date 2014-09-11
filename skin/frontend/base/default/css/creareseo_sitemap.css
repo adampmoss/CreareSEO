@@ -1,0 +1,13 @@
+/* Creareseo Sitemap */
+
+.creareseo-sitemap .sitempan { width: 100%; float: left; }
+.creareseo-sitemap h2 { font-size: 1.4em; padding: 10px; display: block; }
+.creareseo-sitemap .strongsm { font-size: 1.4em; display: block; }
+.creareseo-sitemap .siteul { margin: 5px 2.5%; float: left; width: 45%; }
+.creareseo-sitemap .siteul li { list-style:inside; font-size:1em!important; }
+.creareseo-sitemap .sitecatul { margin: 0 5px; float: left; width: 100%; }
+.creareseo-sitemap .sitecatul li.cat { list-style:none; font-size:1em!important; display: block; float: left; width: 45%; margin: 0 0 10px 0; }
+.creareseo-sitemap .sitecatul li.cat ul { margin: 0 5px; }
+.creareseo-sitemap .sitecatul li.cat ul li { list-style:inside; }
+.creareseo-sitemap .siteul.full { margin: 5px 0; float: left; width: 100%; }
+.creareseo-sitemap .sitecatul.full li.cat { margin: 5px 0; float: left; width: 100%; }
