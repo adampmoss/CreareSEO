@@ -33,7 +33,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 	private function enableCache()
 	{
             $model = Mage::getModel('core/cache');
-            $options = $model->canUse();
+            $options = $model->canUse('');
 
             foreach($options as $option=>$value) {
                     if ($options[$option] != 1)
