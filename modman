@@ -1,0 +1,5 @@
+app/code/*  app/code/
+app/etc/modules/*  app/etc/modules/
+app/design/*  app/design/
+js/*  js/
+skin/*  skin/
