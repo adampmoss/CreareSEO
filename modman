@@ -1,6 +1,6 @@
-app/code/*  app/code/
-app/etc/modules/*  app/etc/modules/
-app/design/adminhtml/*  app/design/adminhtml/
-app/design/frontend/* app/design/frontend/
-js/*  js/
-skin/*  skin/
+app/code/*  app/code
+app/etc/modules/*  app/etc/modules
+app/design/adminhtml/*  app/design/adminhtml
+app/design/frontend/* app/design/frontend
+js/*  js
+skin/*  skin
