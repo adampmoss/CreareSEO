@@ -1,0 +1,8 @@
+{
+    "name": "Creare/CreareSEO",
+    "type": "magento-module",
+    "description": "This extension provides fixes and features to Magento that will help improve its overall SEO performance.",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
