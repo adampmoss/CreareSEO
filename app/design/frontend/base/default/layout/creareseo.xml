@@ -6,7 +6,11 @@
             </action>
         </reference>
     </default>
-    
+    <cms_index_index>
+            <reference name="before_body_end">
+                <block type="core/template" name="creareseo.sitelinkssearch" template="creareseo/page/html/sitelinkssearch.phtml" />
+            </reference>
+    </cms_index_index>
     <catalog_category_view>
         <reference name="head">
             <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
