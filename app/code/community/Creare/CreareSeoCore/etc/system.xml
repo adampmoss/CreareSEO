@@ -14,6 +14,13 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
+                <info>
+                    <frontend_model>creareseocore/adminhtml_system_config_fieldset_info</frontend_model>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </info>
                 <defaultseo translate="label" module="creareseocore">
                     <label>SEO Settings</label>
                     <frontend_type>text</frontend_type>

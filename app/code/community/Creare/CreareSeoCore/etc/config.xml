@@ -61,6 +61,11 @@
                 <class>Creare_CreareSeoCore_Helper</class>
             </creareseocore>
         </helpers>
+        <blocks>
+            <creareseocore>
+                <class>Creare_CreareSeoCore_Block</class>
+            </creareseocore>
+        </blocks>
         <resources>
             <creareseo_setup>
                 <setup>
