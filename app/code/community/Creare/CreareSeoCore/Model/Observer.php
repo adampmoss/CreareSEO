@@ -335,6 +335,13 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
         return Mage::helper('creareseocore/meta');
     }
     
+    public function setMandatoryAltTag($observer)
+    {
+        if (Mage::getStoreConfig('creareseocore/defaultseo/mandatory_alt'))
+        {
+            $observer->getBlock()->setTemplate('creareseo/catalog/product/helper/gallery.phtml');
+        }
+    }
     
 
 }

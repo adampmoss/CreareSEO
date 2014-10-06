@@ -38,6 +38,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </metakw>
+                        <mandatory_alt translate="label">
+                            <label>Make "alt" tags mandatory on product gallery images?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mandatory_alt>
                         <noindexparams translate="label">
                             <label>Apply NOINDEX to filtered category pages</label>
                             <frontend_type>select</frontend_type>

@@ -196,6 +196,15 @@
                     </processcheck>
                 </observers>
             </controller_action_predispatch>
+            <catalog_product_gallery_prepare_layout>
+                <observers>
+                    <creareseo_mandatory_alt>
+                        <type>singleton</type>
+                        <class>creareseocore/observer</class>
+                        <method>setMandatoryAltTag</method>
+                    </creareseo_mandatory_alt>
+                </observers>
+            </catalog_product_gallery_prepare_layout>
         </events>
     </adminhtml>
     <default>
@@ -203,6 +212,7 @@
             <defaultseo>
                 <metakw>1</metakw>
                 <noindexparams>1</noindexparams>
+                <mandatory_alt>0</mandatory_alt>
                 <noindexparamssearch>1</noindexparamssearch>
                 <noindexparamsgallery>1</noindexparamsgallery>
                 <duplicate>0</duplicate>

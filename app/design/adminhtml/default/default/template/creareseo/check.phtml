@@ -17,6 +17,11 @@
         <?php else: ?>
             <li class="success-msg"><span>The Meta Keywords Tag and any blank Meta Description Tags have been automatically removed.</span></li>
         <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/mandatory_alt')): ?>
+            <li class="error-msg"><span>Mandatory "alt" tags on product gallery images are not currently enabled  in the manual product editor. <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>">Go fix it</a></span></li>
+        <?php else: ?>
+            <li class="success-msg"><span>You have enabled mandatory "alt" tags on product gallery images in the manual product editor.</span></li>
+        <?php endif; ?>
         <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/noindexparams')): ?>
             <li class="error-msg"><span>The NOINDEX Meta Tag for parameter based category pages is currently disabled. <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>">Go fix it</a></span></li>
         <?php else: ?>

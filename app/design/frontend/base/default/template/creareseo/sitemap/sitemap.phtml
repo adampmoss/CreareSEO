@@ -13,7 +13,7 @@
                         $sitemapfilename = $sitemap->getSitemapFilename();
                         if ($sitemapfilename != "" && $sitemap->getStoreId() == Mage::app()->getStore()->getStoreId()):
                             ?>
-                            <li><a href="<?php echo Mage::getBaseUrl() . $sitemapfilename; ?>" title="XML Sitemap">XML Sitemap</a></li>
+                            <li><a href="<?php echo Mage::getBaseUrl() . $sitemapfilename; ?>" title="<?php echo $this->__('XML Sitemap') ?>"><?php echo $this->__('XML Sitemap') ?></a></li>
                         <?php endif;
                     endforeach;
                     ?>
@@ -23,18 +23,18 @@
             <?php if (Mage::helper('creareseositemap')->showAccount() || Mage::helper('creareseositemap')->showContact()): ?>
             <ul class="siteul <?php echo (Mage::helper('creareseositemap')->fullWidth())? 'full' : '' ?>">
                 <?php if (Mage::helper('creareseositemap')->showContact()): ?>
-                    <li><a href="<?php echo Mage::getBaseUrl(); ?>contacts" title="Contact">Contact</a></li>
+                    <li><a href="<?php echo Mage::getBaseUrl(); ?>contacts" title="Contact"><?php echo $this->__('Contact') ?></a></li>
                 <?php endif; ?>
                 <?php if (Mage::helper('creareseositemap')->showAccount()): ?>
                     <?php
                     if ($this->helper('customer')->isLoggedIn()) {
-                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/index/" title="Account">Account</a></li>';
-                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/logout/" title="Log Out">Log Out</a></li>';
+                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/index/" title="'.$this->__('Account').'">'.$this->__('Account').'</a></li>';
+                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/logout/" title="'.$this->__('Log Out').'">'.$this->__('Log Out').'</a></li>';
                     } else {
-                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/" title="Register/Log In">Register/Log In</a></li>';
+                        echo '<li><a href="' . Mage::getBaseUrl() . 'customer/account/" title="'.$this->__('Register/Log In').'">'.$this->__('Register/Log In').'</a></li>';
                     }
                     ?>
-                    <li><a href="<?php echo Mage::getBaseUrl(); ?>catalogsearch/advanced" title="Advanced Search">Advanced Search</a></li>
+                    <li><a href="<?php echo Mage::getBaseUrl(); ?>catalogsearch/advanced" title="<?php echo $this->__('Advanced Search') ?>"><?php echo $this->__('Advanced Search') ?></a></li>
             <?php endif; ?>
             </ul>
     <?php endif; ?>
