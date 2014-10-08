@@ -414,6 +414,45 @@
                         </contacts_metadesc>
                     </fields>
                 </metadata>
+                <googleanalytics>
+                    <label>Google Analytics</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <type translate="label">
+                            <label>Google Analytics Type</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>creareseocore/source_analyticstype</source_model>
+                        </type>
+                        <enable_demographics translate="label">
+                            <label>Enable Demographics &amp; Interest Reports</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><type>1</type></depends>
+                        </enable_demographics>
+                        <additional_tracking_code translate="label">
+                            <label>Additional Tracking Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                            <comment><![CDATA[Use this area to add extra features to the Universal Analytics tracking code. This will appear on every frontend page where the existing code is currently being pulled out. <a target="_blank" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/">More information about Universal Analytics</a>]]></comment>
+                        </additional_tracking_code>
+                    </fields>
+                </googleanalytics>
             </groups>
         </creareseocore>
         <crearehtaccess>

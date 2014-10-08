@@ -342,6 +342,16 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             $observer->getBlock()->setTemplate('creareseo/catalog/product/helper/gallery.phtml');
         }
     }
+
+    public function setUA($observer)
+    {
+        if (Mage::getStoreConfig('creareseocore/googleanalytics/type'))
+        {
+            $observer->getEvent()->getLayout()->unsetBlock('google_analytics');
+            $observer->getEvent()->getLayout()->createBlock('creareseocore/googleanalytics_ua', 
+                'google_analytics', array('template' => 'creareseo/googleanalytics/ua.phtml'));
+        }
+    }
     
 
 }

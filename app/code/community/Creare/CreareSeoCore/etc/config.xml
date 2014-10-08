@@ -158,6 +158,11 @@
                         <class>creareseocore/observer</class>
                         <method>forceHomepageTitle</method>
                     </forcehptitle>
+                    <universal_analytics>
+                        <type>singleton</type>
+                        <class>creareseocore/observer</class>
+                        <method>setUA</method>
+                    </universal_analytics>
                 </observers>
             </controller_action_layout_generate_blocks_after>
         </events>
@@ -220,6 +225,10 @@
                 <forcecanonical>1</forcecanonical>
                 <forcehptitle>1</forcehptitle>
             </defaultseo>
+            <googleanalytics>
+                <type>0</type>
+                <enable_demographics>0</enable_demographics>
+            </googleanalytics>
             <cleanup>
                 <active>1</active>
                 <logdb>1</logdb>
