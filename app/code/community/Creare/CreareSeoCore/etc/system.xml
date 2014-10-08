@@ -421,6 +421,11 @@
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
+                    <comment>
+            <![CDATA[
+            <p>* Ensure that you have entered your Account Number in the <strong>Google API</strong> tab.</p>
+            ]]>
+                    </comment>
                     <fields>
                         <type translate="label">
                             <label>Google Analytics Type</label>
