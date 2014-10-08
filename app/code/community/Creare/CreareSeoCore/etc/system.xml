@@ -429,7 +429,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <source_model>creareseocore/source_analyticstype</source_model>
+                            <source_model>Creare_CreareSeoCore_Model_Source_AnalyticsType</source_model>
                         </type>
                         <enable_demographics translate="label">
                             <label>Enable Demographics &amp; Interest Reports</label>

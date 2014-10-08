@@ -7,7 +7,7 @@
         </reference>
     </default>
     <cms_index_index>
-            <reference name="before_body_start">
+            <reference name="after_body_start">
                 <block type="core/template" name="creareseo.sitelinkssearch" template="creareseo/page/html/sitelinkssearch.phtml" />
             </reference>
     </cms_index_index>
