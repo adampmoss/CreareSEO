@@ -1,6 +1,6 @@
 <?php
 
-class Creare_CreareSeoCore_Block_GoogleAnalytics_Ua extends Mage_GoogleAnalytics_Block_Ga
+class Creare_CreareSeoCore_Block_Googleanalytics_Ua extends Mage_GoogleAnalytics_Block_Ga
 {
 
 	/* Universal Analytics script for ecommerce orders */
