@@ -83,17 +83,14 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
 
     public function seoHeading($observer) {
         
-        if (Mage::app()->getFrontController()->getAction()->getFullActionName() == 'catalog_category_view')
-        {
-            $category = $observer->getEvent()->getCategory();
-            $category->setOriginalName($category->getName());
+        $category = $observer->getEvent()->getCategory();
+        $category->setOriginalName($category->getName());
 
-            if (Mage::getStoreConfig('creareseocore/defaultseo/category_h1'))
+        if (Mage::getStoreConfig('creareseocore/defaultseo/category_h1'))
+        {
+            if ($category->getData('creareseo_heading'))
             {
-                if ($category->getData('creareseo_heading'))
-                {
-                    $category->setName($category->getCreareseoHeading());
-                }
+                $category->setName($category->getCreareseoHeading());
             }
         }
     }

@@ -127,7 +127,7 @@
                     </creareseo_forcecanonical>
                 </observers>
             </catalog_controller_product_view>
-            <catalog_category_load_after>
+            <catalog_controller_category_init_after>
                 <observers>
                     <creareseo_heading>
                         <type>singleton</type>
@@ -135,7 +135,7 @@
                         <method>seoHeading</method>
                     </creareseo_heading>
                 </observers>
-            </catalog_category_load_after>
+            </catalog_controller_category_init_after>
             <controller_action_layout_generate_blocks_after>
                 <observers>
                     <creareseo_contactsmeta>
