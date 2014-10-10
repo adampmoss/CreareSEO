@@ -1,8 +1,9 @@
-app/code/community/Creare/*                 app/code/community/Creare
-app/etc/modules/Creare_CreareSeoCore.xml    app/etc/modules/Creare_CreareSeoCore.xml
-app/etc/modules/Creare_CreareSeoSitemap.xml app/etc/modules/Creare_CreareSeoSitemap.xml
-app/design/adminhtml/default/default/*      app/design/adminhtml/default/default
-app/design/frontend/base/default/*          app/design/frontend/base/default
-js/creareseo/*                              js/creareseo
-skin/adminhtml/default/default/creareseo/*  skin/adminhtml/default/default/creareseo
-skin/frontend/base/default/css/*            skin/frontend/base/default/css
+app/code/community/Creare/*                      app/code/community/Creare/
+app/etc/modules/*                                app/etc/modules/
+app/design/adminhtml/default/default/layout/*    app/design/adminhtml/default/default/layout/
+app/design/adminhtml/default/default/template/*  app/design/adminhtml/default/default/template/
+app/design/frontend/base/default/layout/*        app/design/frontend/base/default/layout/
+app/design/frontend/base/default/template/*      app/design/frontend/base/default/template/
+js/*                                             js/
+skin/adminhtml/default/default/*                 skin/adminhtml/default/default/
+skin/frontend/base/default/css/*                 skin/frontend/base/default/css
