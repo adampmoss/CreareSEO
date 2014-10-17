@@ -194,11 +194,13 @@
                         <class>creareseocore/observer</class>
                         <method>saveConfigOnConfigLoad</method>
                     </creareseo_savefileconfig>
-                     <processcheck>
+                    <!-- Below observer depreciated in 1.2 as the 
+                    script causes need to reindex on every product save.
+                    <processcheck>
                         <type>singleton</type>
                         <class>creareseocore/observer</class>
                         <method>productCheck</method>
-                    </processcheck>
+                    </processcheck>-->
                 </observers>
             </controller_action_predispatch>
             <catalog_product_gallery_prepare_layout>

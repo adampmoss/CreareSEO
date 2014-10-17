@@ -134,6 +134,11 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
         }
     }
 
+    /*
+        Below script is depreciated in 1.2 as it causes need to reindex on every product save.
+        This observer script is no longer called on event controller_action_predispatch
+    */
+
     public function productCheck(Varien_Event_Observer $observer) {
         if(Mage::app()->getRequest()->getControllerName() == "catalog_product" && Mage::app()->getRequest()->getActionName() == "validate"){
             $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','name');

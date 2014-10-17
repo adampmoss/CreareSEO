@@ -112,6 +112,8 @@
                         </forcehptitle>
                     </fields>
                 </defaultseo>
+                <!-- Below config is depreciated in 1.2 as the observer
+                    script causes need to reindex on every product save.
                 <validate>
                     <label>Product Validation</label>
                     <frontend_type>text</frontend_type>
@@ -153,7 +155,7 @@
                             <show_in_store>1</show_in_store>
                         </short_description>
                     </fields>
-                </validate>
+                </validate> -->
                 <cleanup translate="label" module="creareseocore">
                     <label>Performance Cleanup</label>
                     <frontend_type>text</frontend_type>
