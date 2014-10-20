@@ -98,6 +98,11 @@
                         <class>creareseocore/observer</class>
                         <method>changeRobots</method>
                     </noindex>
+                    <universal_analytics>
+                        <type>singleton</type>
+                        <class>creareseocore/observer</class>
+                        <method>setUA</method>
+                    </universal_analytics>
                 </observers>
             </controller_action_layout_generate_xml_before>
             <controller_action_noroute>
@@ -158,11 +163,6 @@
                         <class>creareseocore/observer</class>
                         <method>forceHomepageTitle</method>
                     </forcehptitle>
-                    <universal_analytics>
-                        <type>singleton</type>
-                        <class>creareseocore/observer</class>
-                        <method>setUA</method>
-                    </universal_analytics>
                 </observers>
             </controller_action_layout_generate_blocks_after>
         </events>

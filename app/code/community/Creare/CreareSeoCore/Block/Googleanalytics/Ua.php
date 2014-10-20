@@ -2,6 +2,41 @@
 
 class Creare_CreareSeoCore_Block_Googleanalytics_Ua extends Mage_GoogleAnalytics_Block_Ga
 {
+    /* Had to do it this way due to older versions of Magento */
+
+     protected function _toHtml()
+    {
+        if (!Mage::helper('googleanalytics')->isGoogleAnalyticsAvailable()) {
+            return '';
+        }
+        else {
+
+            $accountId = Mage::getStoreConfig(Mage_GoogleAnalytics_Helper_Data::XML_PATH_ACCOUNT);
+
+            $html = "\r\n<!-- BEGIN UNIVERSAL ANALYTICS CODE -->
+<script type=\"text/javascript\">
+//<![CDATA[
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '".$accountId."', 'auto');\r\n";
+    if ($this->enableDemographics())
+        {
+            $html .= "ga('require', 'displayfeatures');\r\n";
+        }
+    $html .= "ga('send', 'pageview');\r\n";
+    $html .= $this->_getOrdersTrackingCode();
+    $html .= $this->getAdditionalTrackingCode();
+    $html .=  "//]]>
+</script>
+<!-- END UNIVERSAL ANALYTICS CODE -->\r\n";
+
+        return $html;
+
+        }
+    }
 
 	/* Universal Analytics script for ecommerce orders */
 
