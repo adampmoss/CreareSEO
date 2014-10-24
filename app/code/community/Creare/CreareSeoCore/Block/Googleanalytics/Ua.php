@@ -38,6 +38,11 @@ ga('create', '".$accountId."', 'auto');\r\n";
         }
     }
 
+    protected function getOrderIds()
+    {
+        return array(Mage::getSingleton('checkout/type_onepage')->getCheckout()->getLastOrderId());
+    }
+
 	/* Universal Analytics script for ecommerce orders */
 
 	protected function _getOrdersTrackingCode()
