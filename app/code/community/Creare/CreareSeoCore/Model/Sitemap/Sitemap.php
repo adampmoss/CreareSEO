@@ -29,7 +29,12 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
         $changefreq = (string)Mage::getStoreConfig('sitemap/category/changefreq', $storeId);
         $priority   = (string)Mage::getStoreConfig('sitemap/category/priority', $storeId);
         $collection = Mage::getResourceModel('sitemap/catalog_category')->getCollection($storeId);
-        foreach ($collection as $item) {
+        $categories = new Varien_Object();
+        $categories->setItems($collection);
+        Mage::dispatchEvent('sitemap_categories_generating_before', array(
+            'collection' => $categories
+        ));
+        foreach ($categories->getItems() as $item) {
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $item->getUrl()),
@@ -47,7 +52,12 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
         $changefreq = (string)Mage::getStoreConfig('sitemap/product/changefreq', $storeId);
         $priority   = (string)Mage::getStoreConfig('sitemap/product/priority', $storeId);
         $collection = Mage::getResourceModel('sitemap/catalog_product')->getCollection($storeId);
-        foreach ($collection as $item) {
+        $products = new Varien_Object();
+        $products->setItems($collection);
+        Mage::dispatchEvent('sitemap_products_generating_before', array(
+            'collection' => $products
+        ));
+        foreach ($products->getItems() as $item) {
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($baseUrl . $item->getUrl()),
