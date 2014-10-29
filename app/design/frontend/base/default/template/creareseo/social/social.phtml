@@ -10,8 +10,13 @@ if($_product):
 <meta name="twitter:site" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittersite') ?>" />
 <meta name="twitter:creator" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittercreator') ?>" />
 <meta name="twitter:title" content="<?php echo $_product->getName() ?>" />
+<<<<<<< HEAD
 <meta name="twitter:description" content="<?php echo strip_tags (htmlspecialchars($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'))) ?>" />
 <meta name="twitter:image" content="<?php echo $_product->getImageUrl() ?>" />
+=======
+<meta name="twitter:description" content="<?php echo strip_tags ($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
+<meta name="twitter:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
+>>>>>>> b65a89262090e6104b4cc23fd1513621804cf877
 <meta name="twitter:data1" content="<?php echo $currency.Mage::helper('tax')->getPrice($_product, $_product->getFinalPrice(), true); ?>" />
 <meta name="twitter:label1" content="PRICE" />
 <meta name="twitter:data2" content="<?php echo Mage::getStoreConfig('shipping/origin/country_id') ?>" />
@@ -20,8 +25,13 @@ if($_product):
 <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
 <meta property="og:type" content="og:product" />
 <meta property="og:title" content="<?php echo $_product->getName() ?>" />
+<<<<<<< HEAD
 <meta property="og:image" content="<?php echo $_product->getImageUrl() ?>" />
 <meta property="og:description" content="<?php echo strip_tags (htmlspecialchars($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'))) ?>" />
+=======
+<meta property="og:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
+<meta property="og:description" content="<?php echo strip_tags ($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
+>>>>>>> b65a89262090e6104b4cc23fd1513621804cf877
 <meta property="og:url" content="<?php echo $_product->getUrlModel()->getUrl($_product, array('_ignore_category' => true)) ?>" />
 <meta property="og:price:amount" content="<?php echo number_format($_product->getFinalPrice(),2) ?>" />
 <meta property="og:price:currency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode() ?>" />
