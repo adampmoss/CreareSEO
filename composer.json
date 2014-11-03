@@ -1,8 +1,22 @@
 {
     "name": "Creare/CreareSEO",
     "type": "magento-module",
+    "homepage": "http://www.magentocommerce.com/magento-connect/creare-seo.html",
     "description": "This extension provides fixes and features to Magento that will help improve its overall SEO performance.",
     "require": {
         "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors": [
+    {
+    	"name": "Adam Moss",
+    	"homepage": "http://www.creare.co.uk",
+    	"role": "Web Developer"
+    },
+    {
+    	"name": "Robert Kent",
+    	"homepage": "http://www.creare.co.uk",
+    	"role": "Web Developer"
     }
+
+    ]
 }
