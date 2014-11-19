@@ -7,7 +7,7 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
         $type = $product->getAttributeText('creareseo_discontinued');
 
         // check to see if we want to redirect to a product / category / homepage
-        if($type == '301 Redirect to Category'){
+        if($type === '301 Redirect to Category'){
             $cats = $product->getCategoryIds();
             if (is_array($cats) && count($cats) > 1) {
                 $cat = Mage::getModel('catalog/category')->load( $cats[0] ); 
@@ -18,19 +18,25 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
 
-        if($type == '301 Redirect to Homepage'){
+        if($type === '301 Redirect to Homepage'){
             return Mage::getBaseUrl();
         }   
 
-        if($type == '301 Redirect to Product SKU'){
-            if($sku == $product->getCreareseoDiscontinuedProduct()){
-                $collection = Mage::getModel('catalog/product')->getCollection()
-                                                               ->addAttributeToSelect('sku')
-                                                               ->addFieldToFilter('sku',$sku);
-                if(count($collection) > 0){
-                    $related = Mage::getModel('catalog/product')->loadByAttribute('sku',$sku);
-                    return $related->getProductUrl();
+        if($type === '301 Redirect to Product SKU'){
+
+            $sku = $product->getCreareseoDiscontinuedProduct();
+            if($sku){
+                $productUrl = Mage::getModel('catalog/product')->getCollection()
+                     ->addAttributeToSelect('sku')
+                     ->addFieldToFilter('sku',$sku)
+                      ->getFirstItem()
+                      ->getProductUrl();
+
+                if ($productUrl)
+                {
+                    return $productUrl;
                 }
+
             }
         }
 

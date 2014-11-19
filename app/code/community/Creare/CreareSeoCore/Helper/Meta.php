@@ -31,7 +31,7 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
             
             return $registry;
             
-        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')
+        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() === 'cms')
         {
             $registry->_code = 'cms';
             $registry->_model = Mage::getSingleton('cms/page');
@@ -59,7 +59,7 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
             {
                 $tag = $matches[1][$i];
                 
-                if ($tag == "store")
+                if ($tag === "store")
                 {
                     $string = str_replace($matches[0][$i], Mage::app()->getStore()->getName(), $string);
                 } else {

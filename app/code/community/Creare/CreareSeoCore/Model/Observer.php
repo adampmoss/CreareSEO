@@ -4,8 +4,9 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     /* Our function to change the META robots tag on Parameter based category pages */
 
     public function changeRobots($observer) {
+
         if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparams')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() == 'catalog_category_view') {
+            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalog_category_view') {
                 $uri = $observer->getEvent()->getAction()->getRequest()->getRequestUri();
                 if (stristr($uri, "?")):
                     $layout = $observer->getEvent()->getLayout();
@@ -16,7 +17,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             }
         }
         if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamssearch')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() == 'catalogsearch_result_index') {
+            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalogsearch_result_index') {
                 $layout = $observer->getEvent()->getLayout();
                 $product_info = $layout->getBlock('head');
                 $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
@@ -24,7 +25,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             }
         }
         if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsgallery')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() == 'catalog_product_gallery') {
+            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalog_product_gallery') {
                 $layout = $observer->getEvent()->getLayout();
                 $product_info = $layout->getBlock('head');
                 $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
@@ -36,9 +37,9 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
 
     public function discontinuedCheck($observer) {
         $data = $observer->getEvent()->getAction()->getRequest();
-        if ($data->getControllerModule() == "Mage_Catalog") {
+        if ($data->getControllerModule() === "Mage_Catalog") {
             $id = $data->getParam('id');
-            if ($data->getControllerName() == "product") {
+            if ($data->getControllerName() === "product") {
                 $product = Mage::getModel('catalog/product')->load($id);
                 $url = Mage::helper('creareseocore')->getDiscontinuedProductUrl($product);
                 if ($url) {
@@ -48,7 +49,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
                     exit;
                 }
             }
-            if ($data->getControllerName() == "category") {
+            if ($data->getControllerName() === "category") {
                 $id = $data->getParam('id');
                 $category = Mage::getModel('catalog/category')->load($id);
                 $url = Mage::helper('creareseocore')->getDiscontinuedCategoryUrl($category);
@@ -139,7 +140,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
         This observer script is no longer called on event controller_action_predispatch
     */
 
-    public function productCheck(Varien_Event_Observer $observer) {
+    /*public function productCheck(Varien_Event_Observer $observer) {
         if(Mage::app()->getRequest()->getControllerName() == "catalog_product" && Mage::app()->getRequest()->getActionName() == "validate"){
             $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','name');
             if ($attributeId) {
@@ -169,7 +170,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
                 }
             }
         }
-    }
+    }*/
     
     public function forceProductCanonical(Varien_Event_Observer $observer)
     {
@@ -190,7 +191,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     
     public function contactsMetaData(Varien_Event_Observer $observer)
     {
-        if ($observer->getEvent()->getAction()->getRequest()->getRouteName() == "contacts")
+        if ($observer->getEvent()->getAction()->getRequest()->getRouteName() === "contacts")
         {
             if (Mage::helper('creareseocore/meta')->config('contacts_title'))
             {
@@ -208,7 +209,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     public function forceHomepageTitle($observer)
     {
         if (Mage::getStoreConfig('creareseocore/defaultseo/forcehptitle')) {
-            if($observer->getEvent()->getAction()->getFullActionName() == "cms_index_index"){
+            if($observer->getEvent()->getAction()->getFullActionName() === "cms_index_index"){
                 $layout = $observer->getEvent()->getLayout();
                 $homepage = Mage::getStoreConfig('web/default/cms_home_page');
                 $title = Mage::getModel('cms/page')->load($homepage, 'identifier')->getTitle();
@@ -225,7 +226,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     public function setTitle($observer)
     {
         if (Mage::getStoreConfig('creareseocore/defaultseo/forcehptitle') && $observer->getEvent()->getAction()->getFullActionName() == "cms_index_index") return;
-	if ($observer->getEvent()->getAction()->getFullActionName() == "contacts_index_index") return;
+	if ($observer->getEvent()->getAction()->getFullActionName() === "contacts_index_index") return;
             $layout = $observer->getEvent()->getLayout();
             $title = $this->getTitle();
             if($title)
@@ -241,7 +242,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     
     public function setDescription($observer)
     {
-	if ($observer->getEvent()->getAction()->getFullActionName() == "contacts_index_index") return;
+	if ($observer->getEvent()->getAction()->getFullActionName() === "contacts_index_index") return;
         $layout = $observer->getEvent()->getLayout();
         $description = $this->getDescription();
         if($description)
