@@ -30,7 +30,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 		
 	}
 	
-	private function enableCache()
+	protected function enableCache()
 	{
             $model = Mage::getModel('core/cache');
             $options = $model->canUse('');
@@ -45,7 +45,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
             $model->saveOptions($options);
 	}
 	
-	private function cleanDb()
+	protected function cleanDb()
 	{
 		$tables = array(
 			'dataflow_batch_export',
@@ -70,7 +70,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 		
 	}
 	
-	private function cleanCache()
+	protected function cleanCache()
 	{
             $dir = Mage::getBaseDir()."/var/cache/";
             if(is_dir($dir)){
@@ -78,13 +78,13 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
             }
 	}
 	
-	private function cleanVar()
+	protected function cleanVar()
 	{	
             $dir = Mage::getBaseDir().'/var/session/';	
             $this->removeSessionContents($dir);
 	}
 	
-	private function removeContents($dir)
+	protected function removeContents($dir)
 	{
 		
 		if(!opendir($dir)){
@@ -114,7 +114,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 		closedir($mydir);	
 	}
 	
-	private function removeSessionContents($dir)
+	protected function removeSessionContents($dir)
 	{
 		if(!opendir($dir)){
 			$this->errors[] = "Cannot open $dir";	
@@ -150,7 +150,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 		closedir($mydir);
 	}
 
-	private function sendEmail()
+	public function sendEmail()
 	{
 		if($email = Mage::getStoreConfig('creareseocore/cleanup/problems')):
 		
@@ -160,8 +160,20 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 				$content .= $error."\n";	
 			}
 
-			mail($email,'Problems with Cleanup',$content);
+			if ($content !== "")
+			{
+				$mail = Mage::getModel('core/email');
+				$mail->setToEmail($email);
+				$mail->setBody($content);
+				$mail->setSubject('Problems with Cleanup');
+				$mail->setType('text');
 
+				try {
+					$mail->send();
+				} catch (Exception $e) {
+					Mage::logException($e);
+				}
+			}
 		endif;
 	}
 
