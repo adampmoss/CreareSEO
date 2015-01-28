@@ -511,5 +511,88 @@ Overwriting your .htaccess can cause problems with your website, so only alter i
                 </files>
             </groups>
         </crearerobots>
+        <general>
+            <groups>
+                <store_information>
+                    <fields>
+                        <creareseo_street_address translate="label">
+                            <label>Street Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_street_address>
+                        <creareseo_address_locality translate="label">
+                            <label>Address Locality</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_address_locality>
+                        <creareseo_region translate="label">
+                            <label>Region</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_region>
+                        <creareseo_postcode translate="label">
+                            <label>Postcode</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_postcode>
+                        <creareseo_fax translate="label">
+                            <label>Fax Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_fax>
+                        <creareseo_company_no translate="label">
+                            <label>Company Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_company_no>
+                        <creareseo_twitter translate="label">
+                            <label>Twitter Handle</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>https://twitter.com/{{this_part}}</comment>
+                        </creareseo_twitter>
+                        <creareseo_facebook translate="label">
+                            <label>Facebook URL Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>http://www.facebook.com/{{this_part}}</comment>
+                        </creareseo_facebook>
+                        <creareseo_google_plus translate="label">
+                            <label>Google Plus URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>http://plus.google.com/+{{this_part}}</comment>
+                        </creareseo_google_plus>
+                    </fields>
+                </store_information>
+            </groups>
+        </general>
     </sections>
 </config>
