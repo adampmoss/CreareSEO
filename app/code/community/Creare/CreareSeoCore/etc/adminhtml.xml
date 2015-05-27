@@ -7,31 +7,31 @@
             <children>
                 <creareseo>
                     <title>Creare SEO</title>
-                    <sort_order>0</sort_order>               
+                    <sort_order>25</sort_order>               
                     <children>
                         <defaultseo>
                             <title>Default SEO Check</title>
-                            <sort_order>0</sort_order>
+                            <sort_order>10</sort_order>
                             <action>adminhtml/creareseo/check</action>
                         </defaultseo>
                         <sitemap>
                             <title>HTML Sitemap Page</title>
-                            <sort_order>1</sort_order>
+                            <sort_order>20</sort_order>
                             <action>adminhtml/system_config/edit/section/creareseositemap/</action>
                         </sitemap>
                         <coresettings>
                             <title>General Settings</title>
-                            <sort_order>2</sort_order>
+                            <sort_order>30</sort_order>
                             <action>adminhtml/system_config/edit/section/creareseocore/</action>
                         </coresettings>
                         <htaccess>
                             <title>Edit .htaccess</title>
-                            <sort_order>3</sort_order>
+                            <sort_order>40</sort_order>
                             <action>adminhtml/system_config/edit/section/crearehtaccess/</action>
                         </htaccess>
                         <robots>
                             <title>Edit robots.txt</title>
-                            <sort_order>4</sort_order>
+                            <sort_order>50</sort_order>
                             <action>adminhtml/system_config/edit/section/crearerobots/</action>
                         </robots>
                     </children>
