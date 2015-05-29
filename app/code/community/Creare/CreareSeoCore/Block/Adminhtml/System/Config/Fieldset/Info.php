@@ -18,7 +18,7 @@ class Creare_CreareSeoCore_Block_Adminhtml_System_Config_Fieldset_Info
     	}
 
     	protected function getCreareHelpDesk() {
-        	return (string) "https://www.creare.co.uk/services/helpdeskultimate/customer/";
+        	return (string) "http://creareseo.custservhq.com/";
     	}
 
     	protected function getCreareBlogPost() {
