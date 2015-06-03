@@ -2,9 +2,10 @@
 $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
 $currency = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
-if($_product):
 ?>
-<!-- twitter product cards -->
+<?php if($_product) : ?>
+
+<!-- Twitter Product Cards -->
 <meta name="twitter:card" content="product" />
 <meta name="twitter:site" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittersite') ?>" />
 <meta name="twitter:creator" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittercreator') ?>" />
@@ -15,14 +16,17 @@ if($_product):
 <meta name="twitter:label1" content="PRICE" />
 <meta name="twitter:data2" content="<?php echo Mage::getStoreConfig('shipping/origin/country_id') ?>" />
 <meta name="twitter:label2" content="LOCATION" />
-<!-- open graph for facebook / other networks -->
+
+<!-- Open Graph for Facebook / Other Networks -->
 <meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<meta property="og:type" content="product.item" />
 <meta property="og:url" content="<?php echo $_product->getProductUrl() ?>" /> 
-<meta property="og:type" content="og:product" />
 <meta property="og:title" content="<?php echo $_product->getName() ?>" />
 <meta property="og:description" content="<?php echo strip_tags (htmlspecialchars($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'))) ?>" />
 <meta property="og:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
-<meta property="og:price:amount" content="<?php echo number_format($_product->getFinalPrice(),2) ?>" />
-<meta property="og:price:currency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode() ?>" />
-<meta property="og:availability" content="<?php echo ($_product->isAvailable() ? 'in stock' : 'out of stock') ?>" />
+<meta property="product:retailer_item_id" content="<?php echo $_product->getSku() ?>" /> 
+<meta property="product:price:amount" content="<?php echo number_format($_product->getFinalPrice(),2) ?>" />
+<meta property="product:price:currency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode() ?>" />
+<meta property="product:availability" content="<?php echo ($_product->isAvailable() ? 'in stock' : 'out of stock') ?>" />
+<meta property="product:condition" content="new" />
 <?php endif; ?>
