@@ -91,3 +91,42 @@ skin/frontend/default/modern/
 skin/install/
 var/
 pear
+
+# IntelliJ - PhpStorm and PyCharm
+.idea
+*.ipr
+*.iws
+
+# Netbeans
+nbproject
+.nbproject
+.nbproject/*
+nbproject/*
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Mac OSX
+.DS_Store
+# Thumbnails
+._*
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# SublimeText Project Files
+/*.sublime-project
+*.sublime-workspace
+
+# Dart
+packages
+packages/*
+
+# Vagrant
+.vagrant
+.vagrant/*
+
+.env
