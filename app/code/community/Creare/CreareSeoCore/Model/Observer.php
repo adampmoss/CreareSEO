@@ -1,6 +1,7 @@
 <?php
 
 class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
+
     /* Our function to change the META robots tag on Parameter based category pages */
 
     public function changeRobots($observer) {
@@ -171,6 +172,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             }
         }
     }*/
+
+    /* Checks if the page loaded is the canonical version, if not redirects to that version */
     
     public function forceProductCanonical(Varien_Event_Observer $observer)
     {
@@ -188,24 +191,24 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             }
         }
     }
+
+    /* Adds the page title and meta description to the contact page's <head> */
     
     public function contactsMetaData(Varien_Event_Observer $observer)
     {
-        if ($observer->getEvent()->getAction()->getRequest()->getRouteName() === "contacts")
-        {
-            if (Mage::helper('creareseocore/meta')->config('contacts_title'))
-            {
+        if ($observer->getEvent()->getAction()->getRequest()->getRouteName() === "contacts") {
+            if (Mage::helper('creareseocore/meta')->config('contacts_title')) {
                 $observer->getEvent()->getLayout()->getBlock('head')->setTitle(Mage::helper('creareseocore/meta')->config('contacts_title'));
             }
-            
-            if (Mage::helper('creareseocore/meta')->config('contacts_metadesc'))
-            {
+
+            if (Mage::helper('creareseocore/meta')->config('contacts_metadesc')) {
                 $observer->getEvent()->getLayout()->getBlock('head')->setDescription(Mage::helper('creareseocore/meta')->config('contacts_metadesc'));
             }
         }
-            
     }
-    
+
+    /* If set, replaces the homepage title with the definitive one set in the config */
+
     public function forceHomepageTitle($observer)
     {
         if (Mage::getStoreConfig('creareseocore/defaultseo/forcehptitle')) {
@@ -222,6 +225,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             }
         }
     }
+
+    /* On relevant pages, will override the page title with the fallback if one isn't set in the editor */
     
     public function setTitle($observer)
     {
@@ -239,6 +244,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             
             $layout->generateXml();
     }
+
+    /* On relevant pages, will override the meta desc with the fallback if one isn't set in the editor */
     
     public function setDescription($observer)
     {
@@ -346,9 +353,13 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
         }
     }
 
+    /* Sets Google Analytics to use UA when the version is less that 1.9.1 and it is set in the config */
+
     public function setUA($observer)
     {
-        if (Mage::getStoreConfig('creareseocore/googleanalytics/type'))
+        $magentoVersion = Mage::getVersion();
+
+        if (Mage::getStoreConfig('creareseocore/googleanalytics/type') && version_compare($magentoVersion, '1.9.1', '<'))
         {
             $layout = $observer->getEvent()->getLayout();
             $layout->getUpdate()->addUpdate('<reference name="after_body_start"><remove name="google_analytics" /><block type="creareseocore/googleanalytics_ua" name="universal_analytics" template="creareseo/googleanalytics/ua.phtml" /></reference>');
