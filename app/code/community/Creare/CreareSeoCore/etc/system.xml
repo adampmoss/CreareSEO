@@ -425,7 +425,7 @@
                     <show_in_store>1</show_in_store>
                     <comment>
             <![CDATA[
-            <p>* Ensure that you have entered your Account Number in the <strong>Google API</strong> tab.</p>
+            <p>* Ensure that you have entered your Account Number in the <strong>Google API</strong> tab. This functionality will only work on Magento version earlier than 1.9.1.</p>
             ]]>
                     </comment>
                     <fields>
@@ -460,6 +460,203 @@
                         </additional_tracking_code>
                     </fields>
                 </googleanalytics>
+                <address_schema>
+                    <label>Business Address Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+            <p>Add your business details below to include <a href="https://schema.org/LocalBusiness" target="_blank">LocalBusiness Schema</a> on your website.</p>
+            ]]>
+                    </comment>
+                    <fields>
+                        <street_address translate="label">
+                            <label>Street Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </street_address>
+                        <address_locality translate="label">
+                            <label>Address Locality</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </address_locality>
+                        <region translate="label">
+                            <label>Region</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </region>
+                        <postcode translate="label">
+                            <label>Postcode</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </postcode>
+                        <fax translate="label">
+                            <label>Fax Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fax>
+                        <company_no translate="label">
+                            <label>Company Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_no>
+                    </fields>
+                </address_schema>
+                <product_schema>
+                    <label>Product Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <p>Enable product schema to include structured data on your website. For more information see here: <a href="http://schema.org/Product" target="_blank">http://schema.org/Product</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Product Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </product_schema>
+                <social_schema>
+                    <label>Social Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <p>Enable social schema to include structured data on your website. For more information see here: <a href="https://developers.google.com/structured-data/customize/social-profiles" target="_blank">https://developers.google.com/structured-data/customize/social-profiles</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Social Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <social_profiles translate="label">
+                            <label>Social Profiles</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <comment>Add the full URLs to your social profiles (e.g. http://twitter.com/magentofox) - ONE per line!</comment>
+                        </social_profiles>
+                    </fields>
+                </social_schema>
+                <google_tag_manager>
+                    <label>Google Tag Manager</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>Find out more about Google Tag Manager here: <a href="https://support.google.com/tagmanager/answer/6102821?hl=en" target="_blank">https://support.google.com/tagmanager/answer/6102821?hl=en</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Google Tag Manager?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <gtm_id translate="label">
+                            <label>GTM ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. GTM-XXXXXX]]></comment>
+                        </gtm_id>
+                    </fields>
+                </google_tag_manager>
+                <google_content_grouping>
+                    <label>Google Content Grouping (for Analytics)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>Google content grouping allows you to group certain types of content found on your site so that you can use this information in Google Analytics. For example you could find out how many of your total visits where to product pages, category pages or CMS pages. For more information visit this link: <a href="https://support.google.com/analytics/answer/2853423?hl=en" target="_blank">https://support.google.com/analytics/answer/2853423?hl=en</a></p>
+                            <p>Within this extension we have allowed you to add tracking code for products, categories and CMS pages. To set up your tracking codes go to your Analytics dashboard and go to <strong>Admin > Content Grouping > + New Content Grouping</strong>. Give it a name (such as 'Product Page'), and then from the options choose 'Enable Tracking Code', then copy and past the Universal tracking code into the Product field below.</p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <product translate="label">
+                            <label>Product Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'Product Page'); ]]></comment>
+                        </product>
+                        <category translate="label">
+                            <label>Category Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'Category Page'); ]]></comment>
+                        </category>
+                        <cms translate="label">
+                            <label>CMS Page Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'CMS Page'); ]]></comment>
+                        </cms>
+                    </fields>
+                </google_content_grouping>
             </groups>
         </creareseocore>
         <crearehtaccess>
@@ -492,19 +689,30 @@ Overwriting your .htaccess can cause problems with your website, so only alter i
             <tab>crearegroup</tab>
             <sort_order>3000</sort_order>
             <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
             <groups>
                 <files>
                     <label>robots.txt Editor</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
                     <comment><![CDATA[<strong>IMPORTANT!</strong><p>To write to your robots.txt, you must set permissions to at least 664.</p>]]></comment>
                     <fields>
+                        <robots_location translate="label">
+                            <label>Location of robots.txt</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <comment>Can be changed on a per-website basis if your robots.txt is located somewhere other than your domain root.</comment>
+                        </robots_location>
                         <robots translate="label">
                             <label>robots.txt</label>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
                             <comment> <![CDATA[Download our latest optimised <a href="https://github.com/Creare/magento-robots/blob/master/robots.txt" target="_blank">robots.txt file</a>]]></comment>
                         </robots>
                     </fields>
@@ -515,38 +723,6 @@ Overwriting your .htaccess can cause problems with your website, so only alter i
             <groups>
                 <store_information>
                     <fields>
-                        <creareseo_street_address translate="label">
-                            <label>Street Address</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>50</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </creareseo_street_address>
-                        <creareseo_address_locality translate="label">
-                            <label>Address Locality</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>60</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </creareseo_address_locality>
-                        <creareseo_region translate="label">
-                            <label>Region</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>70</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </creareseo_region>
-                        <creareseo_postcode translate="label">
-                            <label>Postcode</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>80</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </creareseo_postcode>
                         <creareseo_fax translate="label">
                             <label>Fax Number</label>
                             <frontend_type>text</frontend_type>
@@ -564,32 +740,53 @@ Overwriting your .htaccess can cause problems with your website, so only alter i
                             <show_in_store>1</show_in_store>
                         </creareseo_company_no>
                         <creareseo_twitter translate="label">
-                            <label>Twitter Handle</label>
+                            <label>Twitter</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>110</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>https://twitter.com/{{this_part}}</comment>
                         </creareseo_twitter>
                         <creareseo_facebook translate="label">
-                            <label>Facebook URL Path</label>
+                            <label>Facebook</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>120</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>http://www.facebook.com/{{this_part}}</comment>
                         </creareseo_facebook>
                         <creareseo_google_plus translate="label">
-                            <label>Google Plus URL</label>
+                            <label>Google Plus</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>130</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>http://plus.google.com/+{{this_part}}</comment>
                         </creareseo_google_plus>
+                        <creareseo_youtube translate="label">
+                            <label>YouTube</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_youtube>
+                        <creareseo_linkedin translate="label">
+                            <label>LinkedIn</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_linkedin>
+                        <creareseo_instagram translate="label">
+                            <label>Instagram</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_instagram>
                     </fields>
                 </store_information>
             </groups>

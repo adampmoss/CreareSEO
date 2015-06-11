@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Creare_CreareSeoCore>
-            <version>1.2.3</version>
+            <version>1.3.0</version>
         </Creare_CreareSeoCore>
     </modules>
     <adminhtml>
@@ -252,6 +252,15 @@
                 <cms_metadesc_enabled>0</cms_metadesc_enabled>
                 <cms_metadesc>[title] - [store]</cms_metadesc>
             </metadata>
+            <product_schema>
+                <enabled>1</enabled>
+            </product_schema>
+            <social_schema>
+                <enabled>0</enabled>
+            </social_schema>
+            <google_tag_manager>
+                <enabled>0</enabled>
+            </google_tag_manager>
         </creareseocore>
     </default>
 </config>

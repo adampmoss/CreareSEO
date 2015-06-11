@@ -5,6 +5,14 @@
                 <template>creareseo/page/html/breadcrumbs.phtml</template>
             </action>
         </reference>
+        <reference name="after_body_start">
+            <block type="core/template" name="creareseo.gtm" template="creareseo/page/html/googletagmanager.phtml" />
+            <block type="creareseocore/schema_social" name="creareseo.socialschema">
+                <action method="setTemplate" ifconfig="creareseocore/social_schema/social_profiles">
+                    <template>creareseo/social/schema.phtml</template>
+                </action>
+            </block>
+        </reference>
     </default>
     <cms_index_index>
             <reference name="after_body_start">
@@ -14,6 +22,14 @@
     <catalog_category_view>
         <reference name="head">
             <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/category">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>category</type></action>
+            </block>
         </reference>
     </catalog_category_view>
 
@@ -25,11 +41,36 @@
 
     <catalog_product_view>
             <reference name="head">
-                <block type="catalog/product_view" name="creareseo.social">
+                <block type="creareseocore/schema_product" name="creareseo.social">
                     <action method="setTemplate" ifconfig="creareseocore/social/enabled">
                         <template>creareseo/social/social.phtml</template>
                     </action>
                 </block>			
             </reference>
+            <reference name="after_body_start">
+                <block type="creareseocore/schema_product" name="creareseo.productschema">
+                    <action method="setTemplate" ifconfig="creareseocore/product_schema/enabled">
+                        <template>creareseo/product/schema.phtml</template>
+                    </action>
+                </block>
+            </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/product">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>product</type></action>
+            </block>
+        </reference>
     </catalog_product_view>
+    <cms_page>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/cms">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>cms</type></action>
+            </block>
+        </reference>
+    </cms_page>
 </layout>

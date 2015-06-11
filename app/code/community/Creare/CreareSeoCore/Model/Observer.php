@@ -107,11 +107,12 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
 
         $helper = Mage::helper('creareseocore');
         $post = Mage::app()->getRequest()->getPost();
+        $robots_location = $post['groups']['files']['fields']['robots_location']['value'];
         $robots_post = $post['groups']['files']['fields']['robots']['value'];
         $htaccess_post = $post['groups']['files']['fields']['htaccess']['value'];
 
         if ($robots_post) {
-            $helper->writeFile($helper->robotstxt(), $robots_post, 'robots');
+            $helper->writeFile($helper->robotstxt(), $robots_post, 'robots', $robots_location);
         }
 
         if ($htaccess_post) {
@@ -366,6 +367,5 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             $layout->generateXml();
         }
     }
-    
 
 }

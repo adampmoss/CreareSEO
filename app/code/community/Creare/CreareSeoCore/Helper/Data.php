@@ -96,11 +96,11 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
      * On admin_system_config_changed_section_ called by writeToFileOnConfigSave()
      */
     
-    public function writeFile($file, $post, $field)
+    public function writeFile($file, $post, $field, $robots_location = '')
     {
         $adminsession = Mage::getSingleton('adminhtml/session');
         $io = new Varien_Io_File();
-        $io->open(array('path' => Mage::getBaseDir()));
+        $io->open(array('path' => Mage::getBaseDir().DS.$robots_location));
         
         if ($io->fileExists($file))
         {
@@ -184,4 +184,5 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return true;
     }
+
 }

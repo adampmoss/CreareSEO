@@ -120,6 +120,17 @@
         <?php else : ?>
             <li class="error-msg"><span>Unable to find <?php echo $_helper->htaccess() ?> file in: <?php echo Mage::getBaseDir() ?></span></li>
         <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/product_schema/enabled')) : ?>
+            <li class="success-msg"><span>Product schema is enabled.</span></li>
+        <?php else: ?>
+            <li class="error-msg"><span>You have not enabled product schema structured data. <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>">Go enable it</a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/social_schema/enabled')) : ?>
+            <li class="success-msg"><span>Social schema is enabled.</span></li>
+        <?php else: ?>
+            <li class="error-msg"><span>You have not enabled social schema structured data. <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>">Go enable it</a></span></li>
+        <?php endif ?>
     </ul>
 </div>
 
@@ -229,15 +240,5 @@
                  <?php endif ?>
         <?php endif ?>
         
-    </ul>
-</div>
-<div class="content-header">
-    <br />
-    <h4><?php echo $this->__('Recommendations') ?></h4>
-</div>
-<div class="entry-edit">
-    <ul class="messages">
-      <li class="notice-msg"><span>If you haven't already, we recommend implementing <a href="https://support.google.com/webmasters/answer/146750" target="_blank">Google Rich Snippets for Products</a> (product schema) into your product page theme templates. <br />Read our <a href="http://www.creare.co.uk/magento-product-schema" target="_blank">Magento Product Schema Tutorial</a> blog post for detailed instructions on how to implement it. <br />This will become an automated check in future releases.</span></li>
-      
     </ul>
 </div>
