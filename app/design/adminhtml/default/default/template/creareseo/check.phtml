@@ -138,21 +138,21 @@
                 </li>
             <?php endif ?>
         <?php else : ?>
-            <?php echo $this->__('Default Page Titles for category pages are currently not enabled.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('Default Page Titles for category pages are currently not enabled.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
         <?php endif ?>
 
         <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamssearch')) : ?>
             <li class="success-msg">
                 <span><?php echo $this->__('NOINDEX has been added to search result pages.') ?></span></li>
         <?php else: ?>
-            <?php echo $this->__('Search result pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('Search result pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
         <?php endif ?>
 
         <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsgallery')) : ?>
             <li class="success-msg">
                 <span><?php echo $this->__('NOINDEX has been added to pop-up gallery pages.') ?></span></li>
         <?php else: ?>
-            <?php echo $this->__('Pop-up gallery pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('Pop-up gallery pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
         <?php endif ?>
 
         <?php if ($_helper->exists($_helper->robotstxt())): ?>
@@ -189,12 +189,12 @@
         <?php if (Mage::getStoreConfig('creareseocore/product_schema/enabled')) : ?>
             <li class="success-msg"><span><?php echo $this->__('Product schema is enabled.') ?></span></li>
         <?php else: ?>
-            <?php echo $this->__('You have not enabled product schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled product schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
         <?php endif ?>
         <?php if (Mage::getStoreConfig('creareseocore/social_schema/enabled')) : ?>
             <li class="success-msg"><span><?php echo $this->__('Social schema is enabled.') ?></span></li>
         <?php else: ?>
-            <?php echo $this->__('You have not enabled social schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled social schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
         <?php endif ?>
     </ul>
 </div>
