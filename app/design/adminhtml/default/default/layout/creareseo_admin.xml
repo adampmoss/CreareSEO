@@ -16,7 +16,7 @@
     </adminhtml_catalog_product_edit>
     <adminhtml_creareseo_check>
         <reference name="head">
-            <action method="setTitle"><title>Default SEO Check</title></action>
+            <action method="setTitle"><title>CreareSEO Checklist</title></action>
         </reference>
         <reference name="content">
             <block type="core/template" name="creareseocore.check" template="creareseo/check.phtml" />

@@ -6,16 +6,16 @@
             <!-- action>adminhtml/system</action -->
             <children>
                 <creareseo>
-                    <title>Creare SEO</title>
+                    <title>CreareSEO</title>
                     <sort_order>25</sort_order>               
                     <children>
                         <defaultseo>
-                            <title>Default SEO Check</title>
+                            <title>CreareSEO Checklist</title>
                             <sort_order>10</sort_order>
                             <action>adminhtml/creareseo/check</action>
                         </defaultseo>
                         <sitemap>
-                            <title>HTML Sitemap Page</title>
+                            <title>HTML Sitemap Settings</title>
                             <sort_order>20</sort_order>
                             <action>adminhtml/system_config/edit/section/creareseositemap/</action>
                         </sitemap>
@@ -25,12 +25,12 @@
                             <action>adminhtml/system_config/edit/section/creareseocore/</action>
                         </coresettings>
                         <htaccess>
-                            <title>Edit .htaccess</title>
+                            <title>.htaccess Editor</title>
                             <sort_order>40</sort_order>
                             <action>adminhtml/system_config/edit/section/crearehtaccess/</action>
                         </htaccess>
                         <robots>
-                            <title>Edit robots.txt</title>
+                            <title>robots.txt Editor</title>
                             <sort_order>50</sort_order>
                             <action>adminhtml/system_config/edit/section/crearerobots/</action>
                         </robots>
