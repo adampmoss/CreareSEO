@@ -20,7 +20,6 @@ $_totalAverageRating = 0;
     "price": "<?php echo number_format($_product->getFinalPrice(),2) ?>",
     "priceCurrency": "<?php echo $this->getCurrency() ?>"
   }<?php if ($this->getReviewsCount()) : ?>,
-  <?php endif ?>
   "review": [
     <?php foreach ($this->_productReviews as $review) : ?>
     {
@@ -45,6 +44,7 @@ $_totalAverageRating = 0;
     "ratingValue": "<?php echo round($_totalAverageRating/$this->getReviewsCount(), 1) ?>",
     "reviewCount": "<?php echo $this->getReviewsCount() ?>"
   }
+  <?php endif ?>
 }
 </script>
 <!-- End CreareSEO Product Schema -->

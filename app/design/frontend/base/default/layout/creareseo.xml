@@ -6,7 +6,7 @@
             </action>
         </reference>
         <reference name="after_body_start">
-            <block type="core/template" name="creareseo.gtm" template="creareseo/page/html/googletagmanager.phtml" />
+            <block type="core/template" name="creareseo.gtm" template="creareseo/google/googletagmanager.phtml" />
             <block type="creareseocore/schema_social" name="creareseo.socialschema">
                 <action method="setTemplate" ifconfig="creareseocore/social_schema/social_profiles">
                     <template>creareseo/social/schema.phtml</template>
@@ -16,7 +16,7 @@
     </default>
     <cms_index_index>
             <reference name="after_body_start">
-                <block type="core/template" name="creareseo.sitelinkssearch" template="creareseo/page/html/sitelinkssearch.phtml" />
+                <block type="core/template" name="creareseo.sitelinkssearch" template="creareseo/google/sitelinkssearch.phtml" />
             </reference>
     </cms_index_index>
     <catalog_category_view>
