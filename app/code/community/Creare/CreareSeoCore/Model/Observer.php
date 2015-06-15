@@ -44,7 +44,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
                 $product = Mage::getModel('catalog/product')->load($id);
                 $url = Mage::helper('creareseocore')->getDiscontinuedProductUrl($product);
                 if ($url) {
-                    Mage::getSingleton('core/session')->addError('Unfortunately the product "' . $product->getName() . '" has been discontinued');
+                    Mage::getSingleton('core/session')->addError(Mage::helper('creareseocore')->__('Unfortunately the product %s has been discontinued', $product->getName()));
                     Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
                     Mage::app()->getResponse()->sendResponse();
                     exit;
@@ -55,7 +55,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
                 $category = Mage::getModel('catalog/category')->load($id);
                 $url = Mage::helper('creareseocore')->getDiscontinuedCategoryUrl($category);
                 if ($url) {
-                    Mage::getSingleton('core/session')->addError('Unfortunately the category "'.$category->getName().'" has been discontinued');
+                    Mage::getSingleton('core/session')->addError(Mage::helper('creareseocore')->__('Unfortunately the category %s" has been discontinued', $category->getName()));
                     Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
                     Mage::app()->getResponse()->sendResponse();
                     exit;
