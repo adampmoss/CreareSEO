@@ -41,7 +41,12 @@ $_totalAverageRating = 0;
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "<?php echo round($_totalAverageRating/$this->getReviewsCount(), 1) ?>",
+    <?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
+        <?php if ($ratingValue > 0) : ?>
+    "ratingValue": "<?php echo $ratingValue ?>",
+    <?php else: ?>
+    "ratingValue": "1",
+    <?php endif ?>
     "reviewCount": "<?php echo $this->getReviewsCount() ?>"
   }
   <?php endif ?>
