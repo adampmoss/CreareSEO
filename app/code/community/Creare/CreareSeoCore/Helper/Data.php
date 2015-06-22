@@ -185,4 +185,14 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
         return true;
     }
 
+    public function getProductStartingprice($product)
+    {
+        if($product->getTypeId() === 'bundle')
+        {
+            return Mage::getModel('bundle/product_price')->getTotalPrices($product,'min',1);
+        }
+
+        return $product->getFinalPrice();
+    }
+
 }

@@ -11,7 +11,7 @@ $_product = $this->getProduct();
 <meta name="twitter:title" content="<?php echo $this->cleanString($_product->getName()) ?>" />
 <meta name="twitter:description" content="<?php echo $this->cleanString($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
 <meta name="twitter:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
-<meta name="twitter:data1" content="<?php echo $this->getCurrencySymbol().Mage::helper('tax')->getPrice($_product, $_product->getFinalPrice(), true); ?>" />
+<meta name="twitter:data1" content="<?php echo $this->getCurrencySymbol().Mage::helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true); ?>" />
 <meta name="twitter:label1" content="PRICE" />
 <meta name="twitter:data2" content="<?php echo Mage::getStoreConfig('shipping/origin/country_id') ?>" />
 <meta name="twitter:label2" content="LOCATION" />
@@ -24,7 +24,7 @@ $_product = $this->getProduct();
 <meta property="og:description" content="<?php echo $this->cleanString($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
 <meta property="og:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
 <meta property="product:retailer_item_id" content="<?php echo $_product->getSku() ?>" /> 
-<meta property="product:price:amount" content="<?php echo number_format($_product->getFinalPrice(),2) ?>" />
+<meta property="product:price:amount" content="<?php echo number_format(Mage::helper('creareseocore')->getProductStartingprice($_product),2) ?>" />
 <meta property="product:price:currency" content="<?php echo $this->getCurrency() ?>" />
 <meta property="product:availability" content="<?php echo ($_product->isAvailable() ? 'in stock' : 'out of stock') ?>" />
 <meta property="product:condition" content="new" />
