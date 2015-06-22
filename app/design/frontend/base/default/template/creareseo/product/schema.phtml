@@ -16,9 +16,16 @@ $_totalAverageRating = 0;
   "sku": "<?php echo $this->cleanString($_product->getSku()) ?>",
   "url": "<?php echo $_product->getProductUrl() ?>",
   "offers": {
+    <?php if($_product->getTypeId() === 'bundle') : ?>
+    <?php $_bundleObject = Mage::getModel('bundle/product_price') ?>
+    "@type": "AggregateOffer",
+    "lowPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'min',1) ?>",
+    "highPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'max',1) ?>",
+    <?php else: ?>
     "@type": "Offer",
-    "availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
     "price": "<?php echo number_format(Mage::helper('creareseocore')->getProductStartingprice($_product),2) ?>",
+    <?php endif ?>
+    "availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
     "priceCurrency": "<?php echo $this->getCurrency() ?>"
   }<?php if ($this->getReviewsCount()) : ?>,
   "review": [
