@@ -183,8 +183,10 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
             if (Mage::getStoreConfig('creareseocore/defaultseo/forcecanonical')) {
                 // check for normal catalog/product/view controller here
                 if(!stristr("catalog",Mage::app()->getRequest()->getModuleName()) && Mage::app()->getRequest()->getControllerName() != "product") return;
+                // Maintain querystring if one is set (to maintain tracking URLs such as gclid)
+                $querystring = ($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '');
                 $product = $observer->getEvent()->getProduct();
-                $url = $product->getUrlModel()->getUrl($product, array('_ignore_category'=>true));
+                $url = $product->getUrlModel()->getUrl($product, array('_ignore_category'=>true)).$querystring;
                 if(Mage::helper('core/url')->getCurrentUrl() != $url){
                     Mage::app()->getFrontController()->getResponse()->setRedirect($url,301);
                     Mage::app()->getResponse()->sendResponse();
