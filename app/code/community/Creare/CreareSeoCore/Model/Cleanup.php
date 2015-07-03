@@ -50,7 +50,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 		$tables = array(
 			'dataflow_batch_export',
 			'dataflow_batch_import',
-			'log_customer',
+			/*'log_customer', removed this table as it clears the useful 'Last logged in' customer data */
 			'log_quote',
 			'log_summary',
 			'log_summary_type',
