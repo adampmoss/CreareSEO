@@ -59,6 +59,17 @@
                 <span><?php echo $this->__('Canonical Product Redirecting is enabled. Any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?></span>
             </li>
         <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/enablecmscanonical')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('You have not enabled canonical link tags on CMS pages. Please enable
+                this so that all CMS pages have a canonical URL set.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('You have enabled canonical link meta tags for CMS pages.') ?></span>
+            </li>
+        <?php endif; ?>
         <?php if (!Mage::getStoreConfig('creareseocore/social/enabled')): ?>
             <li class="error-msg"><span><?php echo $this->__('Twitter Cards are currently disabled.') ?> <a
                         href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
@@ -187,14 +198,24 @@
         <?php endif ?>
 
         <?php if (Mage::getStoreConfig('creareseocore/product_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Product schema is enabled.') ?></span></li>
+            <li class="success-msg"><span><?php echo $this->__('Product structured data is enabled.') ?></span></li>
         <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled product schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled product structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
         <?php endif ?>
         <?php if (Mage::getStoreConfig('creareseocore/social_schema/enabled')) : ?>
-            <li class="success-msg"><span><?php echo $this->__('Social schema is enabled.') ?></span></li>
+            <li class="success-msg"><span><?php echo $this->__('Social structured data is enabled.') ?></span></li>
         <?php else: ?>
-            <li class="error-msg"><span><?php echo $this->__('You have not enabled social schema structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled social structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/address_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Organization structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled Organization structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/logo_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Logo structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled logo structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
         <?php endif ?>
     </ul>
 </div>
