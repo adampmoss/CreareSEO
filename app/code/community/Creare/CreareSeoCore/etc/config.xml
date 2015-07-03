@@ -262,6 +262,9 @@
             <social_schema>
                 <enabled>0</enabled>
             </social_schema>
+            <address_schema>
+                <enabled>0</enabled>
+            </address_schema>
             <logo_schema>
                 <enabled>1</enabled>
             </logo_schema>

@@ -17,6 +17,11 @@
                     <template>creareseo/logo/schema.phtml</template>
                 </action>
             </block>
+            <block type="core/template" name="creareseo.business">
+                <action method="setTemplate" ifconfig="creareseocore/address_schema/enabled">
+                    <template>creareseo/business/schema.phtml</template>
+                </action>
+            </block>
         </reference>
     </default>
     <cms_index_index>
