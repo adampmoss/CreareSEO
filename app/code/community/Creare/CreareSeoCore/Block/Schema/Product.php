@@ -6,7 +6,7 @@ class Creare_CreareSeoCore_Block_Schema_Product extends Mage_Catalog_Block_Produ
 
     public function cleanString($string)
     {
-        return strip_tags(addslashes($string));
+        return strip_tags(addcslashes($string, '"\\/'));
     }
 
     public function getCurrency()
