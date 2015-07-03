@@ -226,6 +226,7 @@
                 <category_h1>1</category_h1>
                 <forcecanonical>1</forcecanonical>
                 <forcehptitle>1</forcehptitle>
+                <enablecmscanonical>1</enablecmscanonical>
             </defaultseo>
             <googleanalytics>
                 <type>0</type>
@@ -261,6 +262,9 @@
             <social_schema>
                 <enabled>0</enabled>
             </social_schema>
+            <logo_schema>
+                <enabled>1</enabled>
+            </logo_schema>
             <google_tag_manager>
                 <enabled>0</enabled>
             </google_tag_manager>

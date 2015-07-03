@@ -105,11 +105,20 @@
                             <label>Force Homepage Title (disregard prefix/suffix)</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>50</sort_order>
+                            <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </forcehptitle>
+                        <enablecmscanonical>
+                            <label>Use Canonical Link Meta Tag For CMS Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablecmscanonical>
                     </fields>
                 </defaultseo>
                 <!-- Below config is depreciated in 1.2 as the observer
@@ -581,6 +590,49 @@
                         </social_profiles>
                     </fields>
                 </social_schema>
+                <logo_schema>
+                    <label>Logo Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>123</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Logo Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </logo_schema>
+                <breadcrumbs_schema>
+                    <label>Breadcrumbs Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>125</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>If you enable breadcrumb schema, your theme's breadcrumbs file will be replaced by this file: <strong>app/design/frontend/base/default/template/creareseo/page/html/breadcrumbs.phtml</strong>. This means you may notice style changes when this is enabled if you have altered the code in your theme's breadcrumbs file.</p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Breadcrumb Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </breadcrumbs_schema>
                 <google_tag_manager>
                     <label>Google Tag Manager</label>
                     <frontend_type>text</frontend_type>
@@ -614,30 +666,6 @@
                         </gtm_id>
                     </fields>
                 </google_tag_manager>
-                <breadcrumbs_schema>
-                    <label>Breadcrumbs Schema</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>125</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <comment>
-                        <![CDATA[
-                            <p>If you enable breadcrumb schema, your theme's breadcrumbs file will be replaced by this file: <strong>app/design/frontend/base/default/template/creareseo/page/html/breadcrumbs.phtml</strong>. This means you may notice style changes when this is enabled if you have altered the code in your theme's breadcrumbs file.</p>
-                        ]]>
-                    </comment>
-                    <fields>
-                        <enabled translate="label">
-                            <label>Enable Breadcrumb Schema?</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </enabled>
-                    </fields>
-                </breadcrumbs_schema>
                 <google_content_grouping>
                     <label>Google Content Grouping (for Analytics)</label>
                     <frontend_type>text</frontend_type>
