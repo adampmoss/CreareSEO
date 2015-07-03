@@ -255,12 +255,18 @@
             <product_schema>
                 <enabled>1</enabled>
             </product_schema>
+            <breadcrumbs_schema>
+                <enabled>1</enabled>
+            </breadcrumbs_schema>
             <social_schema>
                 <enabled>0</enabled>
             </social_schema>
             <google_tag_manager>
                 <enabled>0</enabled>
             </google_tag_manager>
+            <sitelinksearch>
+                <enabled>1</enabled>
+            </sitelinksearch>
         </creareseocore>
     </default>
 </config>
