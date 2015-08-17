@@ -14,6 +14,11 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
             $path = str_replace("/index.php", "", $url->getPath());
         }
 
+        if (Mage::app()->getStore()->isCurrentlySecure())
+        {
+            return 'https://'.$host.$path;
+        }
+
         return 'http://'.$host.$path;
     }
 }
