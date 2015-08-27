@@ -1,8 +1,5 @@
 ## About CreareSEO for Magento
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="CreareSEO | GitHub" data-hashtags="creareseo">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
 This is a free Magento extension has a range of features that helps Magento become more compliant with the latest SEO standards. The ultimate aim is for your store to rank better in Google by making small adjustments to your store's configuration. 
 
 This extension is available to install on [Magento Connect](http://www.magentocommerce.com/magento-connect/creare-seo.html).
