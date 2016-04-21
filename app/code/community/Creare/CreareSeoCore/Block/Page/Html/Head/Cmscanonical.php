@@ -16,9 +16,9 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
 
         if (Mage::app()->getStore()->isCurrentlySecure())
         {
-            return 'https://'.$host.$path;
+            return $this->escapeUrl('https://' . $host . $path);
         }
 
-        return 'http://'.$host.$path;
+        return $this->escapeUrl('http://' . $host . $path);
     }
 }
