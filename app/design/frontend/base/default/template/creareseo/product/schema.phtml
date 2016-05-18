@@ -14,6 +14,7 @@ $_totalAverageRating = 0;
   "image": "<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>",
   "sku": "<?php echo $this->cleanString($_product->getSku()) ?>",
   "url": "<?php echo $_product->getProductUrl() ?>",
+  "itemCondition": "http://schema.org/NewCondition",
   "offers": [  
     <?php if($_product->getTypeId() === 'bundle') : ?>
     {
