@@ -7,7 +7,7 @@
             <children>
                 <creareseo>
                     <title>CreareSEO</title>
-                    <sort_order>25</sort_order>               
+                    <sort_order>25</sort_order>
                     <children>
                         <defaultseo>
                             <title>CreareSEO Checklist</title>
@@ -54,6 +54,18 @@
                                     <defaultseo>
                                         <title>CreareSEO - Default SEO Check</title>
                                     </defaultseo>
+                                    <sitemap>
+                                        <title>HTML Sitemap Settings</title>
+                                    </sitemap>
+                                    <coresettings>
+                                        <title>General Settings</title>
+                                    </coresettings>
+                                    <htaccess>
+                                        <title>.htaccess Editor</title>
+                                    </htaccess>
+                                    <robots>
+                                        <title>robots.txt Editor</title>
+                                    </robots>
                                 </children>
                             </creareseo>
                             <config>
