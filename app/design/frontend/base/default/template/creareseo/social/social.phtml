@@ -17,7 +17,7 @@ $_product = $this->getProduct();
 <meta name="twitter:label2" content="LOCATION" />
 
 <!-- CreareSEO Open Graph for Facebook / Other Networks -->
-<meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<meta property="og:site_name" content="<?php echo Mage::getStoreConfig('general/store_information/name') ?>" />
 <meta property="og:type" content="product.item" />
 <meta property="og:url" content="<?php echo $_product->getProductUrl() ?>" /> 
 <meta property="og:title" content="<?php echo $this->cleanString($_product->getName()) ?>" />
