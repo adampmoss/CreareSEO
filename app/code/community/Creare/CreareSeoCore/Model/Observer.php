@@ -69,11 +69,11 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     public function applyTag($observer) {
         if (Mage::getStoreConfig('creareseocore/defaultseo/metakw')) {
             $body = $observer->getResponse()->getBody();
-            if (strpos(strToLower($body), 'meta name="keywords"') !== false) {
+            if (strpos(strtolower($body), 'meta name="keywords"') !== false) {
                 $body = preg_replace('{(<meta name="keywords"[^>]*?>\n)}i', '', $body);
                 
             }
-            if (strpos(strToLower($body), 'meta name="description" content=""') !== false) {
+            if (strpos(strtolower($body), 'meta name="description" content=""') !== false) {
                 $body = preg_replace('{(<meta name="description"[^>]*?>\n)}i', '', $body);
             }
             
