@@ -4,7 +4,7 @@
  <script type="application/ld+json">
 { "@context" : "http://schema.org",
   "@type" : "Organization",
-  "name" : "<?php echo Mage::app()->getStore()->getName(); ?>",
+  "name" : "<?php Mage::getStoreConfig('general/store_information/name') ?>",
   "url" : "<?php echo Mage::getBaseUrl() ?>",
   "sameAs" : [ <?php foreach ($this->_socialProfiles as $profile) : ?>
   "<?php echo trim($profile) ?>"<?php echo ($_i != $this->socialProfileCount() ? ',' : '') ?><?php $_i++ ?>

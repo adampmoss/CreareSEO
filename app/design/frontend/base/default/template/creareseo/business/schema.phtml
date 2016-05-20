@@ -10,7 +10,7 @@
     "streetAddress": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/street_address') ?>",
     "addressRegion": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/region') ?>"
   },
-  "name": "<?php echo Mage::app()->getStore()->getName() ?>",
+  "name": "<?php echo Mage::getStoreConfig('general/store_information/name') ?>",
   "telephone": "<?php echo Mage::getStoreConfig('general/store_information/phone') ?>"
 }
 </script>
