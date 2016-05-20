@@ -46,7 +46,7 @@ $_totalAverageRating = 0;
     <?php else: ?>
     {
     	"@type": "Offer",
-    	"price": "<?php echo number_format(Mage::helper('creareseocore')->getProductStartingprice($_product),2) ?>",
+    	"price": "<?php echo number_format($this->helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true), 2) ?>",
     	"availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
     	"priceCurrency": "<?php echo $this->getCurrency() ?>"
     }
