@@ -21,6 +21,10 @@ class Creare_CreareSeoCore_Block_Schema_Product extends Mage_Catalog_Block_Produ
 
     public function getProductReviews()
     {
+        if (!Mage::helper('core')->isModuleEnabled('Mage_Review')) {
+            return array(); //keep PHP 5.3 compatibility
+        }
+
         return $this->_productReviews = Mage::getModel('review/review')->getCollection()
             ->addStatusFilter(Mage_Review_Model_Review::STATUS_APPROVED)
             ->addEntityFilter('product', $this->getProduct()->getId())
@@ -45,14 +49,12 @@ class Creare_CreareSeoCore_Block_Schema_Product extends Mage_Catalog_Block_Produ
         $rating_count = count($ratings);
 
 
-        if ($rating_count)
-        {
-            foreach ($ratings as $rating)
-            {
+        if ($rating_count) {
+            foreach ($ratings as $rating) {
                 $total_rating += $rating->getValue();
             }
 
-            $average_rating = round($total_rating/$rating_count);
+            $average_rating = round($total_rating / $rating_count);
 
             return $average_rating;
         }
