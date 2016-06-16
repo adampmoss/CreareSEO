@@ -2,7 +2,7 @@
 
 This is a free Magento extension has a range of features that helps Magento become more compliant with the latest SEO standards. The ultimate aim is for your store to rank better in Google by making small adjustments to your store's configuration. 
 
-This extension is available to install on [Magento Connect](http://www.magentocommerce.com/magento-connect/creare-seo.html).
+This extension is no longer available on Magento Connect
 
 ### Compatibility
 
