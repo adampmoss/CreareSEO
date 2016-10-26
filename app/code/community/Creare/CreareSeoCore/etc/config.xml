@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Creare_CreareSeoCore>
-            <version>1.4.1</version>
+            <version>1.4.2.1</version>
         </Creare_CreareSeoCore>
     </modules>
     <adminhtml>
@@ -194,7 +194,7 @@
                         <class>creareseocore/observer</class>
                         <method>saveConfigOnConfigLoad</method>
                     </creareseo_savefileconfig>
-                    <!-- Below observer depreciated in 1.2 as the 
+                    <!-- Below observer depreciated in 1.2 as the
                     script causes need to reindex on every product save.
                     <processcheck>
                         <type>singleton</type>
