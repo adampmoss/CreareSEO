@@ -74,17 +74,15 @@ $_totalAverageRating = 0;
     }<?php echo ($_i != $this->getReviewsCount() ? ',' : '') ?>
         <?php $_i++ ?>
     <?php endforeach ?>
-  ],
-  "aggregateRating": {
+  ]
+<?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
+<?php if ($ratingValue >= 1) : ?>,
+"aggregateRating": {
     "@type": "AggregateRating",
-    <?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
-        <?php if ($ratingValue > 0) : ?>
     "ratingValue": "<?php echo $ratingValue ?>",
-    <?php else: ?>
-    "ratingValue": "1",
-    <?php endif ?>
     "reviewCount": "<?php echo $this->getReviewsCount() ?>"
   }
+ <?php endif; ?>
   <?php endif ?>
 }
 </script>
