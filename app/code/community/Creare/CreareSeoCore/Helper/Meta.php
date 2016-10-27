@@ -86,21 +86,42 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
             return $string;
      }
 
-     public function productAttribute($product, $attribute)
-     {
+    public function productAttribute($product, $attribute)
+    {
+        if ($attribute == "categories" || $attribute == "first_category") {
 
-        var_dump($product->getCategoryCollection()); die();
+            $catIds = $product->getCategoryIds();
+            $categories = Mage::getResourceModel('catalog/category_collection')
+                ->addAttributeToSelect('name')
+                ->addAttributeToFilter('entity_id', $catIds)
+                ->addIsActiveFilter();
 
+            if ($categories->count() < 1) {
+                return "";
+            }
 
-         if ($tag == "category_names") {
+            if ($attribute == "categories") {
+                $categoryNames = array();
 
-         }
+                foreach ($categories as $category) {
+                    $categoryNames[] = $category->getName();
+                }
 
-         if ($product->getData($attribute)) {
-            return $product->getResource()->getAttribute($attribute)->getFrontend()->getValue($product);
-         }
+                $data = implode(", ", $categoryNames);
+            }
 
-     }
+            if ($attribute == "first_category") {
+                $data = $categories->getFirstItem()->getName();
+            }
+        } else if ($product->getData($attribute)) {
+            $data = $product->getResource()
+                ->getAttribute($attribute)
+                ->getFrontend()
+                ->getValue($product);
+        }
+
+        return $data;
+    }
 
      public function attribute($model, $attribute)
      {
