@@ -4,21 +4,16 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
 {
     public function getCanonicalUrl()
     {
-        $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-        $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
-        $path = $url->getPath();
-        $host = $url->getHost();
+        $cmsPagePath = Mage::getSingleton('cms/page')->getIdentifier();
+        $canonicalUrl = Mage::getBaseUrl().$cmsPagePath;
 
-        if (Mage::getStoreConfig('web/seo/use_rewrites'))
-        {
-            $path = str_replace("/index.php", "", $url->getPath());
+        if (
+            strpos($canonicalUrl, "/index.php") &&
+            Mage::getStoreConfig('web/seo/use_rewrites')
+        ) {
+            $canonicalUrl = str_replace("/index.php", "", $canonicalUrl);
         }
 
-        if (Mage::app()->getStore()->isCurrentlySecure())
-        {
-            return $this->escapeUrl('https://' . $host . $path);
-        }
-
-        return $this->escapeUrl('http://' . $host . $path);
+        return $canonicalUrl;
     }
 }
