@@ -82,7 +82,7 @@ $_block = $this;
     <tfoot>
         <tr>
             <td colspan="100" class="last" style="padding:8px">
-		<?php echo Mage::helper('catalog')->__('Maximum width and height dimension for upload image is %s.', Mage::getStoreConfig(Mage_Catalog_Helper_Image::XML_NODE_PRODUCT_MAX_DIMENSION)); ?>
+		        <?php echo Mage::helper('catalog')->__('Maximum width and height dimension for upload image is %s.', Mage::getStoreConfig('catalog/product_image/max_dimension')); ?>
                 <?php echo $_block->getUploaderHtml() ?>
             </td>
         </tr>
