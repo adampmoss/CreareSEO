@@ -1,3 +1,7 @@
+## Latest Version
+
+1.4.3
+
 ## About CreareSEO for Magento
 
 This is a free Magento extension has a range of features that helps Magento become more compliant with the latest SEO standards. The ultimate aim is for your store to rank better in Google by making small adjustments to your store's configuration. 
@@ -7,6 +11,7 @@ This extension is no longer available on Magento Connect
 ### Compatibility
 
 Magento Community Edition 1.4 to 1.9
+Tested successfully in most versions of Enterprise Edition
 
 ### Installation
 
@@ -64,7 +69,7 @@ Below is a list of the current features available within the extension. Our team
 |Google Tag Manager support|1.3|
 |Canonical meta tags for CMS pages|1.4|
 |Logo structured data|1.4|
-|Organization structured data|1.3|
+|Organization structured data|1.4|
 
 ### Support
 
@@ -84,6 +89,4 @@ After doing this, clear the cache and reindex your data.
 ### Developers
 
 - Adam Moss ([@adampmoss](https://twitter.com/adampmoss)) 
-- Robert Kent ([@kent_robert](https://twitter.com/kent_robert))
-
-Module ideas and contributions are provided by one of Creare's SEO specialists and Technical Director, James Bavington ([@jamesbavington](https://twitter.com/jamesbavington)).
+- Robert Kent ([@kent_robert](https://twitter.com/kent_robert)) (previous)
