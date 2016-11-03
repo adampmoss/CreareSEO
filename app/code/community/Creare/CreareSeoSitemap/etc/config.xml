@@ -42,7 +42,9 @@
                 <showxml>0</showxml>
                 <showaccount>1</showaccount>
                 <showcontact>1</showcontact>
-                <fullwidth>0</fullwidth>
+                <meta_description><![CDATA[Can't find what you're looking for? Take a look at our sitemap to get yourself back on track!.]]></meta_description>
+                <description><![CDATA[<p>Can't find what you're looking for? Take a look at our sitemap to get yourself back on track!</p>]]></description>
+                <page_title>Sitemap</page_title>
             </sitemap>
         </creareseositemap>
     </default>

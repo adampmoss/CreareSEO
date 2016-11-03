@@ -9,4 +9,3 @@ app/design/frontend/base/default/layout/creareseo_sitemap.xml app/design/fronten
 app/design/frontend/base/default/template/creareseo app/design/frontend/base/default/template/creareseo
 js/creareseo js/creareseo
 skin/adminhtml/default/default/creareseo skin/adminhtml/default/default/creareseo
-skin/frontend/base/default/css/creareseo_sitemap.css skin/frontend/base/default/css/creareseo_sitemap.css
