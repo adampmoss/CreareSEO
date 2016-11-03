@@ -1,4 +1,15 @@
-<div class="creareseo-sitemap">
+<?php $_cmsPages = $this->getCmsPages() ?>
+    <h2><?php echo $this->__("Pages") ?></h2>
+<ul>
+    <?php foreach ($_cmsPages as $_page) : ?>
+        <li><a href="<?php echo $_page->getIdentifier() ?>"><?php echo $_page->getTitle() ?></a></li>
+    <?php endforeach ?>
+</ul>
+
+<h2><?php echo $this->__("Categories") ?></h2>
+<?php echo $this->getCategoryTreeHtml() ?>
+
+<?php /*<div class="creareseo-sitemap">
     <div class="sitempan">
         <?php if (Mage::helper('creareseositemap')->showCMS() || Mage::helper('creareseositemap')->showXMLSitemap()): ?>
             <h2><?php echo $this->__('Our Main Site Pages') ?></h2>
@@ -39,46 +50,4 @@
             </ul>
     <?php endif; ?>
     </div>
-    <?php if (Mage::helper('creareseositemap')->showCategories()): ?>
-    <div class="sitempan">
-        <h2><?php echo $this->__('Our Categories') ?></h2>
-        <?php $_helper = Mage::helper('catalog/category') ?>
-            <?php $_categories = $_helper->getStoreCategories() ?>
-            <?php if (count($_categories) > 0): ?>
-            <ul class="sitecatul <?php echo (Mage::helper('creareseositemap')->fullWidth())? 'full' : '' ?>">
-                <?php foreach ($_categories as $_category): ?>
-                    <li class="cat">
-                        <a href="<?php echo $_helper->getCategoryUrl($_category) ?>" title="<?php echo $_category->getName() ?>"><strong class="strongsm"><?php echo $_category->getName() ?></strong></a>
-                            <?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
-                            <?php $_subcategories = $_category->getChildrenCategories() ?>
-                            <?php if (count($_subcategories) > 0): ?>
-                            <ul>
-                                <?php foreach ($_subcategories as $_subcategory): ?>
-                <?php $_nextcategory = Mage::getModel('catalog/category')->load($_subcategory->getId()) ?>
-                                            <?php $_nextsubcategories = $_nextcategory->getChildrenCategories() ?>
-                                    <li>
-                                        <a href="<?php echo $_helper->getCategoryUrl($_subcategory) ?>" title="<?php echo $_subcategory->getName() ?>">
-                                        <?php echo $_subcategory->getName() ?>
-                                        </a>
-                                            <?php if (count($_nextsubcategories) > 0): ?>
-                                            <ul>
-                                                        <?php foreach ($_nextsubcategories as $_nextsubcat): ?>
-                                                    <li>
-                                                        <a href="<?php echo $_helper->getCategoryUrl($_nextsubcat) ?>" title="<?php echo $_subcategory->getName() ?> - <?php echo $_nextsubcat->getName() ?>">
-                                                    <?php echo $_nextsubcat->getName() ?>
-                                                        </a>
-                                                    </li>
-                                            <?php endforeach; ?>
-                                            </ul>
-                                    <?php endif; ?>
-                                    </li>
-                            <?php endforeach; ?>
-                            </ul>
-                    <?php endif; ?>
-                    </li>
-            <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </div>
-    <?php endif; ?>
 </div>
