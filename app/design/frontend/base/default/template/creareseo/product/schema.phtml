@@ -17,7 +17,6 @@ $_totalAverageRating = 0;
   <?php if ($product->getData('manufacturer')) : ?>
   "brand": "<?php echo $this->cleanString($_product->getAttributeText('manufacturer')) ?>",
   <?php endif ?>
-  "itemCondition": "http://schema.org/NewCondition",
   "offers": [
     <?php if($_product->getTypeId() === 'bundle') : ?>
     {
@@ -25,7 +24,8 @@ $_totalAverageRating = 0;
 	    "@type": "AggregateOffer",
 	    "lowPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'min',1) ?>",
 	    "highPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'max',1) ?>",
-	    "availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
+      "itemCondition": "http://schema.org/NewCondition",
+	    "availability": "<?php echo ($_product->isAvailable() ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock') ?>",
     	"priceCurrency": "<?php echo $this->getCurrency() ?>"
   	}
     <?php elseif($_product->getTypeId() === 'grouped') :  ?>
@@ -36,7 +36,8 @@ $_totalAverageRating = 0;
 		{
 	    	<?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_associtem, $_associtem->getFinalPrice(), true) ?>
 	    	"@type": "Offer",
-	    	"availability": "<?php echo ($_associtem->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
+        "itemCondition": "http://schema.org/NewCondition",
+	    	"availability": "<?php echo ($_associtem->isAvailable() ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock') ?>",
 	    	"itemOffered": {
 	    			"sku": "<?php echo $_associtem->getSku() ?>"	,
 	    			"name": "<?php echo $_associtem->getName() ?>",
@@ -49,9 +50,11 @@ $_totalAverageRating = 0;
     <?php else: ?>
     {
     	"@type": "Offer",
-    	"price": "<?php echo number_format($this->helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true), 2, '.', '') ?>",
+        "itemCondition": "http://schema.org/NewCondition",
+    	 "price": "<?php echo number_format($this->helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true), 2, '.', '') ?>",
     	"availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
     	"priceCurrency": "<?php echo $this->getCurrency() ?>"
+
     }
     <?php endif ?>
    ]
@@ -74,17 +77,15 @@ $_totalAverageRating = 0;
     }<?php echo ($_i != $this->getReviewsCount() ? ',' : '') ?>
         <?php $_i++ ?>
     <?php endforeach ?>
-  ],
-  "aggregateRating": {
+  ]
+<?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
+<?php if ($ratingValue >= 1) : ?>,
+"aggregateRating": {
     "@type": "AggregateRating",
-    <?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
-        <?php if ($ratingValue > 0) : ?>
     "ratingValue": "<?php echo $ratingValue ?>",
-    <?php else: ?>
-    "ratingValue": "1",
-    <?php endif ?>
     "reviewCount": "<?php echo $this->getReviewsCount() ?>"
   }
+ <?php endif; ?>
   <?php endif ?>
 }
 </script>
