@@ -227,6 +227,8 @@
                 <forcecanonical>1</forcecanonical>
                 <forcehptitle>1</forcehptitle>
                 <enablecmscanonical>1</enablecmscanonical>
+                <cms_canonical_protocol>http://</cms_canonical_protocol>
+                <cms_canonical_slashes>1</cms_canonical_slashes>
             </defaultseo>
             <googleanalytics>
                 <type>0</type>

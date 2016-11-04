@@ -1,6 +1,12 @@
 <?php
 class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
 {
+    const DEFAULT_CONFIG_PATH = 'creareseocore/defaultseo/';
+
+    public function getConfig($field)
+    {
+        return Mage::getStoreConfig(self::DEFAULT_CONFIG_PATH.$field);
+    }
 
     public function getDiscontinuedProductUrl($product)
     {
