@@ -1,6 +1,6 @@
 ## Latest Version
 
-1.5.0
+1.5
 
 ## About CreareSEO for Magento
 
