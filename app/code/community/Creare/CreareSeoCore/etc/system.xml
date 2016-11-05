@@ -333,6 +333,8 @@
                                 <small>[name] = Product Name<br />
                                 [store] = Store Name<br />
                                 [attribute_code] = Attribute Value<br />
+                                [first_category] = First Category Found<br />
+                                [categories] = Outputs all categories comma-separated<br />
                                 <strong>For example: [name] - [store].</strong></small>
                         ]]></comment>
                         </product_title>
@@ -357,6 +359,8 @@
                                 <small>[name] = Product Name<br />
                                 [store] = Store Name<br />
                                 [attribute_code] = Attribute Value<br />
+                                [first_category] = First Category Found<br />
+                                [categories] = Outputs all categories comma-separated<br />
                                 <strong>For example: Buy [name] online from our [store]. See our other [brand] products.</strong></small>
                         ]]></comment>
                         </product_metadesc>
