@@ -4,9 +4,9 @@
 
 ## About CreareSEO for Magento
 
-This is a free Magento extension has a range of features that helps Magento become more compliant with the latest SEO standards. The ultimate aim is for your store to rank better in Google by making small adjustments to your store's configuration. 
+This is a free Magento extension has a range of features that helps Magento become more compliant with the latest search engine standards. The ultimate aim is for your store to rank better in Google by making small adjustments to your store's configuration. 
 
-This extension is no longer available on Magento Connect
+**This extension is no longer available on Magento Connect.**
 
 ### Compatibility
 
@@ -30,7 +30,7 @@ The CreareSEO Checklist page can be accessed via **System > CreareSEO > CreareSE
 
 This page will check and make recommendations on various configuration settings within Magento and CreareSEO that should or shouldn't be enabled in order to maximise SEO performance.
 
-![CreareSEO Checklist](https://github.com/Creare/CreareSEO/blob/master/creareseo-checklist.png)
+![CreareSEO Checklist](https://github.com/adampmoss/CreareSEO/blob/master/creareseo-checklist.png)
 
 ### Features
 
@@ -46,7 +46,7 @@ Below is a list of the current features available within the extension. Our team
 |Custom category headings|1.0|
 |Disabled product redirects|1.0|
 |Breadcrumbs structured data|1.0|
-|Hide 'duplicate product' button|1.0|
+|Hide 'duplicate product' button _(deprecated)_|1.0|
 |Twitter cards on product pages|1.0|
 |OpenGraph data on product pages|1.0|
 |.htaccess editor via configuration|1.0|
@@ -73,7 +73,7 @@ Below is a list of the current features available within the extension. Our team
 
 ### Support
 
-Go [here](http://creareseo.custservhq.com/articles/frequently-asked-questions) to see a list of issues that we have come across and we have found a solution to. If you have any other issues with this extension, please [open an issue](https://github.com/Creare/CreareSEO/issues) on GitHub.
+Go [here](http://creareseo.custservhq.com/articles/frequently-asked-questions) to see a list of issues that we have come across and we have found a solution to. If you have any other issues with this extension, please [open an issue](https://github.com/adampmoss/CreareSEO/issues) on GitHub.
 
 ### Disable the Module
 
