@@ -1,65 +1,97 @@
 <?php
 
-class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
+class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
+{
+    protected $helper;
 
-    /* Our function to change the META robots tag on Parameter based category pages */
+    public function _construct()
+    {
+        $this->helper = Mage::helper("creareseocore");
+        parent::_construct();
+    }
 
-    public function changeRobots($observer) {
 
-        if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparams')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalog_category_view') {
-                $uri = $observer->getEvent()->getAction()->getRequest()->getRequestUri();
-                if (stristr($uri, "?")):
-                    $layout = $observer->getEvent()->getLayout();
-                    $product_info = $layout->getBlock('head');
-                    $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
-                    $layout->generateXml();
-                endif;
-            }
+    private function setRobots($layout)
+    {
+        return $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
+    }
+
+
+    public function changeRobots($observer)
+    {
+        $action = $observer->getEvent()->getAction();
+        $page = $action->getFullActionName();
+        $layout = $observer->getEvent()->getLayout();
+
+        switch ($page)
+        {
+            case "catalog_category_view" :
+
+                if ($this->helper->getConfig("noindexparams")
+                && parse_url($action->getRequest()->getRequestUri(), PHP_URL_QUERY)) {
+                    $this->setRobots($layout);
+                }
+
+                break;
+
+            case "catalogsearch_result_index" :
+                if ($this->helper->getConfig("noindexparamssearch")) {
+                    $this->setRobots($layout);
+                }
+                break;
+
+            case "catalog_product_gallery" :
+                if ($this->helper->getConfig("noindexparamsgallery")) {
+                    $this->setRobots($layout);
+                }
+                break;
         }
-        if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamssearch')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalogsearch_result_index') {
-                $layout = $observer->getEvent()->getLayout();
-                $product_info = $layout->getBlock('head');
-                $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
-                $layout->generateXml();
-            }
-        }
-        if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsgallery')) {
-            if ($observer->getEvent()->getAction()->getFullActionName() === 'catalog_product_gallery') {
-                $layout = $observer->getEvent()->getLayout();
-                $product_info = $layout->getBlock('head');
-                $layout->getUpdate()->addUpdate('<reference name="head"><action method="setRobots"><value>NOINDEX,FOLLOW</value></action></reference>');
-                $layout->generateXml();
-            }
-        }
+
         return $this;
     }
 
-    public function discontinuedCheck($observer) {
-        $data = $observer->getEvent()->getAction()->getRequest();
-        if ($data->getControllerModule() === "Mage_Catalog") {
-            $id = $data->getParam('id');
-            if ($data->getControllerName() === "product") {
-                $product = Mage::getModel('catalog/product')->load($id);
-                $url = Mage::helper('creareseocore')->getDiscontinuedProductUrl($product);
-                if ($url) {
-                    Mage::getSingleton('core/session')->addError(Mage::helper('creareseocore')->__('Unfortunately the product %s has been discontinued', $product->getName()));
-                    Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
-                    Mage::app()->getResponse()->sendResponse();
-                    exit;
-                }
+    private function redirect301($url, $name)
+    {
+        Mage::getSingleton('core/session')
+            ->addNotice($this->helper->__('%s has been discontinued', $name));
+        Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
+        Mage::app()->getResponse()->sendResponse();
+        exit;
+    }
+
+    public function discontinuedCheck($observer)
+    {
+        $request = $observer->getEvent()->getAction()->getRequest();
+
+        if ($request->getControllerModule() !== "Mage_Catalog") {
+            return false;
+        }
+
+        if ($request->getControllerName() === "product") {
+
+            $product = Mage::getResourceModel('catalog/product_collection')
+                ->addAttributeToSelect('creareseo_discontinued')
+                ->addAttributeToSelect('creareseo_discontinued_product')
+                ->addAttributeToSelect('name')
+                ->addIdFilter($request->getParam('id'))
+                ->setPageSize(1)
+                ->getFirstItem();
+
+            if ($discontinuedUrl = $this->helper->getDiscontinuedProductUrl($product)) {
+                $this->redirect301($discontinuedUrl, $product->getName());
             }
-            if ($data->getControllerName() === "category") {
-                $id = $data->getParam('id');
-                $category = Mage::getModel('catalog/category')->load($id);
-                $url = Mage::helper('creareseocore')->getDiscontinuedCategoryUrl($category);
-                if ($url) {
-                    Mage::getSingleton('core/session')->addError(Mage::helper('creareseocore')->__('Unfortunately the category %s" has been discontinued', $category->getName()));
-                    Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
-                    Mage::app()->getResponse()->sendResponse();
-                    exit;
-                }
+        }
+
+        if ($request->getControllerName() === "category") {
+
+            $category = Mage::getResourceModel('catalog/category_collection')
+                ->addIdFilter($request->getParam('id'))
+                ->addAttributeToSelect('name')
+                ->setPageSize(1)
+                ->getFirstItem();
+
+            if ($discontinuedUrl = $this->helper->getDiscontinuedCategoryUrl($category)) {
+                $this->redirect301($discontinuedUrl, $category->getName());
             }
         }
     }
@@ -67,7 +99,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     /* The function to remove the meta keywords tag */
 
     public function applyTag($observer) {
-        if (Mage::getStoreConfig('creareseocore/defaultseo/metakw')) {
+        if ($this->helper->getConfig('metakw')) {
             $body = $observer->getResponse()->getBody();
             if (strpos(strtolower($body), 'meta name="keywords"') !== false) {
                 $body = preg_replace('{(<meta name="keywords"[^>]*?>\n)}i', '', $body);
@@ -88,12 +120,10 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
         $category = $observer->getEvent()->getCategory();
         $category->setOriginalName($category->getName());
 
-        if (Mage::getStoreConfig('creareseocore/defaultseo/category_h1'))
+        if ($this->helper->getConfig("category_h1")
+            && $category->getData('creareseo_heading'))
         {
-            if ($category->getData('creareseo_heading'))
-            {
-                $category->setName($category->getCreareseoHeading());
-            }
+            $category->setName($category->getCreareseoHeading());
         }
     }
 
@@ -103,20 +133,19 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
      * writes the post data to the file.
      */
 
-    public function writeToFileOnConfigSave($observer) {
-
-        $helper = Mage::helper('creareseocore');
+    public function writeToFileOnConfigSave(Varien_Event_Observer $observer)
+    {
         $post = Mage::app()->getRequest()->getPost();
         $robots_location = $post['groups']['files']['fields']['robots_location']['value'];
         $robots_post = $post['groups']['files']['fields']['robots']['value'];
         $htaccess_post = $post['groups']['files']['fields']['htaccess']['value'];
 
         if ($robots_post) {
-            $helper->writeFile($helper->robotstxt(), $robots_post, 'robots', $robots_location);
+            $this->helper->writeFile($this->helper->robotstxt(), $robots_post, 'robots', $robots_location);
         }
 
         if ($htaccess_post) {
-            $helper->writeFile($helper->htaccess(), $htaccess_post, 'htaccess');
+            $this->helper->writeFile($this->helper->htaccess(), $htaccess_post, 'htaccess');
         }
     }
 
@@ -126,53 +155,18 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
      * current file data to the database before the field is loaded
      */
 
-    public function saveConfigOnConfigLoad($observer) {
-        $helper = Mage::helper('creareseocore');
-        $path = $helper->getConfigPath();
+    public function saveConfigOnConfigLoad(Varien_Event_Observer $observer)
+    {
+        $path = $this->helper->getConfigPath();
+
         if ($path == 'system_config_crearehtaccess') {
-            $helper->saveFileContentToConfig($helper->htaccess(), 'htaccess');
+            $this->helper->saveFileContentToConfig($this->helper->htaccess(), 'htaccess');
         }
         if ($path == 'system_config_crearerobots') {
-            $helper->saveFileContentToConfig($helper->robotstxt(), 'robots');
+            $this->helper->saveFileContentToConfig($this->helper->robotstxt(), 'robots');
         }
     }
 
-    /*
-        Below script is depreciated in 1.2 as it causes need to reindex on every product save.
-        This observer script is no longer called on event controller_action_predispatch
-    */
-
-    /*public function productCheck(Varien_Event_Observer $observer) {
-        if(Mage::app()->getRequest()->getControllerName() == "catalog_product" && Mage::app()->getRequest()->getActionName() == "validate"){
-            $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','name');
-            if ($attributeId) {
-                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
-                if(Mage::getStoreConfig('creareseocore/validate/name')){
-                    $attribute->setIsUnique(1)->save();
-                } else {
-                    $attribute->setIsUnique(0)->save();
-                }
-            }
-            $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','description');
-            if ($attributeId) {
-                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
-                if(Mage::getStoreConfig('creareseocore/validate/description')){
-                    $attribute->setIsUnique(1)->save();
-                } else {
-                    $attribute->setIsUnique(0)->save();
-                }
-            }
-            $attributeId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','short_description');
-            if ($attributeId) {
-                $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attributeId);
-                if(Mage::getStoreConfig('creareseocore/validate/short_description')){
-                    $attribute->setIsUnique(1)->save();
-                } else {
-                    $attribute->setIsUnique(0)->save();
-                }
-            }
-        }
-    }*/
 
     /* Checks if the page loaded is the canonical version, if not redirects to that version */
     
@@ -180,7 +174,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     {
         if (Mage::getStoreConfig('catalog/seo/product_canonical_tag') && !Mage::getStoreConfig('product_use_categories'))
         {
-            if (Mage::getStoreConfig('creareseocore/defaultseo/forcecanonical')) {
+            if ($this->helper->getConfig('forcecanonical')) {
                 // check for normal catalog/product/view controller here
                 if(!stristr("catalog",Mage::app()->getRequest()->getModuleName()) && Mage::app()->getRequest()->getControllerName() != "product") return;
                 // Maintain querystring if one is set (to maintain tracking URLs such as gclid)
@@ -199,71 +193,85 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     
     public function contactsMetaData(Varien_Event_Observer $observer)
     {
-        if ($observer->getEvent()->getAction()->getRequest()->getRouteName() === "contacts") {
-            if (Mage::helper('creareseocore/meta')->config('contacts_title')) {
-                $observer->getEvent()->getLayout()->getBlock('head')->setTitle(Mage::helper('creareseocore/meta')->config('contacts_title'));
-            }
+        $route = $observer->getEvent()->getAction()->getRequest()->getRouteName();
+        $headBlock = $observer->getEvent()->getLayout()->getBlock('head');
 
-            if (Mage::helper('creareseocore/meta')->config('contacts_metadesc')) {
-                $observer->getEvent()->getLayout()->getBlock('head')->setDescription(Mage::helper('creareseocore/meta')->config('contacts_metadesc'));
-            }
+        if ($route !== "contacts" || !is_object($headBlock)) {
+            return false;
         }
+
+        if ($title = $this->metaHelper()->config('contacts_title')) {
+            $headBlock->setTitle($title);
+        }
+
+        if ($metaDesc = $this->metaHelper()->config('contacts_metadesc')) {
+            $headBlock->setDescription($metaDesc);
+        }
+
     }
 
     /* If set, replaces the homepage title with the definitive one set in the config */
 
     public function forceHomepageTitle($observer)
     {
-        if (Mage::getStoreConfig('creareseocore/defaultseo/forcehptitle')) {
-            if($observer->getEvent()->getAction()->getFullActionName() === "cms_index_index"){
-                $layout = $observer->getEvent()->getLayout();
-                $homepage = Mage::getStoreConfig('web/default/cms_home_page');
-                $title = Mage::getModel('cms/page')->load($homepage, 'identifier')->getTitle();
-                if($title){
-                    if ($head = $layout->getBlock('head'))
-                    {
-                        $head->setData('title',$title);
-                    }
-                }
+        $actionName = $observer->getEvent()->getAction()->getFullActionName();
+
+        if ($actionName !== "cms_index_index"
+        || !$this->helper->getConfig('forcehptitle')) {
+            return false;
+        }
+
+        $layout = $observer->getEvent()->getLayout();
+        $homepage = Mage::getStoreConfig('web/default/cms_home_page');
+        $title = Mage::getModel('cms/page')->load($homepage, 'identifier')->getTitle();
+
+        if ($title) {
+            if ($head = $layout->getBlock('head')) {
+                $head->setData('title', $title);
             }
         }
+
     }
 
     /* On relevant pages, will override the page title with the fallback if one isn't set in the editor */
     
     public function setTitle($observer)
     {
-        if (Mage::getStoreConfig('creareseocore/defaultseo/forcehptitle') && $observer->getEvent()->getAction()->getFullActionName() == "cms_index_index") return;
-	if ($observer->getEvent()->getAction()->getFullActionName() === "contacts_index_index") return;
-            $layout = $observer->getEvent()->getLayout();
-            $title = $this->getTitle();
-            if($title)
-            {
-                if ($head = $layout->getBlock('head'))
-                {
-                    $head->setTitle($title);
-                }
+        $actionName = $observer->getEvent()->getAction()->getFullActionName();
+
+        if ($actionName === "cms_index_index"
+        || $actionName === "contacts_index_index") {
+            return false;
+        }
+
+        $layout = $observer->getEvent()->getLayout();
+        $title = $this->getTitle();
+
+        if ($title) {
+            if ($head = $layout->getBlock('head')) {
+                $head->setTitle($title);
             }
-            
-            $layout->generateXml();
+        }
     }
 
     /* On relevant pages, will override the meta desc with the fallback if one isn't set in the editor */
     
     public function setDescription($observer)
     {
-	if ($observer->getEvent()->getAction()->getFullActionName() === "contacts_index_index") return;
+        $actionName = $observer->getEvent()->getAction()->getFullActionName();
+
+        if ($actionName === "contacts_index_index") {
+            return false;
+        }
+
         $layout = $observer->getEvent()->getLayout();
         $description = $this->getDescription();
-        if($description)
-        {
-            if ($head = $layout->getBlock('head'))
-            {
+
+        if($description) {
+            if ($head = $layout->getBlock('head')) {
                 $head->setDescription($description);
             }
         }
-            
-        $layout->generateXml();
     }
 	
 	public function getDefaultTitle()
@@ -275,13 +283,10 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     {
         $pagetype = $this->metaHelper()->getPageType();
         
-        if ($pagetype !== false)
-        {
+        if ($pagetype !== false) {
         
-            if ($pagetype->_code != "cms")
-            {
-                if (!$pagetype->_model->getMetaTitle())
-                {
+            if ($pagetype->_code != "cms") {
+                if (!$pagetype->_model->getMetaTitle()) {
                     $this->_data['title'] = $this->setConfigTitle($pagetype->_code);
                 } else {
                     $this->_data['title'] = $pagetype->_model->getMetaTitle();
@@ -295,7 +300,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
                 // check if it's a category or product and default to name.
                 if($pagetype->_code == "category" || $pagetype->_code == "product"){
                     $this->_data['title'] = $pagetype->_model->getName();
-                            } else {
+                } else {
                     $this->_data['title'] = $this->getDefaultTitle();
                 }
             }
@@ -308,16 +313,14 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     
     public function setConfigTitle($pagetype)
     {
-        if ($this->metaHelper()->config($pagetype.'_title_enabled'))
-        {
+        if ($this->metaHelper()->config($pagetype.'_title_enabled')) {
             return $this->metaHelper()->getDefaultTitle($pagetype);
         }
     }
     
     public function setConfigMetaDescription($pagetype)
     {
-        if ($this->metaHelper()->config($pagetype.'_metadesc_enabled'))
-        {
+        if ($this->metaHelper()->config($pagetype.'_metadesc_enabled')) {
             return $this->metaHelper()->getDefaultMetaDescription($pagetype);
         }
     }
@@ -327,10 +330,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     {
         $pagetype = $this->metaHelper()->getPageType();
         
-        if ($pagetype !== false)
-        {
-            if (!$pagetype->_model->getMetaDescription())
-            {
+        if ($pagetype !== false) {
+            if (!$pagetype->_model->getMetaDescription()) {
                 $this->_data['description'] = $this->setConfigMetaDescription($pagetype->_code);
             } else {
                 $this->_data['description'] = $pagetype->_model->getMetaDescription();
@@ -350,8 +351,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract {
     
     public function setMandatoryAltTag($observer)
     {
-        if (Mage::getStoreConfig('creareseocore/defaultseo/mandatory_alt'))
-        {
+        if ($this->helper->getConfig('mandatory_alt')) {
             $observer->getBlock()->setTemplate('creareseo/catalog/product/helper/gallery.phtml');
         }
     }
