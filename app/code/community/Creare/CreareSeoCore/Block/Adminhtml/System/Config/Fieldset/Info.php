@@ -13,10 +13,6 @@ class Creare_CreareSeoCore_Block_Adminhtml_System_Config_Fieldset_Info
         	return (string) Mage::getConfig()->getNode('modules/Creare_CreareSeoCore/version');
     	}
 
-    	protected function getCreareWebsite() {
-        	return (string) "https://www.creare.co.uk";
-    	}
-
     	protected function getCreareHelpDesk() {
         	return (string) "http://creareseo.custservhq.com/";
     	}
