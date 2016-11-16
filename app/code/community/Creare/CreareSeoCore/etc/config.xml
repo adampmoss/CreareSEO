@@ -151,12 +151,12 @@
                     <settitle>
                         <type>singleton</type>
                         <class>creareseocore/observer</class>
-                        <method>setTitle</method>
+                        <method>setFinalPageTitle</method>
                     </settitle>
                     <setdescription>
                         <type>singleton</type>
                         <class>creareseocore/observer</class>
-                        <method>setDescription</method>
+                        <method>setFinalMetaDescription</method>
                     </setdescription>
                     <forcehptitle>
                         <type>singleton</type>

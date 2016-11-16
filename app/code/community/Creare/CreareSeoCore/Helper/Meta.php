@@ -1,47 +1,49 @@
 <?php
 class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 {
-    public function getDefaultTitle($pagetype)
+    public function getDefaultTitle($pageType)
     {
-        $title = $this->config($pagetype.'_title');
+        $title = $this->config($pageType.'_title');
         return $this->shortcode($title);
     }
 
-    public function getDefaultMetaDescription($pagetype)
+    public function getDefaultMetaDescription($pageType)
     {
-        $metadesc = $this->config($pagetype.'_metadesc');
+        $metadesc = $this->config($pageType.'_metadesc');
         return $this->shortcode($metadesc);
     }
 
     public function getPageType()
     {
-        $registry = new Varien_Object;
+        return Mage::registry("current_pagetype")
+            ? Mage::registry("current_pagetype")
+            : $this->registerPageType();
+    }
 
-        if (Mage::registry('current_product'))
-        {
-            $registry->_code = 'product';
-            $registry->_model = Mage::registry('current_product');
+    public function registerPageType()
+    {
+        $pageType = new Varien_Object;
 
-            return $registry;
+        if (Mage::registry('current_product')) {
+            $pageType->code = 'product';
+            $pageType->model = Mage::registry('current_product');
 
-        } elseif (Mage::registry('current_category'))
-        {
-            $registry->_code = 'category';
-            $registry->_model = Mage::registry('current_category');
+        } elseif (Mage::registry('current_category')) {
+            $pageType->code = 'category';
+            $pageType->model = Mage::registry('current_category');
 
-            return $registry;
-
-        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() === 'cms')
-        {
-            $registry->_code = 'cms';
-            $registry->_model = Mage::getSingleton('cms/page');
-
-            return $registry;
-
-        } else {
-            return false;
+        } elseif (Mage::app()->getFrontController()->getRequest()->getRouteName() === 'cms') {
+            $pageType->code = 'cms';
+            $pageType->model = Mage::getSingleton('cms/page');
 
         }
+
+        if ($pageType->code) {
+            Mage::register("current_pagetype", $pageType);
+            return $pageType;
+        }
+
+        return false;
     }
 
     public function config($path)
@@ -51,39 +53,33 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 
     public function shortcode($string)
     {
-        $pagetype = $this->getPageType();
+        $pageType = $this->getPageType();
 
         preg_match_all("/\[(.*?)\]/", $string, $matches);
 
-            for($i = 0; $i < count($matches[1]); $i++)
-            {
-                $tag = $matches[1][$i];
+        for($i = 0; $i < count($matches[1]); $i++) {
+            $tag = $matches[1][$i];
 
-                if ($tag === "store")
-                {
-                    $string = str_replace($matches[0][$i], Mage::app()->getStore()->getName(), $string);
-                } else {
+            if ($tag === "store") {
+                $string = str_replace($matches[0][$i], Mage::app()->getStore()->getName(), $string);
+            } else {
 
-                switch ($pagetype->_code)
-                {
+                switch ($pageType->code) {
                     case 'product' :
-                        $attribute = $this->productAttribute($pagetype->_model, $tag);
+                        $attribute = $this->productAttribute($pageType->model, $tag);
                     break;
 
-                    case 'category' :
-                        $attribute = $this->attribute($pagetype->_model, $tag);
+                    case 'category' || 'cms' :
+                        $attribute = $this->attribute($pageType->model, $tag);
                     break;
-
-                    case 'cms' :
-                        $attribute = $this->attribute($pagetype->_model, $tag);
-                    break;
-
                 }
-                $string = str_replace($matches[0][$i], $attribute, $string);
-                }
+
+            $string = str_replace($matches[0][$i], $attribute, $string);
+
             }
+        }
 
-            return $string;
+        return $string;
      }
 
     public function productAttribute($product, $attribute)
@@ -111,8 +107,11 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
             }
 
             if ($attribute == "first_category") {
-                $data = $categories->getFirstItem()->getName();
+                $data = $categories->getFirstItem()
+                    ->setPageSize(1)
+                    ->getName();
             }
+
         } else if ($product->getData($attribute)) {
             $data = $product->getResource()
                 ->getAttribute($attribute)
@@ -125,9 +124,14 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 
      public function attribute($model, $attribute)
      {
-         if ($model->getData($attribute))
-         {
-            return $model->getData($attribute);
-         }
+         $value = $model->getData($attribute);
+         return $value ? $value : "";
+     }
+
+     public function cleanString($string)
+     {
+         return htmlspecialchars(html_entity_decode(trim(
+             $string), ENT_QUOTES, 'UTF-8')
+         );
      }
 }
