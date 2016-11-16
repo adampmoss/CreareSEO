@@ -17,10 +17,10 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
             $cats = $product->getCategoryIds();
             if (is_array($cats) && count($cats) > 1) {
                 $cat = Mage::getModel('catalog/category')->load( $cats[0] ); 
-                return $cat->getUrlPath();
+                return Mage::getUrl($cat->getUrlPath());
             } else {
                 $cat = Mage::getModel('catalog/category')->load( $cats ); 
-                return $cat->getUrlPath();
+                return Mage::getUrl($cat->getUrlPath());
             }
         }
 
