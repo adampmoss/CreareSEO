@@ -166,6 +166,20 @@
             <li class="error-msg"><span><?php echo $this->__('Pop-up gallery pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
         <?php endif ?>
 
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamscart')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to the cart page.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('The cart page is currently indexable, set it to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsaccount')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to account pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Account pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
         <?php if ($_helper->exists($_helper->robotstxt())): ?>
 
             <?php if ($_helper->isWriteable($_helper->robotstxt())): ?>

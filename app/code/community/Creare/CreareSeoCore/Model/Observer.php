@@ -45,6 +45,18 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                     $this->setRobots($layout);
                 }
                 break;
+
+            case "checkout_cart_index" :
+                if ($this->helper->getConfig("noindexparamscart")) {
+                    $this->setRobots($layout);
+                }
+                break;
+
+            case "customer_account_login" :
+                if ($this->helper->getConfig("noindexparamsaccount")) {
+                    $this->setRobots($layout);
+                }
+                break;
         }
 
         return $this;
