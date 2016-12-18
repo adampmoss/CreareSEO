@@ -222,6 +222,8 @@
                 <mandatory_alt>0</mandatory_alt>
                 <noindexparamssearch>1</noindexparamssearch>
                 <noindexparamsgallery>1</noindexparamsgallery>
+                <noindexparamscart>1</noindexparamscart>
+                <noindexparamsaccount>1</noindexparamsaccount>
                 <duplicate>0</duplicate>
                 <category_h1>1</category_h1>
                 <forcecanonical>1</forcecanonical>
