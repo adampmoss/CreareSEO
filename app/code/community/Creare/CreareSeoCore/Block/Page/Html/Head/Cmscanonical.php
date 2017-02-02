@@ -5,7 +5,12 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
     public function getCanonicalUrl()
     {
         $cmsPagePath = Mage::getSingleton('cms/page')->getIdentifier();
-        $canonicalUrl = Mage::getBaseUrl().$cmsPagePath;
+        $isHomePage = $this->getUrl('') == $this->getUrl('*/*/*', array('_current'=>true, '_use_rewrite'=>true));
+        if($isHomePage){
+			$canonicalUrl = Mage::getBaseUrl();
+		} else {
+			$canonicalUrl = Mage::getBaseUrl().$cmsPagePath;
+		}        
         $protocol = $this->creareseoHelper()->getConfig('cms_canonical_protocol');
 
         $canonicalUrl = str_replace(
