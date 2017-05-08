@@ -6,6 +6,7 @@
     protected $store;
     protected $sitemapHelper;
     protected $xmlSitemaps = false;
+    protected $_flatEnabled = array();
 
     public function __construct(array $args)
     {
@@ -18,6 +19,36 @@
         $this->buildCategoryTreeHtml($rootCategoryId);
 
         parent::__construct($args);
+    }
+
+    /**
+     * Retrieve Catalog Product Flat Helper object
+     *
+     * @return Mage_Catalog_Helper_Product_Flat
+     */
+    public function getFlatHelper()
+    {
+        return Mage::helper('catalog/category_flat');
+    }
+
+    /**
+     * Retrieve is flat enabled flag
+     * Return always false if magento run admin
+     *
+     * @return bool
+     */
+    public function isEnabledFlat()
+    {
+        // Flat Data can be used only on frontend
+        if (Mage::app()->getStore()->isAdmin()) {
+            return false;
+        }
+        $storeId = $this->getStoreId();
+        if (!isset($this->_flatEnabled[$storeId])) {
+            $flatHelper = $this->getFlatHelper();
+            $this->_flatEnabled[$storeId] = $flatHelper->isAvailable() && $flatHelper->isBuilt($storeId);
+        }
+        return $this->_flatEnabled[$storeId];
     }
 
     /**
