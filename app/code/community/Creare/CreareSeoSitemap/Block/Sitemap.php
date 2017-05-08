@@ -154,15 +154,24 @@
     {
         if ($this->sitemapHelper->getConfig('showcategories')) {
             $categories = Mage::getModel('catalog/category')->getCollection()
-                ->addAttributeToSelect(array('url', 'name'))
+                ->addAttributeToSelect(array('name'))
                 ->addAttributeToFilter('is_active', 1)
                 ->addAttributeToFilter('parent_id', array('eq' => $parentId));
+
+            if(!$this->isEnabledFlat()) {
+                $categories->addAttributeToSelect('url');
+            }
 
             $class = ($isChild) ? "subcategories" : "top-level";
 
             $this->categoryTreeHtml .= '<ul class="' . $class . '">';
             foreach ($categories as $category) {
-                $this->categoryTreeHtml .= '<li><a href="' . $category->getUrl() . '" >' . $category->getName() . "</a>";
+                if($this->isEnabledFlat()) {
+                    $url = Mage::helper('catalog/category')->getCategoryUrl($category);
+                }else {
+                    $url = $category->getUrl();
+                }
+                $this->categoryTreeHtml .= '<li><a href="' . $url . '" >' . $category->getName() . "</a>";
                 $children = $category->getChildren();
                 if ($children) {
                     $this->categoryTreeHtml .= $this->buildCategoryTreeHtml($category->getId(), true);
