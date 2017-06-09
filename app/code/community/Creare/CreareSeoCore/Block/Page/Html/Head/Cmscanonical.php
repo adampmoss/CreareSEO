@@ -19,6 +19,10 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
             $canonicalUrl
         );
 
+        if (Mage::helper('core')->isModuleEnabled('Wyomind_Cmstree')) {
+            $canonicalUrl .= Mage::helper('cmstree')->getUrlSuffix();
+        }
+
         $addSlash = $this->creareseoHelper()->getConfig('cms_canonical_slashes');
 
         if ($addSlash) {
