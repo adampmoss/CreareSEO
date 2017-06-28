@@ -53,6 +53,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 break;
 
             case "customer_account_login" :
+            case "customer_account_create" :
                 if ($this->helper->getConfig("noindexparamsaccount")) {
                     $this->setRobots($layout);
                 }
