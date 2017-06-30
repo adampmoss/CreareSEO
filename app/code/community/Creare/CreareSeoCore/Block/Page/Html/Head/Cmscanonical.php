@@ -5,7 +5,7 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
     public function getCanonicalUrl()
     {
         $cmsPagePath = Mage::getSingleton('cms/page')->getIdentifier();
-        $isHomePage = $this->getUrl('') == $this->getUrl('*/*/*', array('_current'=>true, '_use_rewrite'=>true));
+        $isHomePage = Mage::app()->getFrontController()->getAction()->getFullActionName() == 'cms_index_index';
         if($isHomePage){
 			$canonicalUrl = Mage::getBaseUrl();
 		} else {
