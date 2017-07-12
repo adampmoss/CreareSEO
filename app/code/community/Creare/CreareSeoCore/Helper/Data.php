@@ -57,7 +57,7 @@ class Creare_CreareSeoCore_Helper_Data extends Mage_Core_Helper_Abstract
             } else {
                 return Mage::getBaseUrl().$category->getUrlPath();
             }
-        } else {
+        } else if ($category->getParentId()) {
             $parentCategory = Mage::getModel('catalog/category')->load($category->getParentId());
             return $this->getDiscontinuedCategoryUrl($parentCategory);
         }
