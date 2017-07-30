@@ -35,6 +35,17 @@ class Creare_CreareSeoCore_Block_Page_Html_Head_Cmscanonical extends Mage_Core_B
                 : $canonicalUrl;
         }
 
+        $result = new Varien_Object();
+        $result->setData('canonical', $canonicalUrl);
+        Mage::dispatchEvent('creareseocore_canonical', array(
+            'result'              => $result,
+            'cms_page_identifier' => $cmsPagePath,
+            'protocol'            => $protocol,
+            'add_slash'           => $addSlash,
+            'is_homepage'         => $isHomePage
+        ));
+        $canonicalUrl = $result->getData('canonical');
+
         return $canonicalUrl;
     }
 
