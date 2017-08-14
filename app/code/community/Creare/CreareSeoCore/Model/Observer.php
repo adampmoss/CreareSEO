@@ -60,6 +60,11 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 break;
         }
 
+        if ($this->helper->getConfig("noindexparamsparameterpages")
+            && parse_url($action->getRequest()->getRequestUri(), PHP_URL_QUERY)) {
+            $this->setRobots($layout);
+        }
+
         return $this;
     }
 
