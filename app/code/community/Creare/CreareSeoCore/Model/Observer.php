@@ -185,19 +185,16 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
     
     public function forceProductCanonical(Varien_Event_Observer $observer)
     {
-        if (Mage::getStoreConfig('catalog/seo/product_canonical_tag') && !Mage::getStoreConfig('product_use_categories'))
-        {
-            if ($this->helper->getConfig('forcecanonical')) {
-                // check for normal catalog/product/view controller here
-                if(!stristr("catalog",Mage::app()->getRequest()->getModuleName()) && Mage::app()->getRequest()->getControllerName() != "product") return;
-                // Maintain querystring if one is set (to maintain tracking URLs such as gclid)
-                $querystring = ($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '');
-                $product = $observer->getEvent()->getProduct();
-                $url = Mage::helper('core/url')->escapeUrl($product->getUrlModel()->getUrl($product, array('_ignore_category'=>true)).$querystring);
-                if(Mage::helper('core/url')->getCurrentUrl() != $url){
-                    Mage::app()->getFrontController()->getResponse()->setRedirect($url,301);
-                    Mage::app()->getResponse()->sendResponse();
-                }
+        if (Mage::getStoreConfig('catalog/seo/product_canonical_tag') && $this->helper->getConfig('forcecanonical')) {
+            // check for normal catalog/product/view controller here
+            if(!stristr("catalog",Mage::app()->getRequest()->getModuleName()) && Mage::app()->getRequest()->getControllerName() != "product") return;
+            // Maintain querystring if one is set (to maintain tracking URLs such as gclid)
+            $querystring = ($_SERVER['QUERY_STRING'] ? '?'.$_SERVER['QUERY_STRING'] : '');
+            $product = $observer->getEvent()->getProduct();
+            $url = Mage::helper('core/url')->escapeUrl($product->getUrlModel()->getUrl($product, array('_ignore_category'=>true)).$querystring);
+            if(Mage::helper('core/url')->getCurrentUrl() != $url){
+                Mage::app()->getFrontController()->getResponse()->setRedirect($url,301);
+                Mage::app()->getResponse()->sendResponse();
             }
         }
     }
