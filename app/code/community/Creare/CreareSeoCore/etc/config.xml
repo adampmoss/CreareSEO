@@ -224,6 +224,7 @@
                 <noindexparamsgallery>1</noindexparamsgallery>
                 <noindexparamscart>1</noindexparamscart>
                 <noindexparamsaccount>1</noindexparamsaccount>
+                <noindexparamsparameterpages>0</noindexparamsparameterpages>
                 <duplicate>0</duplicate>
                 <category_h1>1</category_h1>
                 <forcecanonical>1</forcecanonical>
