@@ -88,8 +88,8 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
 
     public function productAttribute($product, $attribute)
     {
+        $data = '';
         if ($attribute == "categories" || $attribute == "first_category") {
-
             $catIds = $product->getCategoryIds();
             $categories = Mage::getResourceModel('catalog/category_collection')
                 ->addAttributeToSelect('name')
@@ -97,7 +97,7 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
                 ->addIsActiveFilter();
 
             if ($categories->count() < 1) {
-                return "";
+                return $data;
             }
 
             if ($attribute == "categories") {
