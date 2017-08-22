@@ -3,6 +3,7 @@ $_helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
 $_i = 1;
 $_totalAverageRating = 0;
+$_numberOfReviewsWithRating = 0;
 ?>
 <!-- Product Schema added by CreareSEO -->
 <script type="application/ld+json">
@@ -70,7 +71,7 @@ $_totalAverageRating = 0;
       "reviewRating": {
         "@type": "Rating",
         "bestRating": "5",
-        "ratingValue": "<?php echo $_averageRating ?>",<?php $_totalAverageRating += $_averageRating ?>
+        "ratingValue": "<?php echo $_averageRating ?>",<?php $_totalAverageRating += $_averageRating; $_numberOfReviewsWithRating++; ?>
         "worstRating": "1"
       }
       <?php endif ?>
@@ -78,12 +79,12 @@ $_totalAverageRating = 0;
         <?php $_i++ ?>
     <?php endforeach ?>
   ]
-<?php $ratingValue = round($_totalAverageRating/$this->getReviewsCount(), 1) ?>
-<?php if ($ratingValue >= 1) : ?>,
+<?php $_ratingValue = round($_totalAverageRating / $_numberOfReviewsWithRating, 1) ?>
+<?php if ($_ratingValue >= 1) : ?>,
 "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "<?php echo $ratingValue ?>",
-    "reviewCount": "<?php echo $this->getReviewsCount() ?>"
+    "ratingValue": "<?php echo $_ratingValue ?>",
+    "reviewCount": "<?php echo $_numberOfReviewsWithRating ?>"
   }
  <?php endif; ?>
   <?php endif ?>
