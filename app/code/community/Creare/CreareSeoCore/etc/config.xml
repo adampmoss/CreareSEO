@@ -87,6 +87,14 @@
                     <model>creareseocore/cleanup::doCleanup</model>
                 </run>
             </creare_creareseocore>
+            <creare_creareseocore_image_sitemap>
+                <schedule>
+                    <cron_expr>42 2 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>creareseocore/imageSitemap::create</model>
+                </run>
+            </creare_creareseocore_image_sitemap>
         </jobs>
     </crontab>
     <frontend>
@@ -279,6 +287,10 @@
             <sitelinksearch>
                 <enabled>1</enabled>
             </sitelinksearch>
+            <imagesitemap>
+                <enabled>0</enabled>
+                <path>sitemaps/images/sitemap.xml</path>
+            </imagesitemap>
         </creareseocore>
     </default>
 </config>
