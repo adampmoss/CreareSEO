@@ -92,7 +92,7 @@
                     <cron_expr>42 2 * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>creareseocore/imageSitemap::create</model>
+                    <model>creareseocore/sitemap_image::create</model>
                 </run>
             </creare_creareseocore_image_sitemap>
         </jobs>

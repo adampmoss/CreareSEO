@@ -1,6 +1,6 @@
 <?php
 
-class Creare_CreareSeoCore_Model_ImageSitemap
+class Creare_CreareSeoCore_Model_Sitemap_Image
 {
 
     public function create()
@@ -10,6 +10,9 @@ class Creare_CreareSeoCore_Model_ImageSitemap
         foreach ($stores as $store) {
             $storeId = $store->getId();
 
+            //to get the right product url we have to set the store
+            $appEmulation           = Mage::getSingleton('core/app_emulation');
+            $initialEnvironmentInfo = $appEmulation->startEnvironmentEmulation($storeId);
             if ( ! Mage::getStoreConfigFlag('creareseocore/imagesitemap/enabled', $storeId)) {
                 continue;
             }
@@ -70,6 +73,7 @@ class Creare_CreareSeoCore_Model_ImageSitemap
             $io->streamClose();
 
             $alreadyUsedFilePaths[] = $filePath;
+            $appEmulation->stopEnvironmentEmulation($initialEnvironmentInfo);
         }
     }
 }
