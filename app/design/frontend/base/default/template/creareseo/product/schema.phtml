@@ -40,8 +40,9 @@ $_numberOfReviewsWithRating = 0;
         "itemCondition": "http://schema.org/NewCondition",
 	    	"availability": "<?php echo ($_associtem->isAvailable() ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock') ?>",
 	    	"itemOffered": {
+				"@type": "Product",
 	    			"sku": "<?php echo $_associtem->getSku() ?>",
-	    			"name": "<?php echo $_associtem->getName() ?>",
+	    			"name": "<?php echo $_associtem->getName() ?>"
 	    	},
 	    	"priceCurrency": "<?php echo $this->getCurrency() ?>",
 	    	"price": "<?php echo $_finalPriceInclTax ?>"
