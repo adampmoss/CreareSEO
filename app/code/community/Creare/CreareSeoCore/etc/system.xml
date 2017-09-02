@@ -300,7 +300,7 @@
                     </comment>
                     <fields>
                         <enabled>
-                            <label><![CDATA[Enable Twitter Cards & OG Tags?]]></label>
+                            <label>Enable Twitter Cards and OG Tags?</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
@@ -327,7 +327,7 @@
                     </fields>
                 </social>
                 <metadata>
-                    <label>Default Page Titles &amp; Meta Descriptions</label>
+                    <label>Default Page Titles and Meta Descriptions</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>80</sort_order>
                     <show_in_default>1</show_in_default>
@@ -503,7 +503,7 @@
                             <source_model>Creare_CreareSeoCore_Model_Source_AnalyticsType</source_model>
                         </type>
                         <enable_demographics translate="label">
-                            <label>Enable Demographics &amp; Interest Reports</label>
+                            <label>Enable Demographics and Interest Reports</label>
                             <frontend_type>select</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>

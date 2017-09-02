@@ -13,6 +13,15 @@
                 </creareseocore>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Creare_CreareSeoCore>
+                    <files>
+                        <default>Creare_CreareSeoCore.csv</default>
+                    </files>
+                </Creare_CreareSeoCore>
+            </modules>
+        </translate>
     </adminhtml>
     <frontend>
         <layout>
