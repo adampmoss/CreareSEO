@@ -91,6 +91,11 @@ class Creare_CreareSeoCore_Helper_Meta extends Mage_Core_Helper_Abstract
         $data = '';
         if ($attribute == "categories" || $attribute == "first_category") {
             $catIds = $product->getCategoryIds();
+
+            if (empty($catIds)) {
+                return $data;
+            }
+
             $categories = Mage::getResourceModel('catalog/category_collection')
                 ->addAttributeToSelect('name')
                 ->addAttributeToFilter('entity_id', $catIds)
