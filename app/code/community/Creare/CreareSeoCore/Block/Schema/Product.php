@@ -48,13 +48,12 @@ class Creare_CreareSeoCore_Block_Schema_Product extends Mage_Catalog_Block_Produ
         $total_rating = 0;
         $rating_count = count($ratings);
 
-
         if ($rating_count) {
             foreach ($ratings as $rating) {
                 $total_rating += $rating->getValue();
             }
 
-            $average_rating = round($total_rating / $rating_count);
+            $average_rating = round($total_rating / $rating_count, 1);
 
             return $average_rating;
         }

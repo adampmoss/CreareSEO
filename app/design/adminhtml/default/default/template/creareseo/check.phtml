@@ -179,6 +179,12 @@
         <?php else: ?>
             <li class="error-msg"><span><?php echo $this->__('Account pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
         <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsparameterpages')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to param pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Param pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
 
         <?php if ($_helper->exists($_helper->robotstxt())): ?>
 

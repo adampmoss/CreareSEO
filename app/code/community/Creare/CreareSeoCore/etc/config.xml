@@ -13,6 +13,15 @@
                 </creareseocore>
             </updates>
         </layout>
+        <translate>
+            <modules>
+                <Creare_CreareSeoCore>
+                    <files>
+                        <default>Creare_CreareSeoCore.csv</default>
+                    </files>
+                </Creare_CreareSeoCore>
+            </modules>
+        </translate>
     </adminhtml>
     <frontend>
         <layout>
@@ -87,6 +96,14 @@
                     <model>creareseocore/cleanup::doCleanup</model>
                 </run>
             </creare_creareseocore>
+            <creare_creareseocore_image_sitemap>
+                <schedule>
+                    <cron_expr>42 2 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>creareseocore/sitemap_image::create</model>
+                </run>
+            </creare_creareseocore_image_sitemap>
         </jobs>
     </crontab>
     <frontend>
@@ -224,6 +241,7 @@
                 <noindexparamsgallery>1</noindexparamsgallery>
                 <noindexparamscart>1</noindexparamscart>
                 <noindexparamsaccount>1</noindexparamsaccount>
+                <noindexparamsparameterpages>0</noindexparamsparameterpages>
                 <duplicate>0</duplicate>
                 <category_h1>1</category_h1>
                 <forcecanonical>1</forcecanonical>
@@ -278,6 +296,10 @@
             <sitelinksearch>
                 <enabled>1</enabled>
             </sitelinksearch>
+            <imagesitemap>
+                <enabled>0</enabled>
+                <path>sitemaps/images/sitemap.xml</path>
+            </imagesitemap>
         </creareseocore>
     </default>
 </config>

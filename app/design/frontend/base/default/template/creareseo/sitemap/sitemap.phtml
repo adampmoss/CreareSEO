@@ -5,7 +5,7 @@
     <ul>
         <?php if ($_cmsPages = $this->getCmsPages()) : ?>
             <?php foreach ($_cmsPages as $_page) : ?>
-                <li><a href="<?php echo $_page->getIdentifier() ?>"><?php echo $_page->getTitle() ?></a></li>
+                <li><a href="<?php echo Mage::getUrl(null, array('_direct' => $_page->getIdentifier())) ?>"><?php echo $_page->getTitle() ?></a></li>
             <?php endforeach ?>
         <?php endif ?>
         <?php foreach ($this->getOtherPages() as $_page) : ?>
