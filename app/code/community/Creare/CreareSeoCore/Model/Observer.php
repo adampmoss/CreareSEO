@@ -23,12 +23,11 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
         $page = $action->getFullActionName();
         $layout = $observer->getEvent()->getLayout();
 
-        switch ($page)
-        {
+        switch ($page) {
             case "catalog_category_view" :
 
                 if ($this->helper->getConfig("noindexparams")
-                && parse_url($action->getRequest()->getRequestUri(), PHP_URL_QUERY)) {
+                    && parse_url($action->getRequest()->getRequestUri(), PHP_URL_QUERY)) {
                     $this->setRobots($layout);
                 }
 
@@ -54,6 +53,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
 
             case "customer_account_login" :
             case "customer_account_create" :
+            case "customer_account_forgotpassword" :
+            case "customer_account_changeforgotten" :
                 if ($this->helper->getConfig("noindexparamsaccount")) {
                     $this->setRobots($layout);
                 }
@@ -116,31 +117,32 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
 
     /* The function to remove the meta keywords tag */
 
-    public function applyTag($observer) {
+    public function applyTag($observer)
+    {
         if ($this->helper->getConfig('metakw')) {
             $body = $observer->getResponse()->getBody();
             if (strpos(strtolower($body), 'meta name="keywords"') !== false) {
                 $body = preg_replace('{(<meta name="keywords"[^>]*?>\n)}i', '', $body);
-                
+
             }
             if (strpos(strtolower($body), 'meta name="description" content=""') !== false) {
                 $body = preg_replace('{(<meta name="description"[^>]*?>\n)}i', '', $body);
             }
-            
+
             $observer->getResponse()->setBody($body);
         }
     }
 
     /* Replaces category name with heading on category pages */
 
-    public function seoHeading($observer) {
-        
+    public function seoHeading($observer)
+    {
+
         $category = $observer->getEvent()->getCategory();
         $category->setOriginalName($category->getName());
 
         if ($this->helper->getConfig("category_h1")
-            && $category->getData('creareseo_heading'))
-        {
+            && $category->getData('creareseo_heading')) {
             $category->setName($category->getCreareseoHeading());
         }
     }
@@ -197,9 +199,9 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 return;
             }
             // Maintain querystring if one is set (to maintain tracking URLs such as gclid)
-            $product    = $observer->getEvent()->getProduct();
-            $query      = Mage::app()->getRequest()->getQuery();
-            $url        = $product->getUrlModel()
+            $product = $observer->getEvent()->getProduct();
+            $query = Mage::app()->getRequest()->getQuery();
+            $url = $product->getUrlModel()
                 ->getUrl($product, array('_ignore_category' => true, '_query' => $query));
             $escapedUrl = Mage::helper('core/url')->escapeUrl($url);
             if (Mage::helper('core/url')->getCurrentUrl() != $escapedUrl) {
@@ -210,7 +212,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
     }
 
     /* Adds the page title and meta description to the contact page's <head> */
-    
+
     public function contactsMetaData(Varien_Event_Observer $observer)
     {
         $route = $observer->getEvent()->getAction()->getRequest()->getRouteName();
@@ -237,7 +239,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
         $actionName = $observer->getEvent()->getAction()->getFullActionName();
 
         if ($actionName !== "cms_index_index"
-        || !$this->helper->getConfig('forcehptitle')) {
+            || !$this->helper->getConfig('forcehptitle')) {
             return false;
         }
 
@@ -254,13 +256,17 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
     }
 
     /* On relevant pages, will override the page title with the fallback if one isn't set in the editor */
-    
+
     public function setTitle($observer)
     {
         $actionName = $observer->getEvent()->getAction()->getFullActionName();
 
         if ($actionName === "cms_index_index"
-        || $actionName === "contacts_index_index") {
+            || $actionName === "contacts_index_index"
+            || $actionName === "customer_account_login"
+            || $actionName === "customer_account_create"
+            || $actionName === "customer_account_forgotpassword"
+            || $actionName === "customer_account_changeforgotten") {
             return false;
         }
 
@@ -275,7 +281,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
     }
 
     /* On relevant pages, will override the meta desc with the fallback if one isn't set in the editor */
-    
+
     public function setDescription($observer)
     {
         $actionName = $observer->getEvent()->getAction()->getFullActionName();
@@ -287,38 +293,38 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
         $layout = $observer->getEvent()->getLayout();
         $description = $this->getDescription();
 
-        if($description) {
+        if ($description) {
             if ($head = $layout->getBlock('head')) {
                 $head->setDescription($description);
             }
         }
     }
-	
-	public function getDefaultTitle()
+
+    public function getDefaultTitle()
     {
         return Mage::getStoreConfig('design/head/default_title');
     }
-    
+
     public function getTitle()
     {
         $pagetype = $this->metaHelper()->getPageType();
-        
+
         if ($pagetype !== false) {
-        
+
             if ($pagetype->_code != "cms") {
                 if (!$pagetype->_model->getMetaTitle()) {
                     $this->_data['title'] = $this->setConfigTitle($pagetype->_code);
                 } else {
                     $this->_data['title'] = $pagetype->_model->getMetaTitle();
                 }
-            } else if($pagetype !== false && $pagetype->_code == "cms"){
+            } else if ($pagetype !== false && $pagetype->_code == "cms") {
                 $this->_data['title'] = $pagetype->_model->getTitle();
             }
 
             if (empty($this->_data['title'])) {
 
                 // check if it's a category or product and default to name.
-                if($pagetype->_code == "category" || $pagetype->_code == "product"){
+                if ($pagetype->_code == "category" || $pagetype->_code == "product") {
                     $this->_data['title'] = $pagetype->_model->getName();
                 } else {
                     $this->_data['title'] = $this->getDefaultTitle();
@@ -327,29 +333,29 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
         } else {
             $this->_data['title'] = $this->getDefaultTitle();
         }
-        
+
         return htmlspecialchars(html_entity_decode(trim($this->_data['title']), ENT_QUOTES, 'UTF-8'));
     }
-    
+
     public function setConfigTitle($pagetype)
     {
-        if ($this->metaHelper()->config($pagetype.'_title_enabled')) {
+        if ($this->metaHelper()->config($pagetype . '_title_enabled')) {
             return $this->metaHelper()->getDefaultTitle($pagetype);
         }
     }
-    
+
     public function setConfigMetaDescription($pagetype)
     {
-        if ($this->metaHelper()->config($pagetype.'_metadesc_enabled')) {
+        if ($this->metaHelper()->config($pagetype . '_metadesc_enabled')) {
             return $this->metaHelper()->getDefaultMetaDescription($pagetype);
         }
     }
-    
-    
+
+
     public function getDescription()
     {
         $pagetype = $this->metaHelper()->getPageType();
-        
+
         if ($pagetype !== false) {
             if (!$pagetype->_model->getMetaDescription()) {
                 $this->_data['description'] = $this->setConfigMetaDescription($pagetype->_code);
@@ -357,18 +363,18 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 $this->_data['description'] = $pagetype->_model->getMetaDescription();
             }
         }
-        
+
         if (empty($this->_data['description'])) {
             $this->_data['description'] = "";
         }
         return $this->_data['description'];
     }
-    
+
     public function metaHelper()
     {
         return Mage::helper('creareseocore/meta');
     }
-    
+
     public function setMandatoryAltTag($observer)
     {
         if ($this->helper->getConfig('mandatory_alt')) {
@@ -382,8 +388,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
     {
         $magentoVersion = Mage::getVersion();
 
-        if (Mage::getStoreConfig('creareseocore/googleanalytics/type') && version_compare($magentoVersion, '1.9.1', '<'))
-        {
+        if (Mage::getStoreConfig('creareseocore/googleanalytics/type') && version_compare($magentoVersion, '1.9.1', '<')) {
             $layout = $observer->getEvent()->getLayout();
             $layout->getUpdate()->addUpdate('<reference name="after_body_start"><remove name="google_analytics" /><block type="creareseocore/googleanalytics_ua" name="universal_analytics" template="creareseo/google/ua.phtml" /></reference>');
             $layout->generateXml();
