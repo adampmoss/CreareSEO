@@ -25,12 +25,10 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
 
         switch ($page) {
             case "catalog_category_view" :
-
                 if ($this->helper->getConfig("noindexparams")
                     && parse_url($action->getRequest()->getRequestUri(), PHP_URL_QUERY)) {
                     $this->setRobots($layout);
                 }
-
                 break;
 
             case "catalogsearch_result_index" :
@@ -266,7 +264,8 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
             || $actionName === "customer_account_login"
             || $actionName === "customer_account_create"
             || $actionName === "customer_account_forgotpassword"
-            || $actionName === "customer_account_changeforgotten") {
+            || $actionName === "customer_account_changeforgotten"
+            || $actionName === "catalogsearch_result_index") {
             return false;
         }
 
