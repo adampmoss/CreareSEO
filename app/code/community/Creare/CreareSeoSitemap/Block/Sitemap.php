@@ -163,10 +163,12 @@
                 $categories->addAttributeToSelect('url');
             }
 
+
             $class = ($isChild) ? "menu vertical nested" : "vertical menu accordion-menu";
             $accordion = ($isChild) ? "" : "data-accordion-menu data-submenu-toggle=\"true\"";
 
             $this->categoryTreeHtml .= '<ul class="' . $class . '" '.$accordion.'>';
+
             foreach ($categories as $category) {
                 if($this->isEnabledFlat()) {
                     $url = Mage::helper('catalog/category')->getCategoryUrl($category);

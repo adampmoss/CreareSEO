@@ -798,6 +798,7 @@
                         </enabled>
                     </fields>
                 </sitelinksearch>
+<<<<<<< HEAD
                 <sitemap>
                     <label>Sitemap</label>
                     <frontend_type>text</frontend_type>
@@ -817,6 +818,8 @@
                         </enabled>
                     </fields>
                 </sitemap>
+=======
+>>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
                 <imagesitemap>
                     <label>Image Sitemap</label>
                     <frontend_type>text</frontend_type>
