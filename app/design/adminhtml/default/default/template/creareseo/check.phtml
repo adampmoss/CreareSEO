@@ -1,0 +1,413 @@
+<?php $_helper = Mage::helper('creareseocore') ?>
+<div class="content-header">
+    <h3><?php echo $this->__('CreareSEO Checklist') ?></h3>
+</div>
+<p><?php echo $this->__('This page contains a simple checklist for our recommended configuration of Magento to maximise SEO performance. This extension checks default scope configuration values only, values specific to a website or store view cannot be checked.') ?></p>
+<div class="content-header">
+    <br/>
+    <h4><?php echo $this->__('CreareSEO Settings') ?></h4>
+
+    <p><?php echo $this->__('This section checks the additional settings made available by CreareSEO that can be configured for better SEO performance.') ?></p>
+</div>
+
+<div class="entry-edit">
+    <ul class="messages">
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/metakw')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('The Meta Keyword Tag removal and Blank Meta Description Tag removal setting is not currently enabled.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('The Meta Keywords Tag and any blank Meta Description Tags have been automatically removed.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/mandatory_alt')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Mandatory "alt" tags on product gallery images are not currently enabled  in the manual product editor.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('You have enabled mandatory "alt" tags on product gallery images in the manual product editor.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/noindexparams')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('The NOINDEX Meta Tag for parameter based category pages is currently disabled.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Parameter-based category pages have "noindex" set in robots') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/category_h1')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Unique Category Headings are disabled. Enabling this setting will allow you to specify a separate category heading.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Unique Category Headings are enabled.') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/forcecanonical')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Canonical Product Redirecting is disabled. Please enable this setting to ensure any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Canonical Product Redirecting is enabled. Any non-canonical URL paths are automatically 301 redirected to the canonical path.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/enablecmscanonical')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('You have not enabled canonical link tags on CMS pages. Please enable
+                this so that all CMS pages have a canonical URL set.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('You have enabled canonical link meta tags for CMS pages.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/social/enabled')): ?>
+            <li class="error-msg"><span><?php echo $this->__('Twitter Cards are currently disabled.') ?> <a
+                        href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <?php if (!Mage::getStoreConfig('creareseocore/social/twittercreator') || !Mage::getStoreConfig('creareseocore/social/twittersite')) : ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Twitter Cards are enabled, but blank fields have been detected.') ?> <a
+                            href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+                </li>
+            <?php else: ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Twitter Cards are enabled for product pages.') ?></span></li>
+            <?php endif ?>
+        <?php endif; ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/metadata/product_metadesc_enabled')) : ?>
+            <?php if (Mage::getStoreConfig('creareseocore/metadata/product_metadesc')) : ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Default Meta Descriptions for products are configured and enabled.') ?></span>
+                </li>
+            <?php else: ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Default Meta Descriptions for products is enabled, but the field is blank.') ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Default Meta Descriptions for product pages are currently not enabled.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/metadata/category_metadesc_enabled')) : ?>
+            <?php if (Mage::getStoreConfig('creareseocore/metadata/category_metadesc')) : ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Default Meta Descriptions for categories are configured and enabled.') ?></span>
+                </li>
+            <?php else: ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Default Meta Descriptions for categories is enabled, but the field is blank.') ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Default Meta Descriptions for category pages are currently not enabled.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php endif ?>
+
+
+        <?php if (Mage::getStoreConfig('creareseocore/metadata/product_title_enabled')) : ?>
+            <?php if (Mage::getStoreConfig('creareseocore/metadata/product_title')) : ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Default Page Titles for products are configured and enabled.') ?></span>
+                </li>
+            <?php else: ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Default Page Titles for products is enabled, but the field is blank.') ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Default Page Titles for product pages are currently not enabled.') ?> <a
+                        href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/metadata/category_title_enabled')) : ?>
+            <?php if (Mage::getStoreConfig('creareseocore/metadata/category_title')) : ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Default Page Titles for categories are configured and enabled.') ?></span>
+                </li>
+            <?php else: ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Default Page Titles for categories is enabled, but the field is blank.') ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg"><span><?php echo $this->__('Default Page Titles for category pages are currently not enabled.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamssearch')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to search result pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Search result pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsgallery')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to pop-up gallery pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Pop-up gallery pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamscart')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to the cart page.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('The cart page is currently indexable, set it to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsaccount')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to account pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Account pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/defaultseo/noindexparamsparameterpages')) : ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('NOINDEX has been added to param pages.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('Param pages are currently indexable, set them to NOINDEX.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go fix it') ?></a></span></li>
+        <?php endif ?>
+
+        <?php if ($_helper->exists($_helper->robotstxt())): ?>
+
+            <?php if ($_helper->isWriteable($_helper->robotstxt())): ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Your %s file exists and is writable.', $_helper->robotstxt()) ?></span>
+                </li>
+            <?php else : ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Your %s file needs to be writable to be editable through the configuration. Set permissions to 664 to use this feature.', $_helper->robotstxt()) ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg"><span><?php echo $this->__('Unable to find %s file', $_helper->robotstxt()) ?></span>
+            </li>
+        <?php endif ?>
+        <?php if ($_helper->exists($_helper->htaccess())): ?>
+
+            <?php if ($_helper->isWriteable($_helper->htaccess())): ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Your %s file exists and is writable.', $_helper->htaccess()) ?></span>
+                </li>
+            <?php else : ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Your %s file needs to be writable to be editable through the configuration. Set permissions to 664 to use this feature.', $_helper->htaccess()) ?></span>
+                </li>
+            <?php endif ?>
+        <?php else : ?>
+            <li class="error-msg"><span><?php echo $this->__('Unable to find %s file', $_helper->htaccess()) ?></span>
+            </li>
+        <?php endif ?>
+
+        <?php if (Mage::getStoreConfig('creareseocore/product_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Product structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled product structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/social_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Social structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled social structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/address_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Organization structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled Organization structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('creareseocore/logo_schema/enabled')) : ?>
+            <li class="success-msg"><span><?php echo $this->__('Logo structured data is enabled.') ?></span></li>
+        <?php else: ?>
+            <li class="error-msg"><span><?php echo $this->__('You have not enabled logo structured data.') ?> <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/creareseocore') ?>"><?php echo $this->__('Go enable it') ?></a></span></li>
+        <?php endif ?>
+    </ul>
+</div>
+
+<div class="content-header">
+    <br/>
+    <h4><?php echo $this->__('Magento Configuration Settings') ?></h4>
+
+    <p><?php echo $this->__('This section checks Magento settings that can be configured for better SEO performance.') ?></p>
+</div>
+
+<div class="entry-edit">
+    <ul class="messages">
+        <?php if (!Mage::getStoreConfig('web/seo/use_rewrites')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('"Use Web Server Rewrites" is currently set to no. Please set to yes within the "Search Engine Optimizations" settings.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/web') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Web Server Rewrites are enabled correctly') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('catalog/seo/category_canonical_tag')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Category Canonical Meta Tags are not enabled. Please set Search Engine Optimizations > Use Canonical Link Meta Tag for Categories to Yes.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Category Canonical Tags have been setup correctly') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('catalog/seo/product_canonical_tag')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Product Canonical Meta Tags are not enabled. Please set Search Engine Optimizations > Use Canonical Link Meta Tag for Products to Yes.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Product Canonical Tags have been configured correctly') ?></span></li>
+        <?php endif; ?>
+        <?php if (Mage::getStoreConfig('catalog/seo/product_use_categories')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Categories are currently used in your Product URL path. Please set Search Engine Optimizations > Use Categories Path for Product URLs to No to ensure products can only be accessed via the canonical URL.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Product URL\'s only exist under the canonical tag') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('catalog/seo/product_url_suffix')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Product pages should have a suitable file type extension such as .php or .html') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Product pages have a suitable page extension set') ?>
+                    (<?php echo Mage::getStoreConfig('catalog/seo/product_url_suffix') ?>)</span></li>
+        <?php endif; ?>
+
+        <?php if (Mage::getStoreConfig('catalog/seo/category_url_suffix')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Category pages should not have the %s filetype extension, your should empty this field.', Mage::getStoreConfig('catalog/seo/category_url_suffix')) ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/catalog') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Category pages are correctly NOT using a file type extension such as .php or .html') ?></em></span>
+            </li>
+        <?php endif; ?>
+
+    </ul>
+</div>
+
+<div class="content-header">
+    <br/>
+    <h4><?php echo $this->__('Default Values') ?></h4>
+
+    <p><?php echo $this->__('This section checks for any default Magento values/text that have not been updated since installing.') ?></p>
+
+</div>
+
+<div class="entry-edit">
+    <ul class="messages">
+        <?php if (Mage::getStoreConfig('design/head/default_description') != "" && Mage::getStoreConfig('creareseocore/defaultseo/metakw')): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Please empty the default Meta Description value within Design > HTML Head.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('The default Meta Description value has been emptied.') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::getStoreConfig('creareseocore/defaultseo/metakw')) : ?>
+            <?php if (Mage::getStoreConfig('design/head/default_keywords') == "Magento, Varien, E-commerce"): ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Please empty the default Meta Keywords value within Design > HTML Head. (message should only appear at all, if Meta Keywords tag has been enabled).') ?>
+                        <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+                </li>
+            <?php else: ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('The default Meta Keywords value has been emptied.') ?></span></li>
+            <?php endif; ?>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('design/head/default_robots') != "INDEX,FOLLOW"): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Search Engine are currently blocked from caching and/or crawling your website. Unless you\’re in the development stage, please "Default Robots" to INDEX, FOLLOW within the HTML Head settings.') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('The site’s Meta Robots Tag allows search engines to both crawl and cache your website.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::helper('creareseocore')->checkDefaultStoreNames()): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('You should change your store name from "Default Store View"') ?> <a
+                        href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_store') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Your store view name has been customized.') ?></span>
+            </li>
+        <?php endif; ?>
+        <?php if (!Mage::helper('creareseocore')->checkDefaultStoreGroupNames()): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Your Store Group Name has not been changed from the default "Main Store".') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_store') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg">
+                <span><?php echo $this->__('Your store group view name has been customized.') ?></span></li>
+        <?php endif; ?>
+        <?php if (!Mage::helper('creareseocore')->checkDefaultWebsiteNames()): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Your Website Name has not been changed from the default "Main Website".') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_store') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Your website name has been customized.') ?></span></li>
+        <?php endif; ?>
+        <?php if (Mage::getStoreConfig('design/header/logo_alt') == "Magento Commerce"): ?>
+            <li class="error-msg">
+                <span><?php echo $this->__('Your logo alt text has not been changed from the default "Magento Commerce".') ?>
+                    <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/system_config/edit/section/design') ?>"><?php echo $this->__('Go fix it') ?></a></span>
+            </li>
+        <?php else: ?>
+            <li class="success-msg"><span><?php echo $this->__('Your logo alt text name has been customized.') ?></span>
+            </li>
+        <?php endif; ?>
+
+        <?php $noRoutePage = Mage::getStoreConfig('web/default/cms_no_route'); ?>
+        <?php $cmsPage = Mage::getModel('cms/page')->load($noRoutePage, 'identifier'); ?>
+        <?php if ($cmsPage->getId()) : ?>
+            <?php if (
+                strpos($cmsPage->getContent(), "Whoops, our bad...") ||
+                strpos($cmsPage->getContent(), "The page you requested was not found, and we have a fine guess why.") ||
+                strpos($cmsPage->getContent(), "If you typed the URL directly, please make sure the spelling is correct.") ||
+                strpos($cmsPage->getContent(), "If you clicked on a link to get here, the link is outdated.") ||
+                strpos($cmsPage->getContent(), "Have no fear, help is near! There are many ways you can get back on track with") ||
+                strpos($cmsPage->getContent(), "Use the search bar at the top of the page to search for your products.") ||
+                strpos($cmsPage->getContent(), "Follow these links to get you back on track")
+
+            ) : ?>
+                <li class="error-msg">
+                    <span><?php echo $this->__('Your 404 error page contains some of the default Magento text, you should update it with new content.') ?>
+                        <a href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/cms_page/edit/page_id/' . $cmsPage->getId()) ?>"><?php echo $this->__('Go change it') ?></a></span>
+                </li>
+            <?php else: ?>
+                <li class="success-msg">
+                    <span><?php echo $this->__('Your 404 page has been customised sufficiently, well done!') ?></span>
+                </li>
+            <?php endif ?>
+        <?php endif ?>
+
+    </ul>
+</div>

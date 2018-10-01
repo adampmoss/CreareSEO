@@ -1,0 +1,16 @@
+<!-- Organization Schema added by CreareSEO -->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/address_locality') ?>",
+    "postalCode": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/postcode') ?>",
+    "streetAddress": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/street_address') ?>",
+    "addressRegion": "<?php echo Mage::getStoreConfig('creareseocore/address_schema/region') ?>"
+  },
+  "name": "<?php echo Mage::getStoreConfig('general/store_information/name') ?>",
+  "telephone": "<?php echo Mage::getStoreConfig('general/store_information/phone') ?>"
+}
+</script>

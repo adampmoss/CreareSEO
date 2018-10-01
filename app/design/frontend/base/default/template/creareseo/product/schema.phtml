@@ -1,0 +1,93 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_i = 1;
+$_totalAverageRating = 0;
+$_numberOfReviewsWithRating = 0;
+?>
+<!-- Product Schema added by CreareSEO -->
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "description": "<?php echo $this->cleanString($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>",
+  "name": "<?php echo $this->cleanString($_product->getName()) ?>",
+  "image": "<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>",
+  "sku": "<?php echo $this->cleanString($_product->getSku()) ?>",
+  "url": "<?php echo $_product->getProductUrl() ?>",
+  <?php if ($_product->getData('manufacturer')) : ?>
+  "brand": "<?php echo $this->cleanString($_product->getAttributeText('manufacturer')) ?>",
+  <?php endif ?>
+  "offers": [
+    <?php if($_product->getTypeId() === 'bundle') : ?>
+    {
+    	<?php $_bundleObject = Mage::getModel('bundle/product_price') ?>
+	    "@type": "AggregateOffer",
+	    "lowPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'min',1) ?>",
+	    "highPrice": "<?php echo $_bundleObject->getTotalPrices($_product,'max',1) ?>",
+      "itemCondition": "http://schema.org/NewCondition",
+	    "availability": "<?php echo ($_product->isAvailable() ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock') ?>",
+    	"priceCurrency": "<?php echo $this->getCurrency() ?>"
+  	}
+    <?php elseif($_product->getTypeId() === 'grouped') :  ?>
+    	<?php $_associatedProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product); ?>
+    	<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; $notfirst=0;?>
+	    <?php foreach ($_associatedProducts as $_associtem): ?>
+	    <?php if($notfirst){ echo " ," ;} ?> <?php $notfirst=1; ?>
+		{
+	    	<?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_associtem, $_associtem->getFinalPrice(), true) ?>
+	    	"@type": "Offer",
+        "itemCondition": "http://schema.org/NewCondition",
+	    	"availability": "<?php echo ($_associtem->isAvailable() ? 'http://schema.org/InStock' : 'http://schema.org/OutOfStock') ?>",
+	    	"itemOffered": {
+				"@type": "Product",
+	    			"sku": "<?php echo $_associtem->getSku() ?>",
+	    			"name": "<?php echo $_associtem->getName() ?>"
+	    	},
+	    	"priceCurrency": "<?php echo $this->getCurrency() ?>",
+	    	"price": "<?php echo $_finalPriceInclTax ?>"
+		}
+	    <?php endforeach; ?>
+
+    <?php else: ?>
+    {
+    	"@type": "Offer",
+        "itemCondition": "http://schema.org/NewCondition",
+    	 "price": "<?php echo number_format($this->helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true), 2, '.', '') ?>",
+    	"availability": "<?php echo ($_product->isAvailable() ? 'InStock' : 'OutOfStock') ?>",
+    	"priceCurrency": "<?php echo $this->getCurrency() ?>"
+
+    }
+    <?php endif ?>
+   ]
+  <?php if ($this->getReviewsCount()) : ?>,
+  "review": [
+    <?php foreach ($this->_productReviews as $review) : ?>
+    {
+      "@type": "Review",
+      "author": "<?php echo $review->getNickname() ?>",
+      "datePublished": "<?php echo date('Y-d-m', strtotime($review->getCreatedAt())) ?>",
+      "description": "<?php echo $this->cleanString($review->getDetail()) ?>",
+      "name": "<?php echo $review->getTitle() ?>"<?php $_averageRating = $this->getAverageRating($review->getReviewId()) ?><?php if ($_averageRating >= 1) : ?>,
+      "reviewRating": {
+        "@type": "Rating",
+        "bestRating": "5",
+        "ratingValue": "<?php echo $_averageRating ?>",<?php $_totalAverageRating += $_averageRating; $_numberOfReviewsWithRating++; ?>
+        "worstRating": "1"
+      }
+      <?php endif ?>
+    }<?php echo ($_i != $this->getReviewsCount() ? ',' : '') ?>
+        <?php $_i++ ?>
+    <?php endforeach ?>
+  ]
+<?php $_ratingValue = round($_totalAverageRating / $_numberOfReviewsWithRating, 1) ?>
+<?php if ($_ratingValue >= 1) : ?>,
+"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "<?php echo $_ratingValue ?>",
+    "reviewCount": "<?php echo $_numberOfReviewsWithRating ?>"
+  }
+ <?php endif; ?>
+  <?php endif ?>
+}
+</script>

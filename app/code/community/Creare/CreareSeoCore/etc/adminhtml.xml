@@ -1,0 +1,90 @@
+<config>
+    <menu>
+        <system translate="title" module="adminhtml">
+            <title>System</title>
+            <sort_order>90</sort_order>
+            <!-- action>adminhtml/system</action -->
+            <children>
+                <creareseo>
+                    <title>CreareSEO</title>
+                    <sort_order>25</sort_order>
+                    <children>
+                        <defaultseo>
+                            <title>CreareSEO Checklist</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/creareseo/check</action>
+                        </defaultseo>
+                        <sitemap>
+                            <title>HTML Sitemap Settings</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/system_config/edit/section/creareseositemap/</action>
+                        </sitemap>
+                        <coresettings>
+                            <title>General Settings</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/system_config/edit/section/creareseocore/</action>
+                        </coresettings>
+                        <htaccess>
+                            <title>.htaccess Editor</title>
+                            <sort_order>40</sort_order>
+                            <action>adminhtml/system_config/edit/section/crearehtaccess/</action>
+                        </htaccess>
+                        <robots>
+                            <title>robots.txt Editor</title>
+                            <sort_order>50</sort_order>
+                            <action>adminhtml/system_config/edit/section/crearerobots/</action>
+                        </robots>
+                    </children>
+                </creareseo>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <creareseo>
+                                <title>CreareSEO</title>
+                                <children>
+                                    <defaultseo>
+                                        <title>CreareSEO - Default SEO Check</title>
+                                    </defaultseo>
+                                    <sitemap>
+                                        <title>HTML Sitemap Settings</title>
+                                    </sitemap>
+                                    <coresettings>
+                                        <title>General Settings</title>
+                                    </coresettings>
+                                    <htaccess>
+                                        <title>.htaccess Editor</title>
+                                    </htaccess>
+                                    <robots>
+                                        <title>robots.txt Editor</title>
+                                    </robots>
+                                </children>
+                            </creareseo>
+                            <config>
+                                <children>
+                                    <creareseocore>
+                                        <title>CreareSEO Core</title>
+                                    </creareseocore>
+                                    <crearerobots>
+                                        <title>robots.txt</title>
+                                    </crearerobots>
+                                    <crearehtaccess>
+                                        <title>.htaccess</title>
+                                    </crearehtaccess>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

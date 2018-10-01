@@ -1,0 +1,97 @@
+<layout>
+    <default>
+        <reference name="breadcrumbs">
+            <action method="setTemplate" ifconfig="creareseocore/breadcrumbs_schema/enabled">
+                <template>creareseo/page/html/breadcrumbs.phtml</template>
+            </action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="core/template" name="creareseo.gtm" template="creareseo/google/googletagmanager.phtml" />
+            <block type="creareseocore/schema_social" name="creareseo.socialschema">
+                <action method="setTemplate" ifconfig="creareseocore/social_schema/social_profiles">
+                    <template>creareseo/social/schema.phtml</template>
+                </action>
+            </block>
+            <block type="core/template" name="creareseo.logoschema">
+                <action method="setTemplate" ifconfig="creareseocore/logo_schema/enabled">
+                    <template>creareseo/logo/schema.phtml</template>
+                </action>
+            </block>
+            <block type="core/template" name="creareseo.business">
+                <action method="setTemplate" ifconfig="creareseocore/address_schema/enabled">
+                    <template>creareseo/business/schema.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </default>
+    <cms_index_index>
+            <reference name="after_body_start">
+                <block type="core/template" name="creareseo.sitelinkssearch">
+                    <action method="setTemplate" ifconfig="creareseocore/sitelinksearch/enabled">
+                        <template>creareseo/google/sitelinkssearch.phtml</template>
+                    </action>
+                </block>
+            </reference>
+    </cms_index_index>
+    <catalog_category_view>
+        <reference name="head">
+            <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/category">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>category</type></action>
+            </block>
+        </reference>
+    </catalog_category_view>
+
+    <catalog_category_layered>
+        <reference name="head">
+            <block type="core/template" name="creareseo.pagination" template="creareseo/category/pagination.phtml" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalog_product_view>
+            <reference name="head">
+                <block type="creareseocore/schema_product" name="creareseo.social">
+                    <action method="setTemplate" ifconfig="creareseocore/social/enabled">
+                        <template>creareseo/social/social.phtml</template>
+                    </action>
+                </block>			
+            </reference>
+            <reference name="after_body_start">
+                <block type="creareseocore/schema_product" name="creareseo.productschema">
+                    <action method="setTemplate" ifconfig="creareseocore/product_schema/enabled">
+                        <template>creareseo/product/schema.phtml</template>
+                    </action>
+                </block>
+            </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/product">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>product</type></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    <cms_page>
+        <reference name="head">
+            <block type="creareseocore/page_html_head_cmscanonical" name="creareseo.cmscanonical">
+                <action method="setTemplate" ifconfig="creareseocore/defaultseo/enablecmscanonical">
+                    <template>creareseo/page/html/head/cmscanonical.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="creareseo.contentgroup">
+                <action method="setTemplate" ifconfig="creareseocore/google_content_grouping/cms">
+                    <template>creareseo/google/contentgrouping.phtml</template>
+                </action>
+                <action method="setType"><type>cms</type></action>
+            </block>
+        </reference>
+    </cms_page>
+</layout>

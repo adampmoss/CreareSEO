@@ -1,0 +1,44 @@
+<?php if($crumbs && is_array($crumbs)): ?>
+    <div class="breadcrumbs">
+        <ul>
+            <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+                <li class="<?php echo $_crumbName ?>">
+                    <?php if($_crumbInfo['link']): ?>
+                        <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></a>
+                    <?php elseif($_crumbInfo['last']): ?>
+                        <strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+                    <?php else: ?>
+                        <?php echo $this->escapeHtml($_crumbInfo['label']) ?>
+                    <?php endif; ?>
+                    <?php if(!$_crumbInfo['last']): ?>
+                        <span>/ </span>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <!-- Breadcrumb Schema added by CreareSEO -->
+    <?php $crumbCount = count($crumbs) ?>
+    <?php $i = 1; ?>
+    <script type="application/ld+json">
+    {
+     "@context": "http://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+     <?php foreach($crumbs as $_crumbName => $_crumbInfo): ?>
+      {
+       "@type": "ListItem",
+       "position": <?php echo $i ?>,
+       "item":
+       {
+        "@id": "<?php echo $_crumbInfo['link'] ?>",
+        "name": "<?php echo $this->escapeHtml($_crumbInfo['label']) ?>"
+        }
+      }<?php echo ($i != $crumbCount ? ',' : '') ?>
+      <?php $i++ ?>
+    <?php endforeach ?>
+     ]
+    }
+    </script>
+<?php endif; ?>

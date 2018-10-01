@@ -1,0 +1,14 @@
+<?php if (!empty($this->_socialProfiles) && $this->isEnabled()) : ?>
+<?php $_i = 1 ?>
+<!-- Social Schema added by CreareSEO -->
+ <script type="application/ld+json">
+{ "@context" : "http://schema.org",
+  "@type" : "Organization",
+  "name" : "<?php echo Mage::getStoreConfig('general/store_information/name') ?>",
+  "url" : "<?php echo Mage::getBaseUrl() ?>",
+  "sameAs" : [ <?php foreach ($this->_socialProfiles as $profile) : ?>
+  "<?php echo trim($profile) ?>"<?php echo ($_i != $this->socialProfileCount() ? ',' : '') ?><?php $_i++ ?>
+  <?php endforeach ?>]
+}
+</script>
+<?php endif ?>

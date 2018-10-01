@@ -1,0 +1,106 @@
+<config>
+  <tabs>
+    <crearegroup translate="label" module="creareseositemap">
+      <label>Creare SEO</label>
+      <sort_order>100</sort_order>
+    </crearegroup>
+  </tabs>
+  <sections>
+    <creareseositemap translate="label" module="creareseositemap">
+      <label>HTML Sitemap Page</label>
+      <tab>crearegroup</tab>
+      <sort_order>1000</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <sitemap translate="label" module="creareseositemap">
+          <label>HTML Sitemap</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1000</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>
+              <![CDATA[
+                <p>The Creare SEO extension automatically creates an HTML site map page which lists your key category, CMS and customer account pages.</p>
+                <p>The sitemap is available at domain.co.uk/sitemap.</p>
+              ]]>
+          </comment>
+          <fields>
+            <showcms translate="label">
+              <label>Show CMS Pages</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </showcms>
+            <showcategories translate="label">
+              <label>Show Categories</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </showcategories>
+            <showxml translate="label">
+              <label>Show XML Sitemap</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>Must have an XML sitemap created through Magento</comment>
+            </showxml>
+            <showaccount translate="label">
+              <label>Show Account Pages</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </showaccount>
+            <showcontact translate="label">
+              <label>Show Default Contact Link</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </showcontact>
+            <description translate="label">
+              <label>Sitemap Page Description</label>
+              <frontend_type>textarea</frontend_type>
+              <sort_order>90</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </description>
+            <meta_description translate="label">
+              <label>Sitemap Page Meta Description</label>
+              <frontend_type>textarea</frontend_type>
+              <sort_order>100</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </meta_description>
+            <page_title translate="label">
+              <label>Sitemap Page Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>110</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </page_title>
+          </fields>
+        </sitemap>
+      </groups>
+    </creareseositemap>
+  </sections>
+</config>

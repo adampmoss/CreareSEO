@@ -1,0 +1,11 @@
+<layout>
+   <creareseositemap_index_index>
+        <reference name="root">
+			<action method="unsetChild"><alias>breadcrumbs</alias></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+       <reference name="content">
+           <block type="creareseositemap/sitemap" name="creareseositemap" template="creareseo/sitemap/sitemap.phtml"/>
+       </reference>
+    </creareseositemap_index_index>
+</layout>   

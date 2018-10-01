@@ -1,0 +1,31 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+?>
+<?php if($_product) : ?>
+
+<!-- CreareSEO Twitter Product Cards -->
+<meta name="twitter:card" content="product" />
+<meta name="twitter:site" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittersite') ?>" />
+<meta name="twitter:creator" content="@<?php echo Mage::getStoreConfig('creareseocore/social/twittercreator') ?>" />
+<meta name="twitter:title" content="<?php echo $this->cleanString($_product->getName()) ?>" />
+<meta name="twitter:description" content="<?php echo $this->cleanString($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
+<meta name="twitter:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
+<meta name="twitter:data1" content="<?php echo $this->getCurrencySymbol().Mage::helper('tax')->getPrice($_product, Mage::helper('creareseocore')->getProductStartingprice($_product), true); ?>" />
+<meta name="twitter:label1" content="PRICE" />
+<meta name="twitter:data2" content="<?php echo Mage::getStoreConfig('shipping/origin/country_id') ?>" />
+<meta name="twitter:label2" content="LOCATION" />
+
+<!-- CreareSEO Open Graph for Facebook / Other Networks -->
+<meta property="og:site_name" content="<?php echo Mage::getStoreConfig('general/store_information/name') ?>" />
+<meta property="og:type" content="product.item" />
+<meta property="og:url" content="<?php echo $_product->getProductUrl() ?>" /> 
+<meta property="og:title" content="<?php echo $this->cleanString($_product->getName()) ?>" />
+<meta property="og:description" content="<?php echo $this->cleanString($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
+<meta property="og:image" content="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_product->getImage()) ?>" />
+<meta property="product:retailer_item_id" content="<?php echo $_product->getSku() ?>" /> 
+<meta property="product:price:amount" content="<?php echo number_format(Mage::helper('creareseocore')->getProductStartingprice($_product),2) ?>" />
+<meta property="product:price:currency" content="<?php echo $this->getCurrency() ?>" />
+<meta property="product:availability" content="<?php echo ($_product->isAvailable() ? 'in stock' : 'out of stock') ?>" />
+<meta property="product:condition" content="new" />
+<?php endif; ?>

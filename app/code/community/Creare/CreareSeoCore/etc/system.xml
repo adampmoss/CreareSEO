@@ -1,0 +1,991 @@
+<config>
+    <tabs>
+        <crearegroup translate="label" module="creareseocore">
+            <label>Creare SEO</label>
+            <sort_order>100</sort_order>
+        </crearegroup>
+    </tabs>
+    <sections>
+        <creareseocore translate="label" module="creareseocore">
+            <label>General Settings</label>
+            <tab>crearegroup</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <info>
+                    <frontend_model>creareseocore/adminhtml_system_config_fieldset_info</frontend_model>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </info>
+                <defaultseo translate="label" module="creareseocore">
+                    <label>SEO Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <metakw translate="label">
+                            <label>Disable Meta Keywords Tag and Empty Meta Description Tags?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </metakw>
+                        <mandatory_alt translate="label">
+                            <label>Make "alt" tags mandatory on product gallery images?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mandatory_alt>
+                        <noindexparams translate="label">
+                            <label>Apply NOINDEX to filtered category pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparams>
+                        <noindexparamssearch translate="label">
+                            <label>Apply NOINDEX to Search Results</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparamssearch>
+                        <noindexparamsgallery translate="label">
+                            <label>Apply NOINDEX to Pop-up Gallery</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparamsgallery>
+                        <noindexparamscart translate="label">
+                            <label>Apply NOINDEX to Cart Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparamscart>
+                        <noindexparamsaccount translate="label">
+                            <label>Apply NOINDEX to Account Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparamsaccount>
+                        <noindexparamsparameterpages translate="label">
+                            <label>Apply NOINDEX to Parameter Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noindexparamsparameterpages>
+                        <duplicate translate="label">
+                            <label>Disable Duplicate Button in Product Edit?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </duplicate>
+                        <category_h1 translate="label">
+                            <label>Enable Unique Category Heading field</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_h1>
+                        <forcecanonical translate="label">
+                            <label>Enable Canonical Product Redirecting</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forcecanonical>
+                        <forcerel translate="label">
+                            <label>Enable Category rel=next/prev Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forcerel>
+                        <forcehptitle translate="label">
+                            <label>Force Homepage Title (disregard prefix/suffix)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forcehptitle>
+                        <enablecmscanonical>
+                            <label>Enable CMS Canonical Meta Tags</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablecmscanonical>
+                        <cms_canonical_protocol>
+                            <label>Use standard or secure URLs in CMS canonical tags?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>creareseocore/source_protocols</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enablecmscanonical>1</enablecmscanonical>
+                            </depends>
+                        </cms_canonical_protocol>
+                        <cms_canonical_slashes>
+                            <label>Add slashes to end of canonical CMS URL?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enablecmscanonical>1</enablecmscanonical>
+                            </depends>
+                        </cms_canonical_slashes>
+                    </fields>
+                </defaultseo>
+                <!-- Below config is depreciated in 1.2 as the observer
+                    script causes need to reindex on every product save.
+                <validate>
+                    <label>Product Validation</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+            <![CDATA[
+			<p>It is recommended that product names and descriptions are unique throughout your store.</p>
+			]]>
+                    </comment>
+                    <fields>
+                        <name translate="label">
+                            <label>Force unique product names</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </name>
+                        <description translate="label">
+                            <label>Force unique product descriptions</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                        <short_description translate="label">
+                            <label>Force unique product short description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </short_description>
+                    </fields>
+                </validate> -->
+                <cleanup translate="label" module="creareseocore">
+                    <label>Performance Cleanup</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+            <![CDATA[
+			<p>This performance cleanup script will automatically remove any files / database entries that are not required by your ecommerce store but which build up over time and cause your website to lose performance.</p>
+			<p>Recommended settings are to enable 'Clean Log entries in DB' and 'Auto enable cache' (to enable Magento cache if accidentally left disabled).</p>
+                        <p>These settings work on a CRON for more information please visit <a href="http://www.creare.co.uk/setting-up-a-cron-job-for-magento" target="_blank">setting up a cron job for Magento</a>.</p>
+			]]>
+                    </comment>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <logdb translate="label">
+                            <label>Clean Log entries in DB?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logdb>
+                        <cachefolder translate="label">
+                            <label>Clean Cache &amp; Session Folder?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cachefolder>
+                        <enablecache translate="label">
+                            <label>Auto enable cache?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablecache>
+                        <problems translate="label">
+                            <label>Email any problems to?</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </problems>
+                        <success translate="label">
+                            <label>Last Successful Run:</label>
+                            <frontend_type>text</frontend_type>
+                            <read_only>1</read_only>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </success>
+                    </fields>
+                </cleanup>
+                <social>
+                    <label>Twitter Cards and Open Graph</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+				<![CDATA[
+				<p>Enable or disable twitter product cards and open graph schema. Location will be taken from Shipping Settings > Origin.</p>
+				]]>
+                    </comment>
+                    <fields>
+                        <enabled>
+                            <label>Enable Twitter Cards and OG Tags?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <twittersite>
+                            <label>Twitter Site @</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twittersite>
+                        <twittercreator>
+                            <label>Twitter Creator @</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twittercreator>
+                    </fields>
+                </social>
+                <metadata>
+                    <label>Default Page Titles and Meta Descriptions</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <p>Enabling the 'Default Page Titles and Meta Descriptions’ feature will dynamically create unique Page Titles and Meta Descriptions for your Category and Product pages. If you subsequently define Page Titles or Meta Descriptions </p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <product_title_enabled>
+                            <label>Enable Default Product Title?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_title_enabled>
+                        <product_title>
+                            <label>Default Product Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><product_title_enabled>1</product_title_enabled></depends>
+                            <comment><![CDATA[
+                                <small>[name] = Product Name<br />
+                                [store] = Store Name<br />
+                                [attribute_code] = Attribute Value<br />
+                                [first_category] = First Category Found<br />
+                                [categories] = Outputs all categories comma-separated<br />
+                                <strong>For example: [name] - [store].</strong></small>
+                        ]]></comment>
+                        </product_title>
+                        <product_metadesc_enabled>
+                            <label>Enable Default Product Meta Description?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_metadesc_enabled>
+                        <product_metadesc>
+                            <label>Default Product Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><product_metadesc_enabled>1</product_metadesc_enabled></depends>
+                            <comment><![CDATA[
+                                <small>[name] = Product Name<br />
+                                [store] = Store Name<br />
+                                [attribute_code] = Attribute Value<br />
+                                [first_category] = First Category Found<br />
+                                [categories] = Outputs all categories comma-separated<br />
+                                <strong>For example: Buy [name] online from our [store]. See our other [brand] products.</strong></small>
+                        ]]></comment>
+                        </product_metadesc>
+                        <category_title_enabled>
+                            <label>Enable Default Category Title?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_title_enabled>
+                        <category_title>
+                            <label>Default Category Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><category_title_enabled>1</category_title_enabled></depends>
+                            <comment><![CDATA[
+                                <small>[name] = Category Name<br />
+                                [original_name] = Original Category Name (if category heading rewrites is enabled)<br />
+                                [store] = Store Name<br />
+                                <strong>For example: [name] - [store].</strong></small>
+                        ]]></comment>
+                        </category_title>
+                        <category_metadesc_enabled>
+                            <label>Enable Default Category Meta Description?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_metadesc_enabled>
+                        <category_metadesc>
+                            <label>Default Category Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><category_metadesc_enabled>1</category_metadesc_enabled></depends>
+                            <comment><![CDATA[
+                                <small>[name] = Category Name<br />
+                                [original_name] = Original Category Name (if category heading rewrites is enabled)<br />
+                                [store] = Store Name<br />
+                                <strong>For example: Browse our [name] products at [store].</strong></small>
+                        ]]></comment>
+                        </category_metadesc>
+                        <cms_metadesc_enabled>
+                            <label>Enable Default CMS Meta Description?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cms_metadesc_enabled>
+                        <cms_metadesc>
+                            <label>Default CMS Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><cms_metadesc_enabled>1</cms_metadesc_enabled></depends>
+                            <comment><![CDATA[
+                                <small>[title] = CMS Page Name<br />
+                                [store] = Store Name</small><br />
+                                <strong>For example: [title] - [store].</strong></small>
+                        ]]></comment>
+                        </cms_metadesc>
+                        <contacts_title>
+                            <label>Default Contacts Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contacts_title>
+                        <contacts_metadesc>
+                            <label>Default Contacts Meta Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contacts_metadesc>
+                    </fields>
+                </metadata>
+                <googleanalytics>
+                    <label>Google Analytics</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+            <![CDATA[
+            <p>* Ensure that you have entered your Account Number in the <strong>Google API</strong> tab. This functionality will only work on Magento version earlier than 1.9.1.</p>
+            ]]>
+                    </comment>
+                    <fields>
+                        <type translate="label">
+                            <label>Google Analytics Type</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>Creare_CreareSeoCore_Model_Source_AnalyticsType</source_model>
+                        </type>
+                        <enable_demographics translate="label">
+                            <label>Enable Demographics and Interest Reports</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><type>1</type></depends>
+                        </enable_demographics>
+                        <additional_tracking_code translate="label">
+                            <label>Additional Tracking Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><type>1</type></depends>
+                            <comment><![CDATA[Use this area to add extra features to the Universal Analytics tracking code. This will appear on every frontend page where the existing code is currently being pulled out. <a target="_blank" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/">More information about Universal Analytics</a>]]></comment>
+                        </additional_tracking_code>
+                    </fields>
+                </googleanalytics>
+                <address_schema>
+                    <label>Organization Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+            <p>Add your business details below to include <a href="http://schema.org/Organization" target="_blank">Organization Schema</a> on your website.</p>
+            ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Organization Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <street_address translate="label">
+                            <label>Street Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled></depends>
+                        </street_address>
+                        <address_locality translate="label">
+                            <label>Address Locality</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled></depends>
+                        </address_locality>
+                        <region translate="label">
+                            <label>Region</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled></depends>
+                        </region>
+                        <postcode translate="label">
+                            <label>Postal Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><enabled>1</enabled></depends>
+                        </postcode>
+                    </fields>
+                </address_schema>
+                <product_schema>
+                    <label>Product Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <p>Enable product schema to include structured data on your website. For more information see here: <a href="http://schema.org/Product" target="_blank">http://schema.org/Product</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Product Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </product_schema>
+                <social_schema>
+                    <label>Social Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <p>Enable social schema to include structured data on your website. For more information see here: <a href="https://developers.google.com/structured-data/customize/social-profiles" target="_blank">https://developers.google.com/structured-data/customize/social-profiles</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Social Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <social_profiles translate="label">
+                            <label>Social Profiles</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                            <comment>Add the full URLs to your social profiles (e.g. http://twitter.com/magentofox) - ONE per line!</comment>
+                        </social_profiles>
+                    </fields>
+                </social_schema>
+                <logo_schema>
+                    <label>Logo Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>123</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Logo Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </logo_schema>
+                <breadcrumbs_schema>
+                    <label>Breadcrumbs Schema</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>125</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>If you enable breadcrumb schema, your theme's breadcrumbs file will be replaced by this file: <strong>app/design/frontend/base/default/template/creareseo/page/html/breadcrumbs.phtml</strong>. This means you may notice style changes when this is enabled if you have altered the code in your theme's breadcrumbs file.</p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Breadcrumb Schema?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </breadcrumbs_schema>
+                <google_tag_manager>
+                    <label>Google Tag Manager</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>Find out more about Google Tag Manager here: <a href="https://support.google.com/tagmanager/answer/6102821?hl=en" target="_blank">https://support.google.com/tagmanager/answer/6102821?hl=en</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Google Tag Manager?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <gtm_id translate="label">
+                            <label>GTM ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. GTM-XXXXXX]]></comment>
+                        </gtm_id>
+                    </fields>
+                </google_tag_manager>
+                <google_content_grouping>
+                    <label>Google Content Grouping (for Analytics)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>Google content grouping allows you to group certain types of content found on your site so that you can use this information in Google Analytics. For example you could find out how many of your total visits where to product pages, category pages or CMS pages. For more information visit this link: <a href="https://support.google.com/analytics/answer/2853423?hl=en" target="_blank">https://support.google.com/analytics/answer/2853423?hl=en</a></p>
+                            <p>Within this extension we have allowed you to add tracking code for products, categories and CMS pages. To set up your tracking codes go to your Analytics dashboard and go to <strong>Admin > Content Grouping > + New Content Grouping</strong>. Give it a name (such as 'Product Page'), and then from the options choose 'Enable Tracking Code', then copy and past the Universal tracking code into the Product field below.</p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <product translate="label">
+                            <label>Product Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'Product Page'); ]]></comment>
+                        </product>
+                        <category translate="label">
+                            <label>Category Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'Category Page'); ]]></comment>
+                        </category>
+                        <cms translate="label">
+                            <label>CMS Page Tracking Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[E.g. ga('set', 'contentGroup1', 'CMS Page'); ]]></comment>
+                        </cms>
+                    </fields>
+                </google_content_grouping>
+                <sitelinksearch>
+                    <label>Sitelink Search</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>If you enable Sitelink Search you will provide Google with structured data about the search form on your website. For more information go here: <a href="https://developers.google.com/structured-data/slsb-overview" target="_blank">https://developers.google.com/structured-data/slsb-overview</a></p>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Sitelink Search?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </sitelinksearch>
+                <sitemap>
+                    <label>Sitemap</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Sitemap</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </sitemap>
+                <imagesitemap>
+                    <label>Image Sitemap</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                            <p>If you enable Image Sitemap you will provide Google with structured data about your images and increase the chance to be listed in Google image search.
+                        ]]>
+                    </comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Image Sitemap</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <path translate="label">
+                            <label>Image Sitemap Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment>Where the image sitemap should be stored. The path is relative to the media folder. Please make sure that the folder exists and is writeable.</comment>
+                        </path>
+                    </fields>
+                </imagesitemap>
+            </groups>
+        </creareseocore>
+        <crearehtaccess>
+            <label>.htaccess</label>
+            <tab>crearegroup</tab>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+            <files>
+                    <label>.htaccess Editor</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <comment><![CDATA[<strong>IMPORTANT!</strong><p>To write to your .htaccess, you must set permissions to at least 664. 
+Overwriting your .htaccess can cause problems with your website, so only alter if you know what you're doing.</p>]]></comment>
+                    <fields>
+                        <htaccess translate="label">
+                            <label>.htaccess</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                             <comment> <![CDATA[Download our latest optimised <a href="https://github.com/Creare/magento-htaccess/blob/master/.htaccess" target="_blank">.htaccess file</a>]]></comment>
+                        </htaccess>
+                    </fields>
+                </files>
+            </groups>
+        </crearehtaccess>
+        <crearerobots>
+            <label>robots.txt</label>
+            <tab>crearegroup</tab>
+            <sort_order>3000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <groups>
+                <files>
+                    <label>robots.txt Editor</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <comment><![CDATA[<strong>IMPORTANT!</strong><p>To write to your robots.txt, you must set permissions to at least 664.</p>]]></comment>
+                    <fields>
+                        <robots_location translate="label">
+                            <label>Location of robots.txt</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <comment>Can be changed on a per-website basis if your robots.txt is located somewhere other than your domain root.</comment>
+                        </robots_location>
+                        <robots translate="label">
+                            <label>robots.txt</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <comment> <![CDATA[Download our latest optimised <a href="https://github.com/Creare/magento-robots/blob/master/robots.txt" target="_blank">robots.txt file</a>]]></comment>
+                        </robots>
+                    </fields>
+                </files>
+            </groups>
+        </crearerobots>
+        <general>
+            <groups>
+                <store_information>
+                    <fields>
+                        <creareseo_fax translate="label">
+                            <label>Fax Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_fax>
+                        <creareseo_company_no translate="label">
+                            <label>Company Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_company_no>
+                        <creareseo_twitter translate="label">
+                            <label>Twitter</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_twitter>
+                        <creareseo_facebook translate="label">
+                            <label>Facebook</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_facebook>
+                        <creareseo_google_plus translate="label">
+                            <label>Google Plus</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_google_plus>
+                        <creareseo_youtube translate="label">
+                            <label>YouTube</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_youtube>
+                        <creareseo_linkedin translate="label">
+                            <label>LinkedIn</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_linkedin>
+                        <creareseo_instagram translate="label">
+                            <label>Instagram</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </creareseo_instagram>
+                    </fields>
+                </store_information>
+            </groups>
+        </general>
+    </sections>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss" ifconfig="creareseocore/defaultseo/duplicate">
+                <name>creareseo/creareseo-admin.css</name>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_catalog_product_edit>
+        <reference name="head">
+            <action method="addJs">
+                <name>creareseo/creareseo_admin.js</name>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+    <adminhtml_creareseo_check>
+        <reference name="head">
+            <action method="setTitle"><title>CreareSEO Checklist</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="creareseocore.check" template="creareseo/check.phtml" />
+        </reference>
+    </adminhtml_creareseo_check>
+</layout>

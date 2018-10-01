@@ -1,0 +1,11 @@
+app/code/community/Creare/CreareSeoCore app/code/community/Creare/CreareSeoCore
+app/code/community/Creare/CreareSeoSitemap app/code/community/Creare/CreareSeoSitemap
+app/etc/modules/Creare_CreareSeoCore.xml app/etc/modules/Creare_CreareSeoCore.xml
+app/etc/modules/Creare_CreareSeoSitemap.xml app/etc/modules/Creare_CreareSeoSitemap.xml
+app/design/adminhtml/default/default/layout/creareseo_admin.xml app/design/adminhtml/default/default/layout/creareseo_admin.xml
+app/design/adminhtml/default/default/template/creareseo app/design/adminhtml/default/default/template/creareseo
+app/design/frontend/base/default/layout/creareseo.xml app/design/frontend/base/default/layout/creareseo.xml
+app/design/frontend/base/default/layout/creareseo_sitemap.xml app/design/frontend/base/default/layout/creareseo_sitemap.xml
+app/design/frontend/base/default/template/creareseo app/design/frontend/base/default/template/creareseo
+js/creareseo js/creareseo
+skin/adminhtml/default/default/creareseo skin/adminhtml/default/default/creareseo

@@ -1,0 +1,24 @@
+<adminhtml>
+  <acl>
+    <resources>
+      <all>
+        <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>
+          <system>
+              <children>
+                <config>
+                    <children>
+                      <creareseositemap>
+                        <title>Creare SEO Sitemap</title>
+                      </creareseositemap>
+                    </children>
+                </config>
+              </children>
+            </system>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</adminhtml>

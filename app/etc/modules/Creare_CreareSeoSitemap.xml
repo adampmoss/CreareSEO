@@ -1,0 +1,12 @@
+<config>
+    <modules>
+        <Creare_CreareSeoSitemap>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_Cms />
+            </depends>
+        </Creare_CreareSeoSitemap>
+    </modules>
+</config>
