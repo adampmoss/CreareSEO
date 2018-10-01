@@ -128,6 +128,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </forcecanonical>
+                        <forcerel translate="label">
+                            <label>Enable Category rel=next/prev Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </forcerel>
                         <forcehptitle translate="label">
                             <label>Force Homepage Title (disregard prefix/suffix)</label>
                             <frontend_type>select</frontend_type>
@@ -789,6 +798,28 @@
                         </enabled>
                     </fields>
                 </sitelinksearch>
+<<<<<<< HEAD
+                <sitemap>
+                    <label>Sitemap</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Sitemap</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </sitemap>
+=======
+>>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
                 <imagesitemap>
                     <label>Image Sitemap</label>
                     <frontend_type>text</frontend_type>

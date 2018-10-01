@@ -245,6 +245,7 @@
                 <duplicate>0</duplicate>
                 <category_h1>1</category_h1>
                 <forcecanonical>1</forcecanonical>
+                <forcerel>0</forcerel>
                 <forcehptitle>1</forcehptitle>
                 <enablecmscanonical>1</enablecmscanonical>
                 <cms_canonical_protocol>http://</cms_canonical_protocol>

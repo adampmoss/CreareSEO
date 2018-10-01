@@ -3,7 +3,11 @@
 class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Sitemap
 {
     protected $_eventPrefix = 'creareseo_xml_sitemap';
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
     public function generateXml()
     {
         $io = new Varien_Io_File();
@@ -76,11 +80,19 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
         $priority   = (string)Mage::getStoreConfig('sitemap/page/priority', $storeId);
         $collection = Mage::getResourceModel('sitemap/cms_page')->getCollection($storeId);
         foreach ($collection as $item) {
+<<<<<<< HEAD
+
+            /* Remove homepage path, leaving just the base URL */
+            $url = (Mage::getStoreConfig('web/default/cms_home_page') == $item->getUrl()
+                    ? $baseUrl : $baseUrl . $item->getUrl());
+
+=======
             
             /* Remove homepage path, leaving just the base URL */
             $url = (Mage::getStoreConfig('web/default/cms_home_page') == $item->getUrl()
                     ? $baseUrl : $baseUrl . $item->getUrl());
    
+>>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
             $xml = sprintf(
                 '<url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%.1f</priority></url>',
                 htmlspecialchars($url),
@@ -100,5 +112,9 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
 
         return $this;
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
 }

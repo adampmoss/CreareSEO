@@ -156,15 +156,17 @@
             $categories = Mage::getModel('catalog/category')->getCollection()
                 ->addAttributeToSelect(array('name'))
                 ->addAttributeToFilter('is_active', 1)
-                ->addAttributeToFilter('parent_id', array('eq' => $parentId));
+                ->addAttributeToFilter('parent_id', array('eq' => $parentId))
+                ->addAttributeToSort('position', ASC);
 
             if(!$this->isEnabledFlat()) {
                 $categories->addAttributeToSelect('url');
             }
 
-            $class = ($isChild) ? "subcategories" : "top-level";
+            $class = ($isChild) ? "menu vertical nested" : "vertical menu accordion-menu";
+            $accordion = ($isChild) ? "" : "data-accordion-menu data-submenu-toggle=\"true\"";
+            $this->categoryTreeHtml .= '<ul class="' . $class . '" '.$accordion.'>';
 
-            $this->categoryTreeHtml .= '<ul class="' . $class . '">';
             foreach ($categories as $category) {
                 if($this->isEnabledFlat()) {
                     $url = Mage::helper('catalog/category')->getCategoryUrl($category);
