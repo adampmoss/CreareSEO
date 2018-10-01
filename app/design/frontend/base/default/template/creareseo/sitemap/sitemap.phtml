@@ -2,11 +2,7 @@
     <h1><?php echo $this->__("Sitemap") ?></h1>
     <?php echo $this->sitemapHelper()->getConfig('description') ?>
     <h2><?php echo $this->__("Pages") ?></h2>
-<<<<<<< HEAD
     <ul class="list-disc">
-=======
-    <ul>
->>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
         <?php if ($_cmsPages = $this->getCmsPages()) : ?>
             <?php foreach ($_cmsPages as $_page) : ?>
                 <li><a href="<?php echo Mage::getUrl(null, array('_direct' => $_page->getIdentifier())) ?>"><?php echo $_page->getTitle() ?></a></li>
@@ -23,11 +19,7 @@
 
     <?php if ($_xmlSitemaps = $this->getXmlSitemaps()) : ?>
         <h2><?php echo $this->__("Sitemaps") ?></h2>
-<<<<<<< HEAD
         <ul class="list-disc">
-=======
-        <ul>
->>>>>>> 04e74877dae2cc3b3b30e98a128c47910e82c488
             <?php foreach ($_xmlSitemaps as $_sitemap) : ?>
                 <li>
                     <a href="<?php echo $_sitemap->getSitemapFilename() ?>"><?php echo $_sitemap->getSitemapFilename() ?></a>
