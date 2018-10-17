@@ -33,7 +33,7 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
         $categories->setItems($collection);
         Mage::dispatchEvent('sitemap_categories_generating_before', array(
             'collection' => $categories,
-            'store_id => $storeId
+            'store_id' => $storeId
         ));
         foreach ($categories->getItems() as $item) {
             $xml = sprintf(
