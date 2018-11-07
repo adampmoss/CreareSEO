@@ -5,7 +5,7 @@
 
 $category = Mage::registry('current_category');
 if($category){
-    $prodCol = $category->getProductCollection()->addAttributeToFilter('status', 1)->addAttributeToFilter('visibility', array('in' => array(Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG, Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH)));
+    $prodCol = $this->getLayout()->getBlockSingleton('catalog/product_list')->getLoadedProductCollection();
     $tool = $this->getLayout()->createBlock('page/html_pager')->setLimit($this->getLayout()->createBlock('catalog/product_list_toolbar')->getLimit())->setCollection($prodCol);
     $linkPrev = false;
     $linkNext = false;
