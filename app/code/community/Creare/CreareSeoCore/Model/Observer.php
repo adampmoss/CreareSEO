@@ -87,6 +87,9 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
 
         if ($request->getControllerName() === "product") {
 
+            // disable the flat catalog, so that the product collection returns the disabled products as well
+            $oldConfig = Mage::app()->getStore()->getConfig('catalog/frontend/flat_catalog_product');
+            Mage::app()->getStore()->setConfig('catalog/frontend/flat_catalog_product', 0);
             $product = Mage::getResourceModel('catalog/product_collection')
                 ->addAttributeToSelect('creareseo_discontinued')
                 ->addAttributeToSelect('creareseo_discontinued_product')
@@ -94,6 +97,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
                 ->addIdFilter($request->getParam('id'))
                 ->setPageSize(1)
                 ->getFirstItem();
+            Mage::app()->getStore()->setConfig('catalog/frontend/flat_catalog_product', $oldConfig);
 
             if ($discontinuedUrl = $this->helper->getDiscontinuedProductUrl($product)) {
                 $this->redirect301($discontinuedUrl, $product->getName());
