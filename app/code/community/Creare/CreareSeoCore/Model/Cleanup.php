@@ -62,7 +62,7 @@ class Creare_CreareSeoCore_Model_Cleanup extends Mage_Core_Model_Abstract
 			'report_event'
 		);
 		
-		$db = Mage::getSingleton('core/resource')->getConnection('read');
+		$db = Mage::getSingleton('core/resource')->getConnection('write');
 		$prefix = Mage::getConfig()->getTablePrefix();
 		foreach($tables as $table){
 			$db->query('TRUNCATE '.$prefix.$table);
