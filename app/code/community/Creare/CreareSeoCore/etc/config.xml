@@ -59,11 +59,11 @@
                 <class>Creare_CreareSeoCore_Model</class>
                 <resourceModel>cleanup_mysql4</resourceModel>
             </creareseocore>
-            <sitemap>
+            <!--sitemap>
                 <rewrite>
                     <sitemap>Creare_CreareSeoCore_Model_Sitemap_Sitemap</sitemap>
                 </rewrite>
-            </sitemap>
+            </sitemap-->
         </models>
         <helpers>
             <creareseocore>

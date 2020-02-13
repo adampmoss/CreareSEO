@@ -22,7 +22,7 @@
         <ul class="list-disc">
             <?php foreach ($_xmlSitemaps as $_sitemap) : ?>
                 <li>
-                    <a href="<?php echo $_sitemap->getSitemapFilename() ?>"><?php echo $_sitemap->getSitemapFilename() ?></a>
+                    <a href="<?php echo $this->getUrl('') ?>sitemap.xml"><?php echo $_sitemap->getSitemapFilename() ?></a>
                 </li>
             <?php endforeach ?>
         </ul>
