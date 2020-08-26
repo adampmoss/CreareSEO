@@ -206,7 +206,7 @@ class Creare_CreareSeoCore_Model_Observer extends Mage_Core_Model_Abstract
             $url        = $product->getUrlModel()
                 ->getUrl($product, array('_ignore_category' => true, '_query' => $query));
             $escapedUrl = Mage::helper('core/url')->escapeUrl($url);
-            if (Mage::helper('core/url')->getCurrentUrl() != $escapedUrl) {
+            if (Mage::helper('core/url')->escapeUrl(Mage::helper('core/url')->getCurrentUrl()) != $escapedUrl) {
                 Mage::app()->getFrontController()->getResponse()->setRedirect($url, 301);
                 Mage::app()->getResponse()->sendResponse();
             }
