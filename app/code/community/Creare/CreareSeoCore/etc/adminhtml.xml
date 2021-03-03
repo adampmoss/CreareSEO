@@ -3,7 +3,7 @@
         <system translate="title" module="adminhtml">
             <title>System</title>
             <sort_order>90</sort_order>
-            <!-- action>adminhtml/system</action -->
+            <action>adminhtml/system</action>
             <children>
                 <creareseo>
                     <title>CreareSEO</title>
