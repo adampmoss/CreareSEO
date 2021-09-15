@@ -125,7 +125,7 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
         $pages = ceil( count($collection) / $limit );
         $i = 0;
         while( $i < $pages ) {
-            $name = '_images_' . $i . '.xml';
+            $name = '_cms_' . $i . '.xml';
             $this->subFileCreate($name);
             $subCollection = array_slice($collection, $i * $limit, $limit);
             foreach ($subCollection as $item) {
@@ -177,7 +177,7 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
                 $title = str_replace('&','',$_product->getName());
                 $galleryData = $_product->getData('media_gallery');
                 $xmlImg = '';
-                foreach ($galleryData['images'] as &$image) {
+                foreach ($galleryData['images'] as $image) {
                     $filename = htmlspecialchars(Mage::getBaseUrl('media').'catalog/product'.$image['file']);
                     $xmlImg .= '<image:image><image:loc>'.$filename.'</image:loc><image:title>'.$title.'</image:title></image:image>';
                 }
