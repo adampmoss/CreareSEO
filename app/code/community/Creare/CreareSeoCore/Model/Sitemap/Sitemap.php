@@ -173,20 +173,22 @@ class Creare_CreareSeoCore_Model_Sitemap_Sitemap extends Mage_Sitemap_Model_Site
             $this->subFileCreate($name, true);
             $subCollection = array_slice($collection, $i * $limit, $limit);
             foreach ($subCollection as $item) {
-                $_product = Mage::getModel("catalog/product")->load( $item->getId() );
-                $title = str_replace('&','',$_product->getName());
+                $_product = Mage::getModel("catalog/product")->load($item->getId());
+                $title = str_replace('&', '', $_product->getName());
                 $galleryData = $_product->getData('media_gallery');
                 $xmlImg = '';
                 foreach ($galleryData['images'] as $image) {
-                    $filename = htmlspecialchars(Mage::getBaseUrl('media').'catalog/product'.$image['file']);
-                    $xmlImg .= '<image:image><image:loc>'.$filename.'</image:loc><image:title>'.$title.'</image:title></image:image>';
+                    $filename = htmlspecialchars(Mage::getBaseUrl('media') . 'catalog/product' . $image['file']);
+                    $xmlImg .= '<image:image><image:loc>' . $filename . '</image:loc><image:title>' . $title . '</image:title></image:image>';
                 }
-                $xml = sprintf(
-                    '<url>'."\n".'<loc>%s</loc>%s</url>'."\n".'',
-                    htmlspecialchars($baseUrl . $item->getUrl()),
-                    $xmlImg
-                );
-                $this->sitemapSubFileAddLine($xml, $name);
+                if ($xmlImg != "") {
+                    $xml = sprintf(
+                        '<url>' . "\n" . '<loc>%s</loc>%s</url>' . "\n" . '',
+                        htmlspecialchars($baseUrl . $item->getUrl()),
+                        $xmlImg
+                    );
+                    $this->sitemapSubFileAddLine($xml, $name);
+                }
             }
             $this->subFileClose($name);
             /**
