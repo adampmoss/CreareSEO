@@ -22,7 +22,7 @@ Tested successfully in most versions of Enterprise Edition
 
 ### Usage
 
-Our official [supporting blog post](http://www.creare.co.uk/creare-seo-magento-extension) contains a video and further instructions on how to use verion 1 of the extension. However, since the video was recorded we have made many improvements and added many new features.
+Our official [supporting blog post](https://web.archive.org/web/20150421042016/http://www.creare.co.uk/creare-seo-magento-extension) contains a video and further instructions on how to use verion 1 of the extension. However, since the video was recorded we have made many improvements and added many new features.
 
 Most settings can be configured in **System > CreareSEO > General Settings**
 
